@@ -1,0 +1,971 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.20.2.41139 for 8051             01/Mar/2023  23:47:58 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\Source\EndDevice.c                              #
+#    Command line       =  -f D:\Project\ZStack\Projects\zstack\Samples\Gener #
+#                          icApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wEndev.cf #
+#                          g (-DCPU32MHZ -DROOT=__near_func                   #
+#                          -DMAC_CFG_TX_DATA_MAX=3 -DMAC_CFG_TX_MAX=6         #
+#                          -DMAC_CFG_RX_MAX=3) -f D:\Project\ZStack\Projects\ #
+#                          zstack\Samples\GenericApp\CC2530DB\..\..\..\Tools\ #
+#                          CC2530DB\f8wConfig.cfg (-DZIGBEEPRO -DSECURE=0     #
+#                          -DZG_SECURE_DYNAMIC=0 -DREFLECTOR                  #
+#                          -DDEFAULT_CHANLIST=0x00000800                      #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                       #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MA #
+#                          SK=0x007F -DBEACON_REQUEST_DELAY=100               #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                     #
+#                          -DLINK_STATUS_JITTER_MASK=0x007F                   #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_PO #
+#                          LLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7             #
+#                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3    #
+#                          -DNWK_MAX_DATA_RETRIES=2                           #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9         #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40           #
+#                          -DNWK_MAX_BINDING_ENTRIES=4                        #
+#                          -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01,  #
+#                          0x03, 0x05, 0x07, 0x09, 0x0B, 0x0D, 0x0F, 0x00,    #
+#                          0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0D}"         #
+#                          -DMAC_MAX_FRAME_SIZE=116                           #
+#                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const     #
+#                          __code" -DGENERIC=__generic                        #
+#                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000        #
+#                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100)   #
+#                          -DREJOIN_POLL_RATE=440 D:\Project\ZStack\Projects\ #
+#                          zstack\Samples\GenericApp\Source\EndDevice.c -D    #
+#                          NWK_AUTO_POLL -D MT_TASK -D MT_SYS_FUNC -D         #
+#                          MT_ZDO_FUNC -D ED -D NV_INIT -lC                   #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\EndDeviceEB\List\ -lA                  #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\EndDeviceEB\List\ --diag_suppress      #
+#                          Pe001,Pa010 -o D:\Project\ZStack\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\EndDeviceEB\Obj\ -e     #
+#                          --no_code_motion --debug --core=plain --dptr=16,1  #
+#                          --data_model=large --code_model=banked             #
+#                          --calling_convention=xdata_reentrant               #
+#                          --place_constants=data_rom --nr_virtual_regs 16    #
+#                          -I D:\Project\ZStack\Projects\zstack\Samples\Gener #
+#                          icApp\CC2530DB\ -I D:\Project\ZStack\Projects\zsta #
+#                          ck\Samples\GenericApp\CC2530DB\..\Source\ -I       #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\ZMain\TI2530DB\ -I            #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\hal\include\ #
+#                           -I D:\Project\ZStack\Projects\zstack\Samples\Gene #
+#                          ricApp\CC2530DB\..\..\..\..\..\Components\hal\targ #
+#                          et\CC2530EB\ -I D:\Project\ZStack\Projects\zstack\ #
+#                          Samples\GenericApp\CC2530DB\..\..\..\..\..\Compone #
+#                          nts\mac\include\ -I D:\Project\ZStack\Projects\zst #
+#                          ack\Samples\GenericApp\CC2530DB\..\..\..\..\..\Com #
+#                          ponents\mac\high_level\ -I                         #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\mac\low_leve #
+#                          l\srf04\ -I D:\Project\ZStack\Projects\zstack\Samp #
+#                          les\GenericApp\CC2530DB\..\..\..\..\..\Components\ #
+#                          mac\low_level\srf04\single_chip\ -I                #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\mt\ -I       #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\osal\include #
+#                          \ -I D:\Project\ZStack\Projects\zstack\Samples\Gen #
+#                          ericApp\CC2530DB\..\..\..\..\..\Components\service #
+#                          s\saddr\ -I D:\Project\ZStack\Projects\zstack\Samp #
+#                          les\GenericApp\CC2530DB\..\..\..\..\..\Components\ #
+#                          services\sdata\ -I D:\Project\ZStack\Projects\zsta #
+#                          ck\Samples\GenericApp\CC2530DB\..\..\..\..\..\Comp #
+#                          onents\stack\af\ -I D:\Project\ZStack\Projects\zst #
+#                          ack\Samples\GenericApp\CC2530DB\..\..\..\..\..\Com #
+#                          ponents\stack\nwk\ -I D:\Project\ZStack\Projects\z #
+#                          stack\Samples\GenericApp\CC2530DB\..\..\..\..\..\C #
+#                          omponents\stack\sapi\ -I                           #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\stack\sec\   #
+#                          -I D:\Project\ZStack\Projects\zstack\Samples\Gener #
+#                          icApp\CC2530DB\..\..\..\..\..\Components\stack\sys #
+#                          \ -I D:\Project\ZStack\Projects\zstack\Samples\Gen #
+#                          ericApp\CC2530DB\..\..\..\..\..\Components\stack\z #
+#                          do\ -I D:\Project\ZStack\Projects\zstack\Samples\G #
+#                          enericApp\CC2530DB\..\..\..\..\..\Components\zmac\ #
+#                           -I D:\Project\ZStack\Projects\zstack\Samples\Gene #
+#                          ricApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w #
+#                          \ -Ohz                                             #
+#    List file          =  D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\EndDeviceEB\List\EndDevice.lst         #
+#    Object file        =  D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\EndDeviceEB\Obj\EndDevice.r51          #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\Project\ZStack\Projects\zstack\Samples\GenericApp\Source\EndDevice.c
+      1          #ifdef ED
+      2          
+      3          #define HAL_ADC_REF_125V 0x00 /* Internal 1.25V Reference */
+      4          #define HAL_ADC_DEC_064 0x00  /* Decimate by 64 : 8-bit resolution */
+      5          #define HAL_ADC_DEC_128 0x10  /* Decimate by 128 : 10-bit resolution */
+      6          #define HAL_ADC_DEC_512 0x30  /* Decimate by 512 : 14-bit resolution */
+      7          #define HAL_ADC_CHN_VDD3 0x0f /* Input channel: VDD/3 */
+      8          #define HAL_ADC_CHN_TEMP 0x0e /* Temperature sensor */
+      9          #define HAL_ADC_EOC 0x80      /* End of Conversion bit */
+     10          
+     11          #include "EndDevice.h"
+
+   \                                 In  segment SFR_AN, at 0xda
+   \   unsigned char volatile __sfr T1CC0L
+   \                     T1CC0L:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xdb
+   \   unsigned char volatile __sfr T1CC0H
+   \                     T1CC0H:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xdc
+   \   unsigned char volatile __sfr T1CC1L
+   \                     T1CC1L:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xdd
+   \   unsigned char volatile __sfr T1CC1H
+   \                     T1CC1H:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xe4
+   \   unsigned char volatile __sfr T1CTL
+   \                     T1CTL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xe6
+   \   unsigned char volatile __sfr T1CCTL1
+   \                     T1CCTL1:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf1
+   \   unsigned char volatile __sfr PERCFG
+   \                     PERCFG:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf4
+   \   unsigned char volatile __sfr P1SEL
+   \                     P1SEL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xff
+   \   unsigned char volatile __sfr P2DIR
+   \                     P2DIR:
+   \   000000                DS 1
+     12          #include "ioCC2530.h"
+     13          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     14          int endDeviceProcessAddrRequest(afIncomingMSGPacket_t *pkt)
+   \                     endDeviceProcessAddrRequest:
+     15          {
+   \   000000   74F5         MOV     A,#-0xb
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 11
+   \   000005                ; Auto size: 8
+   \   000005   74F8         MOV     A,#-0x8
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+     16              uint8 rcvExtAddr[8];
+     17              uint8 id;
+     18              osal_revmemcpy(rcvExtAddr, pkt->cmd.Data, 8);
+   \   00000A   12....       LCALL   ?Subroutine2 & 0xFFFF
+   \                     ??CrossCallReturnLabel_0:
+   \   00000D                ; Setup parameters for call to function osal_revmemcpy
+   \   00000D   8E82         MOV     DPL,R6
+   \   00000F   8F83         MOV     DPH,R7
+   \   000011   E0           MOVX    A,@DPTR
+   \   000012   F5..         MOV     ?V0 + 0,A
+   \   000014   A3           INC     DPTR
+   \   000015   E0           MOVX    A,@DPTR
+   \   000016   F5..         MOV     ?V0 + 1,A
+   \   000018   75..00       MOV     ?V0 + 2,#0x0
+   \   00001B   78..         MOV     R0,#?V0 + 0
+   \   00001D   12....       LCALL   ?PUSH_XSTACK_I_THREE
+   \   000020   7C08         MOV     R4,#0x8
+   \   000022   7D00         MOV     R5,#0x0
+   \   000024   7403         MOV     A,#0x3
+   \   000026   12....       LCALL   ?XSTACK_DISP0_8
+   \   000029   AA82         MOV     R2,DPL
+   \   00002B   AB83         MOV     R3,DPH
+   \   00002D   12....       LCALL   ??osal_revmemcpy?relay
+   \   000030   7403         MOV     A,#0x3
+   \   000032   12....       LCALL   ?DEALLOC_XSTACK8
+     19              id = pkt->cmd.Data[8];
+   \   000035   8E82         MOV     DPL,R6
+   \   000037   8F83         MOV     DPH,R7
+   \   000039   E0           MOVX    A,@DPTR
+   \   00003A   F8           MOV     R0,A
+   \   00003B   A3           INC     DPTR
+   \   00003C   E0           MOVX    A,@DPTR
+   \   00003D   C8           XCH     A,R0
+   \   00003E   2408         ADD     A,#0x8
+   \   000040   F582         MOV     DPL,A
+   \   000042   E8           MOV     A,R0
+   \   000043   3400         ADDC    A,#0x0
+   \   000045   F583         MOV     DPH,A
+   \   000047   E0           MOVX    A,@DPTR
+   \   000048   FE           MOV     R6,A
+     20              if (!osal_ExtAddrEqual(rcvExtAddr, NLME_GetExtAddr()))
+   \   000049                ; Setup parameters for call to function sAddrExtCmp
+   \   000049                ; Setup parameters for call to function NLME_GetExtAddr
+   \   000049   12....       LCALL   ??NLME_GetExtAddr?relay
+   \   00004C   EA           MOV     A,R2
+   \   00004D   FC           MOV     R4,A
+   \   00004E   EB           MOV     A,R3
+   \   00004F   FD           MOV     R5,A
+   \   000050   85..82       MOV     DPL,?XSP + 0
+   \   000053   85..83       MOV     DPH,?XSP + 1
+   \   000056   AA82         MOV     R2,DPL
+   \   000058   AB83         MOV     R3,DPH
+   \   00005A   12....       LCALL   ??sAddrExtCmp?relay
+   \   00005D   E9           MOV     A,R1
+   \   00005E   700B         JNZ     ??endDeviceProcessAddrRequest_0
+     21              {
+     22                  exceptionHandler("endDeviceProcessAddrRequest");
+   \   000060                ; Setup parameters for call to function exceptionHandler
+   \   000060   7A..         MOV     R2,#`?<Constant "endDeviceProcessAddrR...">` & 0xff
+   \   000062   7B..         MOV     R3,#(`?<Constant "endDeviceProcessAddrR...">` >> 8) & 0xff
+   \   000064   12....       LCALL   ??exceptionHandler?relay
+     23                  return 0;
+   \   000067   7A00         MOV     R2,#0x0
+   \   000069   8007         SJMP    ??endDeviceProcessAddrRequest_1
+     24              }
+     25              appData.id = id;
+   \                     ??endDeviceProcessAddrRequest_0:
+   \   00006B   EE           MOV     A,R6
+   \   00006C   90....       MOV     DPTR,#appData
+   \   00006F   F0           MOVX    @DPTR,A
+     26              return 1;
+   \   000070   7A01         MOV     R2,#0x1
+   \                     ??endDeviceProcessAddrRequest_1:
+   \   000072   7B00         MOV     R3,#0x0
+   \   000074   7408         MOV     A,#0x8
+   \   000076   12....       LCALL   ?DEALLOC_XSTACK8
+   \   000079   7F03         MOV     R7,#0x3
+   \   00007B   02....       LJMP    ?BANKED_LEAVE_XDATA
+     27          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine2:
+   \   000000   EA           MOV     A,R2
+   \   000001   2422         ADD     A,#0x22
+   \   000003   F8           MOV     R0,A
+   \   000004   EB           MOV     A,R3
+   \   000005   3400         ADDC    A,#0x0
+   \   000007   F9           MOV     R1,A
+   \   000008   E8           MOV     A,R0
+   \   000009   FE           MOV     R6,A
+   \   00000A   E9           MOV     A,R1
+   \   00000B   FF           MOV     R7,A
+   \   00000C   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     28          void EndDeviceUpdateAddr()
+   \                     EndDeviceUpdateAddr:
+     29          {
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 10
+   \   000005   74F6         MOV     A,#-0xa
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+     30              byte *extAddr;
+     31              uint8 payload[10];
+     32              uint16 nwkAddr;
+     33              extAddr = NLME_GetExtAddr();
+   \   00000A                ; Setup parameters for call to function NLME_GetExtAddr
+   \   00000A   12....       LCALL   ??NLME_GetExtAddr?relay
+   \   00000D   8A..         MOV     ?V0 + 0,R2
+   \   00000F   8B..         MOV     ?V0 + 1,R3
+   \   000011   AE..         MOV     R6,?V0 + 0
+   \   000013   AF..         MOV     R7,?V0 + 1
+     34              nwkAddr = NLME_GetShortAddr();
+   \   000015                ; Setup parameters for call to function NLME_GetShortAddr
+   \   000015   12....       LCALL   ??NLME_GetShortAddr?relay
+   \   000018   8A..         MOV     ?V0 + 0,R2
+   \   00001A   8B..         MOV     ?V0 + 1,R3
+     35              for (int i = 0; i < 8; i++)
+   \   00001C   7A00         MOV     R2,#0x0
+   \   00001E   7B00         MOV     R3,#0x0
+     36              {
+     37                  payload[7 - i] = *(extAddr + i);
+   \                     ??EndDeviceUpdateAddr_0:
+   \   000020   EE           MOV     A,R6
+   \   000021   2A           ADD     A,R2
+   \   000022   F582         MOV     DPL,A
+   \   000024   EF           MOV     A,R7
+   \   000025   3B           ADDC    A,R3
+   \   000026   F583         MOV     DPH,A
+   \   000028   E0           MOVX    A,@DPTR
+   \   000029   C0E0         PUSH    A
+   \   00002B   C3           CLR     C
+   \   00002C   E4           CLR     A
+   \   00002D   9A           SUBB    A,R2
+   \   00002E   FC           MOV     R4,A
+   \   00002F   E4           CLR     A
+   \   000030   9B           SUBB    A,R3
+   \   000031   FD           MOV     R5,A
+   \   000032   85..82       MOV     DPL,?XSP + 0
+   \   000035   85..83       MOV     DPH,?XSP + 1
+   \   000038   E582         MOV     A,DPL
+   \   00003A   2C           ADD     A,R4
+   \   00003B   F582         MOV     DPL,A
+   \   00003D   E583         MOV     A,DPH
+   \   00003F   3D           ADDC    A,R5
+   \   000040   F583         MOV     DPH,A
+   \   000042   A3           INC     DPTR
+   \   000043   A3           INC     DPTR
+   \   000044   A3           INC     DPTR
+   \   000045   A3           INC     DPTR
+   \   000046   A3           INC     DPTR
+   \   000047   A3           INC     DPTR
+   \   000048   A3           INC     DPTR
+   \   000049   D0E0         POP     A
+   \   00004B   F0           MOVX    @DPTR,A
+     38              }
+   \   00004C   EA           MOV     A,R2
+   \   00004D   2401         ADD     A,#0x1
+   \   00004F   0A           INC     R2
+   \   000050   EB           MOV     A,R3
+   \   000051   3400         ADDC    A,#0x0
+   \   000053   FB           MOV     R3,A
+   \   000054   C3           CLR     C
+   \   000055   EA           MOV     A,R2
+   \   000056   9408         SUBB    A,#0x8
+   \   000058   EB           MOV     A,R3
+   \   000059   9400         SUBB    A,#0x0
+   \   00005B   A2D2         MOV     C,0xD0 /* PSW */.2
+   \   00005D   65D0         XRL     A,PSW
+   \   00005F   33           RLC     A
+   \   000060   40BE         JC      ??EndDeviceUpdateAddr_0
+     39              payload[8] = nwkAddr & 0xFF;
+   \   000062   7408         MOV     A,#0x8
+   \   000064   12....       LCALL   ?XSTACK_DISP0_8
+   \   000067   E5..         MOV     A,?V0 + 0
+   \   000069   F0           MOVX    @DPTR,A
+     40              payload[9] = nwkAddr >> 8;
+   \   00006A   7409         MOV     A,#0x9
+   \   00006C   12....       LCALL   ?XSTACK_DISP0_8
+   \   00006F   E5..         MOV     A,?V0 + 1
+   \   000071   F0           MOVX    @DPTR,A
+     41              GenericApp_SendTheMessage(&GenericApp_CoorAddr, NWK_addr_rsp, payload, 10);
+   \   000072                ; Setup parameters for call to function GenericApp_SendTheMessage
+   \   000072   75..0A       MOV     ?V0 + 0,#0xa
+   \   000075   75..00       MOV     ?V0 + 1,#0x0
+   \   000078   78..         MOV     R0,#?V0 + 0
+   \   00007A   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00007D   7402         MOV     A,#0x2
+   \   00007F   12....       LCALL   ?XSTACK_DISP0_8
+   \   000082   8582..       MOV     ?V0 + 0,DPL
+   \   000085   8583..       MOV     ?V0 + 1,DPH
+   \   000088   78..         MOV     R0,#?V0 + 0
+   \   00008A   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00008D   7C00         MOV     R4,#0x0
+   \   00008F   7D80         MOV     R5,#-0x80
+   \   000091   7A..         MOV     R2,#GenericApp_CoorAddr & 0xff
+   \   000093   7B..         MOV     R3,#(GenericApp_CoorAddr >> 8) & 0xff
+   \   000095   12....       LCALL   ??GenericApp_SendTheMessage?relay
+   \   000098   7404         MOV     A,#0x4
+   \   00009A   12....       LCALL   ?DEALLOC_XSTACK8
+     42          }
+   \   00009D   740A         MOV     A,#0xa
+   \   00009F   12....       LCALL   ?DEALLOC_XSTACK8
+   \   0000A2   7F02         MOV     R7,#0x2
+   \   0000A4   02....       LJMP    ?BANKED_LEAVE_XDATA
+     43          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     44          int EndDeviceProcessMsg(afIncomingMSGPacket_t *pkt)
+   \                     EndDeviceProcessMsg:
+     45          {
+   \   000000   74EC         MOV     A,#-0x14
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 20
+   \   000005                ; Auto size: 450
+   \   000005   75823E       MOV     DPL,#0x3e
+   \   000008   7583FE       MOV     DPH,#-0x2
+   \   00000B   12....       LCALL   ?ADD_XSTACK_DISP0_16
+     46              HalUARTWrite(SERIAL_APP_PORT, pkt->cmd.Data, pkt->cmd.DataLength);
+   \   00000E   12....       LCALL   ?Subroutine2 & 0xFFFF
+   \                     ??CrossCallReturnLabel_1:
+   \   000011                ; Setup parameters for call to function HalUARTWrite
+   \   000011   EA           MOV     A,R2
+   \   000012   2420         ADD     A,#0x20
+   \   000014   F582         MOV     DPL,A
+   \   000016   EB           MOV     A,R3
+   \   000017   3400         ADDC    A,#0x0
+   \   000019   F583         MOV     DPH,A
+   \   00001B   E0           MOVX    A,@DPTR
+   \   00001C   FC           MOV     R4,A
+   \   00001D   A3           INC     DPTR
+   \   00001E   E0           MOVX    A,@DPTR
+   \   00001F   FD           MOV     R5,A
+   \   000020   8E82         MOV     DPL,R6
+   \   000022   8F83         MOV     DPH,R7
+   \   000024   12....       LCALL   ??Subroutine3_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_2:
+   \   000027   7900         MOV     R1,#0x0
+   \   000029   12....       LCALL   ??HalUARTWrite?relay
+     47              json_t mem[DATA_LENGTH];
+     48              json_t const *json = json_create((char *)pkt->cmd.Data, mem, DATA_LENGTH);
+   \   00002C                ; Setup parameters for call to function json_create
+   \   00002C   75..32       MOV     ?V0 + 0,#0x32
+   \   00002F   75..00       MOV     ?V0 + 1,#0x0
+   \   000032   78..         MOV     R0,#?V0 + 0
+   \   000034   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000037   7402         MOV     A,#0x2
+   \   000039   12....       LCALL   ?XSTACK_DISP0_8
+   \   00003C   AC82         MOV     R4,DPL
+   \   00003E   AD83         MOV     R5,DPH
+   \   000040   8E82         MOV     DPL,R6
+   \   000042   8F83         MOV     DPH,R7
+   \   000044   12....       LCALL   ??Subroutine3_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_3:
+   \   000047   12....       LCALL   ??json_create?relay
+   \   00004A   7402         MOV     A,#0x2
+   \   00004C   12....       LCALL   ?DEALLOC_XSTACK8
+   \   00004F   8A..         MOV     ?V0 + 0,R2
+   \   000051   8B..         MOV     ?V0 + 1,R3
+   \   000053   AE..         MOV     R6,?V0 + 0
+   \   000055   AF..         MOV     R7,?V0 + 1
+     49              if (!json)
+   \   000057   EE           MOV     A,R6
+   \   000058   4F           ORL     A,R7
+   \   000059   700C         JNZ     ??EndDeviceProcessMsg_0
+     50              {
+     51                  exceptionHandler("EndDeviceProcessMsg");
+   \   00005B                ; Setup parameters for call to function exceptionHandler
+   \   00005B   7A..         MOV     R2,#`?<Constant "EndDeviceProcessMsg">` & 0xff
+   \   00005D   7B..         MOV     R3,#(`?<Constant "EndDeviceProcessMsg">` >> 8) & 0xff
+   \   00005F   12....       LCALL   ??exceptionHandler?relay
+     52                  return 0;
+   \   000062   7A00         MOV     R2,#0x0
+   \   000064   02....       LJMP    ??EndDeviceProcessMsg_1 & 0xFFFF
+     53              }
+     54              json_t const *id = json_getProperty(json, "ID");
+   \                     ??EndDeviceProcessMsg_0:
+   \   000067                ; Setup parameters for call to function json_getProperty
+   \   000067   7C..         MOV     R4,#`?<Constant "ID">` & 0xff
+   \   000069   7D..         MOV     R5,#(`?<Constant "ID">` >> 8) & 0xff
+   \   00006B   12....       LCALL   ??json_getProperty?relay
+   \   00006E   8A..         MOV     ?V0 + 4,R2
+   \   000070   8B..         MOV     ?V0 + 5,R3
+     55              json_t const *status = json_getProperty(json, "ON");
+   \   000072                ; Setup parameters for call to function json_getProperty
+   \   000072   7C..         MOV     R4,#`?<Constant "ON">` & 0xff
+   \   000074   7D..         MOV     R5,#(`?<Constant "ON">` >> 8) & 0xff
+   \   000076   EE           MOV     A,R6
+   \   000077   FA           MOV     R2,A
+   \   000078   EF           MOV     A,R7
+   \   000079   FB           MOV     R3,A
+   \   00007A   12....       LCALL   ??json_getProperty?relay
+   \   00007D   8A..         MOV     ?V0 + 2,R2
+   \   00007F   8B..         MOV     ?V0 + 3,R3
+     56              json_t const *dim = json_getProperty(json, "DI");
+   \   000081                ; Setup parameters for call to function json_getProperty
+   \   000081   7C..         MOV     R4,#`?<Constant "DI">` & 0xff
+   \   000083   7D..         MOV     R5,#(`?<Constant "DI">` >> 8) & 0xff
+   \   000085   EE           MOV     A,R6
+   \   000086   FA           MOV     R2,A
+   \   000087   EF           MOV     A,R7
+   \   000088   FB           MOV     R3,A
+   \   000089   12....       LCALL   ??json_getProperty?relay
+   \   00008C   8A..         MOV     ?V0 + 0,R2
+   \   00008E   8B..         MOV     ?V0 + 1,R3
+     57              json_t const *time = json_getProperty(json, "TI");
+   \   000090                ; Setup parameters for call to function json_getProperty
+   \   000090   7C..         MOV     R4,#`?<Constant "TI">` & 0xff
+   \   000092   7D..         MOV     R5,#(`?<Constant "TI">` >> 8) & 0xff
+   \   000094   EE           MOV     A,R6
+   \   000095   FA           MOV     R2,A
+   \   000096   EF           MOV     A,R7
+   \   000097   FB           MOV     R3,A
+   \   000098   12....       LCALL   ??json_getProperty?relay
+   \   00009B   8A..         MOV     ?V0 + 6,R2
+   \   00009D   8B..         MOV     ?V0 + 7,R3
+   \   00009F   AE..         MOV     R6,?V0 + 6
+   \   0000A1   AF..         MOV     R7,?V0 + 7
+     58              if (status)
+   \   0000A3   E5..         MOV     A,?V0 + 2
+   \   0000A5   45..         ORL     A,?V0 + 3
+   \   0000A7   6025         JZ      ??EndDeviceProcessMsg_2
+     59                  appData.lightStatus = (uint8)json_getInteger(status);
+   \   0000A9                ; Setup parameters for call to function strtol
+   \   0000A9   75..0A       MOV     ?V0 + 6,#0xa
+   \   0000AC   75..00       MOV     ?V0 + 7,#0x0
+   \   0000AF   78..         MOV     R0,#?V0 + 6
+   \   0000B1   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   0000B4   7C00         MOV     R4,#0x0
+   \   0000B6   7D00         MOV     R5,#0x0
+   \   0000B8   85..82       MOV     DPL,?V0 + 2
+   \   0000BB   85..83       MOV     DPH,?V0 + 3
+   \   0000BE   12....       LCALL   ?Subroutine1 & 0xFFFF
+   \                     ??CrossCallReturnLabel_4:
+   \   0000C1   12....       LCALL   ??strtol?relay
+   \   0000C4   7402         MOV     A,#0x2
+   \   0000C6   12....       LCALL   ?DEALLOC_XSTACK8
+   \   0000C9   EA           MOV     A,R2
+   \   0000CA   90....       MOV     DPTR,#appData + 1
+   \   0000CD   F0           MOVX    @DPTR,A
+     60              if (id)
+   \                     ??EndDeviceProcessMsg_2:
+   \   0000CE   E5..         MOV     A,?V0 + 4
+   \   0000D0   45..         ORL     A,?V0 + 5
+   \   0000D2   6025         JZ      ??EndDeviceProcessMsg_3
+     61                  appData.id = (uint8)json_getInteger(id);
+   \   0000D4                ; Setup parameters for call to function strtol
+   \   0000D4   75..0A       MOV     ?V0 + 2,#0xa
+   \   0000D7   75..00       MOV     ?V0 + 3,#0x0
+   \   0000DA   78..         MOV     R0,#?V0 + 2
+   \   0000DC   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   0000DF   7C00         MOV     R4,#0x0
+   \   0000E1   7D00         MOV     R5,#0x0
+   \   0000E3   85..82       MOV     DPL,?V0 + 4
+   \   0000E6   85..83       MOV     DPH,?V0 + 5
+   \   0000E9   12....       LCALL   ?Subroutine1 & 0xFFFF
+   \                     ??CrossCallReturnLabel_5:
+   \   0000EC   12....       LCALL   ??strtol?relay
+   \   0000EF   7402         MOV     A,#0x2
+   \   0000F1   12....       LCALL   ?DEALLOC_XSTACK8
+   \   0000F4   EA           MOV     A,R2
+   \   0000F5   90....       MOV     DPTR,#appData
+   \   0000F8   F0           MOVX    @DPTR,A
+     62              if (dim)
+   \                     ??EndDeviceProcessMsg_3:
+   \   0000F9   E5..         MOV     A,?V0 + 0
+   \   0000FB   45..         ORL     A,?V0 + 1
+   \   0000FD   6025         JZ      ??EndDeviceProcessMsg_4
+     63                  appData.dimmer = json_getInteger(dim);
+   \   0000FF                ; Setup parameters for call to function strtol
+   \   0000FF   75..0A       MOV     ?V0 + 2,#0xa
+   \   000102   75..00       MOV     ?V0 + 3,#0x0
+   \   000105   78..         MOV     R0,#?V0 + 2
+   \   000107   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00010A   7C00         MOV     R4,#0x0
+   \   00010C   7D00         MOV     R5,#0x0
+   \   00010E   85..82       MOV     DPL,?V0 + 0
+   \   000111   85..83       MOV     DPH,?V0 + 1
+   \   000114   12....       LCALL   ?Subroutine1 & 0xFFFF
+   \                     ??CrossCallReturnLabel_6:
+   \   000117   12....       LCALL   ??strtol?relay
+   \   00011A   7402         MOV     A,#0x2
+   \   00011C   12....       LCALL   ?DEALLOC_XSTACK8
+   \   00011F   EA           MOV     A,R2
+   \   000120   90....       MOV     DPTR,#appData + 2
+   \   000123   F0           MOVX    @DPTR,A
+     64              if (time)
+   \                     ??EndDeviceProcessMsg_4:
+   \   000124   EE           MOV     A,R6
+   \   000125   4F           ORL     A,R7
+   \   000126   6023         JZ      ??EndDeviceProcessMsg_5
+     65                  appData.time = json_getInteger(time);
+   \   000128                ; Setup parameters for call to function strtol
+   \   000128   75..0A       MOV     ?V0 + 0,#0xa
+   \   00012B   75..00       MOV     ?V0 + 1,#0x0
+   \   00012E   78..         MOV     R0,#?V0 + 0
+   \   000130   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000133   7C00         MOV     R4,#0x0
+   \   000135   7D00         MOV     R5,#0x0
+   \   000137   8E82         MOV     DPL,R6
+   \   000139   8F83         MOV     DPH,R7
+   \   00013B   12....       LCALL   ?Subroutine1 & 0xFFFF
+   \                     ??CrossCallReturnLabel_7:
+   \   00013E   12....       LCALL   ??strtol?relay
+   \   000141   7402         MOV     A,#0x2
+   \   000143   12....       LCALL   ?DEALLOC_XSTACK8
+   \   000146   EA           MOV     A,R2
+   \   000147   90....       MOV     DPTR,#appData + 3
+   \   00014A   F0           MOVX    @DPTR,A
+     66              return 1;
+   \                     ??EndDeviceProcessMsg_5:
+   \   00014B   7A01         MOV     R2,#0x1
+   \                     ??EndDeviceProcessMsg_1:
+   \   00014D   7B00         MOV     R3,#0x0
+   \   00014F   7582C2       MOV     DPL,#-0x3e
+   \   000152   758301       MOV     DPH,#0x1
+   \   000155   12....       LCALL   ?ADD_XSTACK_DISP0_16
+   \   000158   7F0C         MOV     R7,#0xc
+   \   00015A   02....       LJMP    ?BANKED_LEAVE_XDATA
+     67          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   A3           INC     DPTR
+   \   000001   A3           INC     DPTR
+   \   000002   A3           INC     DPTR
+   \   000003   A3           INC     DPTR
+   \   000004                REQUIRE ??Subroutine3_0
+   \   000004                ; // Fall through to label ??Subroutine3_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine3_0:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   FA           MOV     R2,A
+   \   000002   A3           INC     DPTR
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   FB           MOV     R3,A
+   \   000005   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     68          void endDeviceOperation(GenericAppData *data)
+   \                     endDeviceOperation:
+     69          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     70              readAdcValue(data);
+   \   000004                ; Setup parameters for call to function readAdcValue
+   \   000004   12....       LCALL   ??readAdcValue?relay
+     71          }
+   \   000007                REQUIRE ?Subroutine0
+   \   000007                ; // Fall through to label ?Subroutine0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   D083         POP     DPH
+   \   000002   D082         POP     DPL
+   \   000004   02....       LJMP    ?BRET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     72          void changeDimmerValue(GenericAppData *data)
+   \                     changeDimmerValue:
+     73          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     74              if (data->dimmer != 0 && data->lightStatus == 1)
+   \   000004   8A82         MOV     DPL,R2
+   \   000006   8B83         MOV     DPH,R3
+   \   000008   A3           INC     DPTR
+   \   000009   A3           INC     DPTR
+   \   00000A   E0           MOVX    A,@DPTR
+   \   00000B   6014         JZ      ??changeDimmerValue_0
+   \   00000D   8A82         MOV     DPL,R2
+   \   00000F   8B83         MOV     DPH,R3
+   \   000011   A3           INC     DPTR
+   \   000012   E0           MOVX    A,@DPTR
+   \   000013   6401         XRL     A,#0x1
+   \   000015   700A         JNZ     ??changeDimmerValue_0
+     75              {
+     76                  createPWM(data->dimmer);
+   \   000017                ; Setup parameters for call to function createPWM
+   \   000017   8A82         MOV     DPL,R2
+   \   000019   8B83         MOV     DPH,R3
+   \   00001B   A3           INC     DPTR
+   \   00001C   A3           INC     DPTR
+   \   00001D   E0           MOVX    A,@DPTR
+   \   00001E   F9           MOV     R1,A
+   \   00001F   8002         SJMP    ??changeDimmerValue_1
+     77              }
+     78              else
+     79                  createPWM(0);
+   \                     ??changeDimmerValue_0:
+   \   000021                ; Setup parameters for call to function createPWM
+   \   000021   7900         MOV     R1,#0x0
+   \                     ??changeDimmerValue_1:
+   \   000023   12....       LCALL   ??createPWM?relay
+     80          }
+   \   000026   80..         SJMP    ?Subroutine0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     81          void readAdcValue(GenericAppData *data)
+   \                     readAdcValue:
+     82          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV     A,R2
+   \   000006   FE           MOV     R6,A
+   \   000007   EB           MOV     A,R3
+   \   000008   FF           MOV     R7,A
+     83              data->adcValue = HalAdcRead(HAL_ADC_CHN_AIN0, HAL_ADC_RESOLUTION_12);
+   \   000009                ; Setup parameters for call to function HalAdcRead
+   \   000009   7A03         MOV     R2,#0x3
+   \   00000B   7900         MOV     R1,#0x0
+   \   00000D   12....       LCALL   ??HalAdcRead?relay
+   \   000010   8E82         MOV     DPL,R6
+   \   000012   8F83         MOV     DPH,R7
+   \   000014   A3           INC     DPTR
+   \   000015   A3           INC     DPTR
+   \   000016   A3           INC     DPTR
+   \   000017   A3           INC     DPTR
+   \   000018   EA           MOV     A,R2
+   \   000019   F0           MOVX    @DPTR,A
+   \   00001A   A3           INC     DPTR
+   \   00001B   EB           MOV     A,R3
+   \   00001C   F0           MOVX    @DPTR,A
+     84          }
+   \   00001D   7F01         MOV     R7,#0x1
+   \   00001F   02....       LJMP    ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     85          void createPWM(uint8 dutyCycle)
+   \                     createPWM:
+     86          {
+   \   000000   74F0         MOV     A,#-0x10
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 16
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+   \   000006   FA           MOV     R2,A
+     87              uint32 dutyValue = 4096;
+     88              if(dutyCycle >= 100)
+   \   000007   C3           CLR     C
+   \   000008   9464         SUBB    A,#0x64
+   \   00000A   4004         JC      ??createPWM_0
+     89              {
+     90                dutyCycle = 99;
+   \   00000C   7A63         MOV     R2,#0x63
+   \   00000E   8005         SJMP    ??createPWM_1
+     91              }
+     92              if(dutyCycle == 0)
+   \                     ??createPWM_0:
+   \   000010   EA           MOV     A,R2
+   \   000011   7002         JNZ     ??createPWM_1
+     93              {
+     94                dutyCycle = 100;
+   \   000013   7A64         MOV     R2,#0x64
+     95              }
+     96              float percent = (float)dutyCycle / 100;
+     97              dutyValue = dutyValue * percent;
+                               ^
+Warning[Pa093]: implicit conversion from floating point to integer
+   \                     ??createPWM_1:
+   \   000015   8A..         MOV     ?V0 + 0,R2
+   \   000017   E4           CLR     A
+   \   000018   F5..         MOV     ?V0 + 1,A
+   \   00001A   F5..         MOV     ?V0 + 2,A
+   \   00001C   F5..         MOV     ?V0 + 3,A
+   \   00001E   78..         MOV     R0,#?V0 + 0
+   \   000020   12....       LCALL   ?UL_TO_FLT
+   \   000023   90....       MOV     DPTR,#__Constant_42c80000
+   \   000026   78..         MOV     R0,#?V0 + 4
+   \   000028   12....       LCALL   ?L_MOV_X
+   \   00002B   78..         MOV     R0,#?V0 + 0
+   \   00002D   79..         MOV     R1,#?V0 + 4
+   \   00002F   12....       LCALL   ?FLT_DIV
+   \   000032   90....       MOV     DPTR,#__Constant_45800000
+   \   000035   78..         MOV     R0,#?V0 + 4
+   \   000037   12....       LCALL   ?L_MOV_X
+   \   00003A   78..         MOV     R0,#?V0 + 0
+   \   00003C   79..         MOV     R1,#?V0 + 4
+   \   00003E   12....       LCALL   ?FLT_MUL
+   \   000041   78..         MOV     R0,#?V0 + 0
+   \   000043   12....       LCALL   ?FLT_TO_UL
+     98              uint8 dutyHighBit = (dutyValue >> 8) & 0xFF;
+     99              uint8 dutyLowBit = (dutyValue)&0xFF;
+    100          
+    101              PERCFG |= BV(6);                // Select Timer 1 Alternative 2 location
+   \   000046   43F140       ORL     0xf1,#0x40
+    102              P2DIR = (P2DIR & ~0xC0) | 0x80; // Give priority to Timer 1
+   \   000049   E5FF         MOV     A,0xff
+   \   00004B   543F         ANL     A,#0x3f
+   \   00004D   4480         ORL     A,#0x80
+   \   00004F   F5FF         MOV     0xff,A
+    103              P1SEL |= BV(1);                 // Set P1_1 to peripheral
+   \   000051   43F402       ORL     0xf4,#0x2
+    104          
+    105              T1CC0L = 0x00; // PWM signal period
+   \   000054   75DA00       MOV     0xda,#0x0
+    106              T1CC0H = 0x10;
+   \   000057   75DB10       MOV     0xdb,#0x10
+    107          
+    108              T1CC1L = dutyLowBit; // PWM duty cycle
+   \   00005A   E5..         MOV     A,?V0 + 0
+   \   00005C   F5DC         MOV     0xdc,A
+    109              T1CC1H = dutyHighBit;
+   \   00005E   E5..         MOV     A,?V0 + 1
+   \   000060   F5DD         MOV     0xdd,A
+    110          
+    111              T1CCTL1 = 0x1c;
+   \   000062   75E61C       MOV     0xe6,#0x1c
+    112          
+    113              T1CTL |= (BV(2) | 0x03);
+   \   000065   43E407       ORL     0xe4,#0x7
+    114          }
+   \   000068   7F08         MOV     R7,#0x8
+   \   00006A   02....       LJMP    ?BANKED_LEAVE_XDATA
+   \   00006D                REQUIRE PERCFG
+   \   00006D                REQUIRE P2DIR
+   \   00006D                REQUIRE P1SEL
+   \   00006D                REQUIRE T1CC0L
+   \   00006D                REQUIRE T1CC0H
+   \   00006D                REQUIRE T1CC1L
+   \   00006D                REQUIRE T1CC1H
+   \   00006D                REQUIRE T1CCTL1
+   \   00006D                REQUIRE T1CTL
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??endDeviceProcessAddrRequest?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    endDeviceProcessAddrRequest
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??EndDeviceUpdateAddr?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    EndDeviceUpdateAddr
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??EndDeviceProcessMsg?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    EndDeviceProcessMsg
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??endDeviceOperation?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    endDeviceOperation
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??changeDimmerValue?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    changeDimmerValue
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??readAdcValue?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    readAdcValue
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??createPWM?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    createPWM
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "endDeviceProcessAddrR...">`:
+   \   000000   656E6444     DB "endDeviceProcessAddrRequest"
+   \            65766963
+   \            6550726F
+   \            63657373
+   \            41646472
+   \            52657175
+   \            65737400
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "EndDeviceProcessMsg">`:
+   \   000000   456E6444     DB "EndDeviceProcessMsg"
+   \            65766963
+   \            6550726F
+   \            63657373
+   \            4D736700
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "ID">`:
+   \   000000   494400       DB "ID"
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "ON">`:
+   \   000000   4F4E00       DB "ON"
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "DI">`:
+   \   000000   444900       DB "DI"
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "TI">`:
+   \   000000   544900       DB "TI"
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_42c80000:
+   \   000000   0000C842     DD 42C80000H
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_45800000:
+   \   000000   00008045     DD 45800000H
+    115          #endif
+
+   Maximum stack usage in bytes:
+
+   ISTACK PSTACK XSTACK Function
+   ------ ------ ------ --------
+       0      0    472  EndDeviceProcessMsg
+                          0 0 470 -> HalUARTWrite
+                          0 0 470 -> exceptionHandler
+                          0 0 472 -> json_create
+                          0 0 470 -> json_getProperty
+                          0 0 472 -> strtol
+       1      0     24  EndDeviceUpdateAddr
+                          0 0  24 -> GenericApp_SendTheMessage
+                          0 0  20 -> NLME_GetExtAddr
+                          0 0  20 -> NLME_GetShortAddr
+       2      0      0  changeDimmerValue
+                          2 0   0 -> createPWM
+       0      0     16  createPWM
+       2      0      0  endDeviceOperation
+                          2 0   0 -> readAdcValue
+       0      0     22  endDeviceProcessAddrRequest
+                          0 0  19 -> NLME_GetExtAddr
+                          0 0  19 -> exceptionHandler
+                          0 0  22 -> osal_revmemcpy
+                          0 0  19 -> sAddrExtCmp
+       0      0      9  readAdcValue
+                          0 0   9 -> HalAdcRead
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       3  ?<Constant "DI">
+      20  ?<Constant "EndDeviceProcessMsg">
+       3  ?<Constant "ID">
+       3  ?<Constant "ON">
+       3  ?<Constant "TI">
+      28  ?<Constant "endDeviceProcessAddrR...">
+       6  ??EndDeviceProcessMsg?relay
+       6  ??EndDeviceUpdateAddr?relay
+       6  ??Subroutine3_0
+       6  ??changeDimmerValue?relay
+       6  ??createPWM?relay
+       6  ??endDeviceOperation?relay
+       6  ??endDeviceProcessAddrRequest?relay
+       6  ??readAdcValue?relay
+       7  ?Subroutine0
+       4  ?Subroutine1
+      13  ?Subroutine2
+     349  EndDeviceProcessMsg
+     167  EndDeviceUpdateAddr
+       1  P1SEL
+       1  P2DIR
+       1  PERCFG
+       1  T1CC0H
+       1  T1CC0L
+       1  T1CC1H
+       1  T1CC1L
+       1  T1CCTL1
+       1  T1CTL
+       4  __Constant_42c80000
+       4  __Constant_45800000
+      40  changeDimmerValue
+     109  createPWM
+       7  endDeviceOperation
+     126  endDeviceProcessAddrRequest
+      34  readAdcValue
+
+ 
+ 862 bytes in segment BANKED_CODE
+  42 bytes in segment BANK_RELAYS
+   9 bytes in segment SFR_AN
+  68 bytes in segment XDATA_ROM_C
+ 
+ 904 bytes of CODE  memory
+  60 bytes of CONST memory (+ 8 bytes shared)
+   0 bytes of DATA  memory (+ 9 bytes shared)
+
+Errors: none
+Warnings: 1

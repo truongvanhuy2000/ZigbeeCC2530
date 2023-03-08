@@ -1,0 +1,255 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V8.20.2.41139 for 8051            26/Feb/2023  19:01:13 /
+// Copyright 2004-2013 IAR Systems AB.                                        /
+//                                                                            /
+//    Core               =  plain                                             /
+//    Code model         =  banked                                            /
+//    Data model         =  large                                             /
+//    Calling convention =  xdata reentrant                                   /
+//    Constant location  =  data_rom                                          /
+//    Dptr setup         =  1,16                                              /
+//                                                                            /
+//    Source file        =  D:\Project\ZStack\Projects\zstack\Samples\Generic /
+//                          App\Source\EndDevice.c                            /
+//    Command line       =  -f D:\Project\ZStack\Projects\zstack\Samples\Gene /
+//                          ricApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wCoord. /
+//                          cfg (-DCPU32MHZ -DROOT=__near_func                /
+//                          -DMAC_CFG_APP_PENDING_QUEUE=TRUE                  /
+//                          -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8        /
+//                          -DMAC_CFG_RX_MAX=5 -DZDO_COORDINATOR -DRTR_NWK)   /
+//                          -f D:\Project\ZStack\Projects\zstack\Samples\Gene /
+//                          ricApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig /
+//                          .cfg (-DZIGBEEPRO -DSECURE=0                      /
+//                          -DZG_SECURE_DYNAMIC=0 -DREFLECTOR                 /
+//                          -DDEFAULT_CHANLIST=0x00000800                     /
+//                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                      /
+//                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_M /
+//                          ASK=0x007F -DBEACON_REQUEST_DELAY=100             /
+//                          -DBEACON_REQ_DELAY_MASK=0x00FF                    /
+//                          -DLINK_STATUS_JITTER_MASK=0x007F                  /
+//                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_P /
+//                          OLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7           /
+//                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3   /
+//                          -DNWK_MAX_DATA_RETRIES=2                          /
+//                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9        /
+//                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40          /
+//                          -DNWK_MAX_BINDING_ENTRIES=4                       /
+//                          -DMAX_BINDING_CLUSTER_IDS=4                       /
+//                          "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07, 0x09,     /
+//                          0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08,   /
+//                          0x0A, 0x0C, 0x0D}" -DMAC_MAX_FRAME_SIZE=116       /
+//                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const    /
+//                          __code" -DGENERIC=__generic                       /
+//                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000       /
+//                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100)  /
+//                          -DREJOIN_POLL_RATE=440 D:\Project\ZStack\Projects /
+//                          \zstack\Samples\GenericApp\Source\EndDevice.c -D  /
+//                          MT_TASK -D MT_SYS_FUNC -D MT_ZDO_FUNC -D NV_INIT  /
+//                          -D COOR -lC D:\Project\ZStack\Projects\zstack\Sam /
+//                          ples\GenericApp\CC2530DB\CoordinatorEB\List\ -lA  /
+//                          D:\Project\ZStack\Projects\zstack\Samples\Generic /
+//                          App\CC2530DB\CoordinatorEB\List\ --diag_suppress  /
+//                          Pe001,Pa010 -o D:\Project\ZStack\Projects\zstack\ /
+//                          Samples\GenericApp\CC2530DB\CoordinatorEB\Obj\    /
+//                          -e --no_code_motion --debug --core=plain          /
+//                          --dptr=16,1 --data_model=large                    /
+//                          --code_model=banked --calling_convention=xdata_re /
+//                          entrant --place_constants=data_rom                /
+//                          --nr_virtual_regs 24 -I                           /
+//                          D:\Project\ZStack\Projects\zstack\Samples\Generic /
+//                          App\CC2530DB\ -I D:\Project\ZStack\Projects\zstac /
+//                          k\Samples\GenericApp\CC2530DB\..\Source\ -I       /
+//                          D:\Project\ZStack\Projects\zstack\Samples\Generic /
+//                          App\CC2530DB\..\..\..\ZMain\TI2530DB\ -I          /
+//                          D:\Project\ZStack\Projects\zstack\Samples\Generic /
+//                          App\CC2530DB\..\..\..\..\..\Components\hal\includ /
+//                          e\ -I D:\Project\ZStack\Projects\zstack\Samples\G /
+//                          enericApp\CC2530DB\..\..\..\..\..\Components\hal\ /
+//                          target\CC2530EB\ -I D:\Project\ZStack\Projects\zs /
+//                          tack\Samples\GenericApp\CC2530DB\..\..\..\..\..\C /
+//                          omponents\mac\include\ -I                         /
+//                          D:\Project\ZStack\Projects\zstack\Samples\Generic /
+//                          App\CC2530DB\..\..\..\..\..\Components\mac\high_l /
+//                          evel\ -I D:\Project\ZStack\Projects\zstack\Sample /
+//                          s\GenericApp\CC2530DB\..\..\..\..\..\Components\m /
+//                          ac\low_level\srf04\ -I D:\Project\ZStack\Projects /
+//                          \zstack\Samples\GenericApp\CC2530DB\..\..\..\..\. /
+//                          .\Components\mac\low_level\srf04\single_chip\ -I  /
+//                          D:\Project\ZStack\Projects\zstack\Samples\Generic /
+//                          App\CC2530DB\..\..\..\..\..\Components\mt\ -I     /
+//                          D:\Project\ZStack\Projects\zstack\Samples\Generic /
+//                          App\CC2530DB\..\..\..\..\..\Components\osal\inclu /
+//                          de\ -I D:\Project\ZStack\Projects\zstack\Samples\ /
+//                          GenericApp\CC2530DB\..\..\..\..\..\Components\ser /
+//                          vices\saddr\ -I D:\Project\ZStack\Projects\zstack /
+//                          \Samples\GenericApp\CC2530DB\..\..\..\..\..\Compo /
+//                          nents\services\sdata\ -I                          /
+//                          D:\Project\ZStack\Projects\zstack\Samples\Generic /
+//                          App\CC2530DB\..\..\..\..\..\Components\stack\af\  /
+//                          -I D:\Project\ZStack\Projects\zstack\Samples\Gene /
+//                          ricApp\CC2530DB\..\..\..\..\..\Components\stack\n /
+//                          wk\ -I D:\Project\ZStack\Projects\zstack\Samples\ /
+//                          GenericApp\CC2530DB\..\..\..\..\..\Components\sta /
+//                          ck\sapi\ -I D:\Project\ZStack\Projects\zstack\Sam /
+//                          ples\GenericApp\CC2530DB\..\..\..\..\..\Component /
+//                          s\stack\sec\ -I D:\Project\ZStack\Projects\zstack /
+//                          \Samples\GenericApp\CC2530DB\..\..\..\..\..\Compo /
+//                          nents\stack\sys\ -I D:\Project\ZStack\Projects\zs /
+//                          tack\Samples\GenericApp\CC2530DB\..\..\..\..\..\C /
+//                          omponents\stack\zdo\ -I                           /
+//                          D:\Project\ZStack\Projects\zstack\Samples\Generic /
+//                          App\CC2530DB\..\..\..\..\..\Components\zmac\ -I   /
+//                          D:\Project\ZStack\Projects\zstack\Samples\Generic /
+//                          App\CC2530DB\..\..\..\..\..\Components\zmac\f8w\  /
+//                          -Ohz                                              /
+//    List file          =  D:\Project\ZStack\Projects\zstack\Samples\Generic /
+//                          App\CC2530DB\CoordinatorEB\List\EndDevice.s51     /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME EndDevice
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+
+        END
+// D:\Project\ZStack\Projects\zstack\Samples\GenericApp\Source\EndDevice.c
+//    1 #ifdef ED
+//    2 
+//    3 #define HAL_ADC_REF_125V 0x00 /* Internal 1.25V Reference */
+//    4 #define HAL_ADC_DEC_064 0x00  /* Decimate by 64 : 8-bit resolution */
+//    5 #define HAL_ADC_DEC_128 0x10  /* Decimate by 128 : 10-bit resolution */
+//    6 #define HAL_ADC_DEC_512 0x30  /* Decimate by 512 : 14-bit resolution */
+//    7 #define HAL_ADC_CHN_VDD3 0x0f /* Input channel: VDD/3 */
+//    8 #define HAL_ADC_CHN_TEMP 0x0e /* Temperature sensor */
+//    9 #define HAL_ADC_EOC 0x80      /* End of Conversion bit */
+//   10 
+//   11 #include "EndDevice.h"
+//   12 #include "ioCC2530.h"
+//   13 
+//   14 int endDeviceProcessAddrRequest(afIncomingMSGPacket_t *pkt)
+//   15 {
+//   16     uint8 rcvExtAddr[8];
+//   17     uint8 id;
+//   18     osal_revmemcpy(rcvExtAddr, pkt->cmd.Data, 8);
+//   19     id = pkt->cmd.Data[8];
+//   20     if (!osal_ExtAddrEqual(rcvExtAddr, NLME_GetExtAddr()))
+//   21     {
+//   22         exceptionHandler("endDeviceProcessAddrRequest");
+//   23         return 0;
+//   24     }
+//   25     appData.id = id;
+//   26     return 1;
+//   27 }
+//   28 void EndDeviceUpdateAddr()
+//   29 {
+//   30     byte *extAddr;
+//   31     uint8 payload[10];
+//   32     uint16 nwkAddr;
+//   33     extAddr = NLME_GetExtAddr();
+//   34     nwkAddr = NLME_GetShortAddr();
+//   35     for (int i = 0; i < 8; i++)
+//   36     {
+//   37         payload[7 - i] = *(extAddr + i);
+//   38     }
+//   39     payload[8] = nwkAddr & 0xFF;
+//   40     payload[9] = nwkAddr >> 8;
+//   41     GenericApp_SendTheMessage(&GenericApp_CoorAddr, NWK_addr_rsp, payload, 10);
+//   42 }
+//   43 
+//   44 int EndDeviceProcessMsg(afIncomingMSGPacket_t *pkt)
+//   45 {
+//   46     HalUARTWrite(SERIAL_APP_PORT, pkt->cmd.Data, pkt->cmd.DataLength);
+//   47     json_t mem[DATA_LENGTH];
+//   48     json_t const *json = json_create((char *)pkt->cmd.Data, mem, DATA_LENGTH);
+//   49     if (!json)
+//   50     {
+//   51         exceptionHandler("EndDeviceProcessMsg");
+//   52         return 0;
+//   53     }
+//   54     json_t const *id = json_getProperty(json, "ID");
+//   55     json_t const *status = json_getProperty(json, "ON");
+//   56     json_t const *dim = json_getProperty(json, "DI");
+//   57     json_t const *time = json_getProperty(json, "TI");
+//   58     if (status)
+//   59         appData.lightStatus = (uint8)json_getInteger(status);
+//   60     if (id)
+//   61         appData.id = (uint8)json_getInteger(id);
+//   62     if (dim)
+//   63         appData.dimmer = json_getInteger(dim);
+//   64     if (time)
+//   65         appData.time = json_getInteger(time);
+//   66     return 1;
+//   67 }
+//   68 void endDeviceOperation(GenericAppData *data)
+//   69 {
+//   70     readAdcValue(data);
+//   71 }
+//   72 void changeDimmerValue(GenericAppData *data)
+//   73 {
+//   74     if (data->dimmer != 0 && data->lightStatus == 1)
+//   75     {
+//   76         createPWM(data->dimmer);
+//   77     }
+//   78     else
+//   79         createPWM(0);
+//   80 }
+//   81 void readAdcValue(GenericAppData *data)
+//   82 {
+//   83     data->adcValue = HalAdcRead(HAL_ADC_CHN_AIN0, HAL_ADC_RESOLUTION_12);
+//   84 }
+//   85 void createPWM(uint8 dutyCycle)
+//   86 {
+//   87     uint32 dutyValue = 4096;
+//   88     if(dutyCycle >= 100)
+//   89     {
+//   90       dutyCycle = 99;
+//   91     }
+//   92     if(dutyCycle == 0)
+//   93     {
+//   94       dutyCycle = 100;
+//   95     }
+//   96     float percent = (float)dutyCycle / 100;
+//   97     dutyValue = dutyValue * percent;
+//   98     uint8 dutyHighBit = (dutyValue >> 8) & 0xFF;
+//   99     uint8 dutyLowBit = (dutyValue)&0xFF;
+//  100 
+//  101     PERCFG |= BV(6);                // Select Timer 1 Alternative 2 location
+//  102     P2DIR = (P2DIR & ~0xC0) | 0x80; // Give priority to Timer 1
+//  103     P1SEL |= BV(1);                 // Set P1_1 to peripheral
+//  104 
+//  105     T1CC0L = 0x00; // PWM signal period
+//  106     T1CC0H = 0x10;
+//  107 
+//  108     T1CC1L = dutyLowBit; // PWM duty cycle
+//  109     T1CC1H = dutyHighBit;
+//  110 
+//  111     T1CCTL1 = 0x1c;
+//  112 
+//  113     T1CTL |= (BV(2) | 0x03);
+//  114 }
+//  115 #endif
+// 
+//
+// 
+//
+//
+//Errors: none
+//Warnings: none

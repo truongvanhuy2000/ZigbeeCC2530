@@ -1,0 +1,319 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.20.2.41139 for 8051             01/Mar/2023  23:47:58 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\Source\Coordinator.c                            #
+#    Command line       =  -f D:\Project\ZStack\Projects\zstack\Samples\Gener #
+#                          icApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wEndev.cf #
+#                          g (-DCPU32MHZ -DROOT=__near_func                   #
+#                          -DMAC_CFG_TX_DATA_MAX=3 -DMAC_CFG_TX_MAX=6         #
+#                          -DMAC_CFG_RX_MAX=3) -f D:\Project\ZStack\Projects\ #
+#                          zstack\Samples\GenericApp\CC2530DB\..\..\..\Tools\ #
+#                          CC2530DB\f8wConfig.cfg (-DZIGBEEPRO -DSECURE=0     #
+#                          -DZG_SECURE_DYNAMIC=0 -DREFLECTOR                  #
+#                          -DDEFAULT_CHANLIST=0x00000800                      #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                       #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MA #
+#                          SK=0x007F -DBEACON_REQUEST_DELAY=100               #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                     #
+#                          -DLINK_STATUS_JITTER_MASK=0x007F                   #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_PO #
+#                          LLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7             #
+#                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3    #
+#                          -DNWK_MAX_DATA_RETRIES=2                           #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9         #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40           #
+#                          -DNWK_MAX_BINDING_ENTRIES=4                        #
+#                          -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01,  #
+#                          0x03, 0x05, 0x07, 0x09, 0x0B, 0x0D, 0x0F, 0x00,    #
+#                          0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0D}"         #
+#                          -DMAC_MAX_FRAME_SIZE=116                           #
+#                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const     #
+#                          __code" -DGENERIC=__generic                        #
+#                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000        #
+#                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100)   #
+#                          -DREJOIN_POLL_RATE=440 D:\Project\ZStack\Projects\ #
+#                          zstack\Samples\GenericApp\Source\Coordinator.c -D  #
+#                          NWK_AUTO_POLL -D MT_TASK -D MT_SYS_FUNC -D         #
+#                          MT_ZDO_FUNC -D ED -D NV_INIT -lC                   #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\EndDeviceEB\List\ -lA                  #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\EndDeviceEB\List\ --diag_suppress      #
+#                          Pe001,Pa010 -o D:\Project\ZStack\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\EndDeviceEB\Obj\ -e     #
+#                          --no_code_motion --debug --core=plain --dptr=16,1  #
+#                          --data_model=large --code_model=banked             #
+#                          --calling_convention=xdata_reentrant               #
+#                          --place_constants=data_rom --nr_virtual_regs 16    #
+#                          -I D:\Project\ZStack\Projects\zstack\Samples\Gener #
+#                          icApp\CC2530DB\ -I D:\Project\ZStack\Projects\zsta #
+#                          ck\Samples\GenericApp\CC2530DB\..\Source\ -I       #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\ZMain\TI2530DB\ -I            #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\hal\include\ #
+#                           -I D:\Project\ZStack\Projects\zstack\Samples\Gene #
+#                          ricApp\CC2530DB\..\..\..\..\..\Components\hal\targ #
+#                          et\CC2530EB\ -I D:\Project\ZStack\Projects\zstack\ #
+#                          Samples\GenericApp\CC2530DB\..\..\..\..\..\Compone #
+#                          nts\mac\include\ -I D:\Project\ZStack\Projects\zst #
+#                          ack\Samples\GenericApp\CC2530DB\..\..\..\..\..\Com #
+#                          ponents\mac\high_level\ -I                         #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\mac\low_leve #
+#                          l\srf04\ -I D:\Project\ZStack\Projects\zstack\Samp #
+#                          les\GenericApp\CC2530DB\..\..\..\..\..\Components\ #
+#                          mac\low_level\srf04\single_chip\ -I                #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\mt\ -I       #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\osal\include #
+#                          \ -I D:\Project\ZStack\Projects\zstack\Samples\Gen #
+#                          ericApp\CC2530DB\..\..\..\..\..\Components\service #
+#                          s\saddr\ -I D:\Project\ZStack\Projects\zstack\Samp #
+#                          les\GenericApp\CC2530DB\..\..\..\..\..\Components\ #
+#                          services\sdata\ -I D:\Project\ZStack\Projects\zsta #
+#                          ck\Samples\GenericApp\CC2530DB\..\..\..\..\..\Comp #
+#                          onents\stack\af\ -I D:\Project\ZStack\Projects\zst #
+#                          ack\Samples\GenericApp\CC2530DB\..\..\..\..\..\Com #
+#                          ponents\stack\nwk\ -I D:\Project\ZStack\Projects\z #
+#                          stack\Samples\GenericApp\CC2530DB\..\..\..\..\..\C #
+#                          omponents\stack\sapi\ -I                           #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\stack\sec\   #
+#                          -I D:\Project\ZStack\Projects\zstack\Samples\Gener #
+#                          icApp\CC2530DB\..\..\..\..\..\Components\stack\sys #
+#                          \ -I D:\Project\ZStack\Projects\zstack\Samples\Gen #
+#                          ericApp\CC2530DB\..\..\..\..\..\Components\stack\z #
+#                          do\ -I D:\Project\ZStack\Projects\zstack\Samples\G #
+#                          enericApp\CC2530DB\..\..\..\..\..\Components\zmac\ #
+#                           -I D:\Project\ZStack\Projects\zstack\Samples\Gene #
+#                          ricApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w #
+#                          \ -Ohz                                             #
+#    List file          =  D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\EndDeviceEB\List\Coordinator.lst       #
+#    Object file        =  D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\EndDeviceEB\Obj\Coordinator.r51        #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\Project\ZStack\Projects\zstack\Samples\GenericApp\Source\Coordinator.c
+      1          #ifdef COOR
+      2          #include "Coordinator.h"
+      3          
+      4          int CoordProcessMsg(afIncomingMSGPacket_t *pkt)
+      5          {
+      6              char backupData[DATA_LENGTH];
+      7              osal_memcpy(backupData, pkt->cmd.Data, DATA_LENGTH);
+      8              json_t mem[DATA_LENGTH];
+      9              json_t const *json = json_create(backupData, mem, DATA_LENGTH);
+     10              if (!json)
+     11              {
+     12                  exceptionHandler("EndDeviceProcessMsg");
+     13                  return 0;
+     14              }
+     15              json_t const *id = json_getProperty(json, "ID");
+     16              if (!id)
+     17              {
+     18                  return 0;
+     19              }
+     20              const uint8 idValue = (uint8)json_getInteger(id);
+     21          
+     22              if (seachDevice((uint8 *)&idValue, NULL) == NULL)
+     23              {
+     24                  return 0;
+     25              }
+     26              return 1;
+     27          }
+     28          
+     29          void coorProcessRecvAddr(afIncomingMSGPacket_t *pkt)
+     30          {
+     31              uint8 rcvExtAddr[8];
+     32              uint16 rcvShortAddr;
+     33              struct deviceNode *ptr;
+     34              osal_memcpy(rcvExtAddr, pkt->cmd.Data, 8);
+     35              rcvShortAddr = (pkt->cmd.Data[9] << 8) | pkt->cmd.Data[8];
+     36              ptr = seachDevice(NULL, rcvExtAddr);
+     37              if (ptr == NULL)
+     38              {
+     39                  exceptionHandler("processRecvAddr");
+     40                  return;
+     41              }
+     42              // HalUARTWrite(SERIAL_APP_PORT, (uint8 *)&rcvShortAddr, 2);
+     43              ptr->device.shortAddr = rcvShortAddr;
+     44          }
+     45          
+     46          void requestDeviceNwkId(uint8 *ieeeAddr, uint8 id)
+     47          {
+     48              afStatus_t status;
+     49              afAddrType_t dstAddr;
+     50              uint8 payload[9];
+     51              osal_memcpy(payload, ieeeAddr, 8);
+     52              payload[8] = id;
+     53              dstAddr.addrMode = AddrBroadcast;
+     54              dstAddr.endPoint = GENERICAPP_ENDPOINT;
+     55              dstAddr.addr.shortAddr = NWK_BROADCAST_SHORTADDR_DEVALL;
+     56          
+     57              status = GenericApp_SendTheMessage(&dstAddr, NWK_addr_req, payload, 9);
+     58              if (status != ZSuccess)
+     59              {
+     60                  exceptionHandler("requestDeviceNwkId");
+     61              }
+     62              return;
+     63          }
+     64          
+     65          struct deviceNode *seachDevice(uint8 *id, uint8 *ieeeAddr)
+     66          {
+     67              struct deviceNode *ptr = firstDevice;
+     68              if (firstDevice == NULL)
+     69              {
+     70                  return NULL;
+     71              }
+     72              while (ptr != NULL)
+     73              {
+     74                  if (id != NULL && ieeeAddr == NULL && ptr->device.id == *id)
+     75                  {
+     76                      return ptr;
+     77                  }
+     78                  if (id == NULL && ieeeAddr != NULL && osal_ExtAddrEqual(ieeeAddr, ptr->device.extAddr))
+     79                  {
+     80                      return ptr;
+     81                  }
+     82                  if (ptr->next == NULL)
+     83                  {
+     84                      break;
+     85                  }
+     86                  ptr = ptr->next;
+     87              }
+     88              return NULL;
+     89          }
+     90          
+     91          void coordProcessType0(json_t const *json)
+     92          {
+     93              json_t const *extAddr = json_getProperty(json, "EX");
+     94              json_t const *id = json_getProperty(json, "ID");
+     95          
+     96              if (!id)
+     97              {
+     98                  exceptionHandler("coordProcessType0");
+     99                  return;
+    100              }
+    101          
+    102              if (!extAddr)
+    103              {
+    104                  exceptionHandler("coordProcessType0");
+    105                  return;
+    106              }
+    107          
+    108              const char *extAddrValue = json_getValue(extAddr);
+    109              const uint8 idValue = (uint8)json_getInteger(id);
+    110              struct deviceNode *ptr = firstDevice;
+    111              while (ptr != NULL)
+    112              {
+    113                  if (idValue == ptr->device.id)
+    114                  {
+    115                      ptr->device.id = idValue;
+    116                      convertHexToArray(extAddrValue, (char *)ptr->device.extAddr);
+    117                      return;
+    118                  }
+    119                  if (ptr->next == NULL)
+    120                  {
+    121                      break;
+    122                  }
+    123                  ptr = ptr->next;
+    124              }
+    125              struct deviceNode *device = osal_mem_alloc(sizeof(struct deviceNode));
+    126              convertHexToArray(extAddrValue, (char *)device->device.extAddr);
+    127              device->device.id = idValue;
+    128              device->next = NULL;
+    129          
+    130              requestDeviceNwkId((uint8 *)device->device.extAddr, idValue);
+    131              if (!firstDevice)
+    132              {
+    133                  firstDevice = device;
+    134                  return;
+    135              }
+    136              ptr->next = device;
+    137              return;
+    138          }
+    139          
+    140          void coordProcessType1(json_t const *json, char *data, int len)
+    141          {
+    142              json_t const *id = json_getProperty(json, "ID");
+    143              if (!id)
+    144              {
+    145                  exceptionHandler("coordProcessType1");
+    146                  return;
+    147              }
+    148          
+    149              const uint8 idValue = (uint8)json_getInteger(id);
+    150              struct deviceNode *ptr = seachDevice((uint8 *)&idValue, NULL);
+    151              if (!ptr)
+    152              {
+    153                  return;
+    154              }
+    155              afAddrType_t deviceAddr;
+    156              deviceAddr.addrMode = Addr16Bit;
+    157              deviceAddr.endPoint = GENERICAPP_ENDPOINT;
+    158              deviceAddr.addr.shortAddr = ptr->device.shortAddr;
+    159              // HalUARTWrite(SERIAL_APP_PORT, (uint8 *)&deviceAddr.addr.shortAddr, 2);
+    160          
+    161              GenericApp_SendTheMessage(&deviceAddr, GENERICAPP_CLUSTERID, data, len);
+    162          }
+    163          
+    164          void CoordProcessUartData(char *data)
+    165          {
+    166              if (GenericApp_NwkState == DEV_ZB_COORD)
+    167              {
+    168                  char *backupData = osal_mem_alloc(DATA_LENGTH * sizeof(uint8));
+    169                  osal_memcpy(backupData, data, DATA_LENGTH);
+    170                  json_t mem[DATA_LENGTH];
+    171                  json_t const *json = json_create((char *)data, mem, DATA_LENGTH);
+    172                  if (!json)
+    173                  {
+    174                      return;
+    175                  }
+    176                  json_t const *type = json_getProperty(json, "TY");
+    177                  uint8 typeValue;
+    178                  int len;
+    179                  if (type)
+    180                  {
+    181                      typeValue = (uint8)json_getInteger(type);
+    182                  }
+    183                  switch (typeValue)
+    184                  {
+    185                  case TYPE_DEVICE_INDENTITY:
+    186                      coordProcessType0(json);
+    187                      break;
+    188                  case TYPE_DEVICE_SETTING:
+    189                      len = countValidData(backupData);
+    190                      coordProcessType1(json, backupData, len);
+    191                      osal_mem_free(backupData);
+    192                      break;
+    193                  default:
+    194                      break;
+    195                  }
+    196              }
+    197          }
+    198          
+    199          #endif
+
+
+ 
+
+ 
+
+
+Errors: none
+Warnings: none

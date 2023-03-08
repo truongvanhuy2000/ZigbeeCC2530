@@ -1,0 +1,2473 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.20.2.41139 for 8051             02/Jan/2023  14:29:05 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  E:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\Source\tiny-json.c                              #
+#    Command line       =  -f E:\Project\ZStack\Projects\zstack\Samples\Gener #
+#                          icApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wCoord.cf #
+#                          g (-DCPU32MHZ -DROOT=__near_func                   #
+#                          -DMAC_CFG_APP_PENDING_QUEUE=TRUE                   #
+#                          -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8         #
+#                          -DMAC_CFG_RX_MAX=5 -DZDO_COORDINATOR -DRTR_NWK)    #
+#                          -f E:\Project\ZStack\Projects\zstack\Samples\Gener #
+#                          icApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.c #
+#                          fg (-DZIGBEEPRO -DSECURE=0 -DZG_SECURE_DYNAMIC=0   #
+#                          -DREFLECTOR -DDEFAULT_CHANLIST=0x00000800          #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                       #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MA #
+#                          SK=0x007F -DBEACON_REQUEST_DELAY=100               #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                     #
+#                          -DLINK_STATUS_JITTER_MASK=0x007F                   #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_PO #
+#                          LLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7             #
+#                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3    #
+#                          -DNWK_MAX_DATA_RETRIES=2                           #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9         #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40           #
+#                          -DNWK_MAX_BINDING_ENTRIES=4                        #
+#                          -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01,  #
+#                          0x03, 0x05, 0x07, 0x09, 0x0B, 0x0D, 0x0F, 0x00,    #
+#                          0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0D}"         #
+#                          -DMAC_MAX_FRAME_SIZE=116                           #
+#                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const     #
+#                          __code" -DGENERIC=__generic                        #
+#                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000        #
+#                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100)   #
+#                          -DREJOIN_POLL_RATE=440 E:\Project\ZStack\Projects\ #
+#                          zstack\Samples\GenericApp\Source\tiny-json.c -D    #
+#                          MT_TASK -D MT_SYS_FUNC -D MT_ZDO_FUNC -D NV_INIT   #
+#                          -D COOR -lC E:\Project\ZStack\Projects\zstack\Samp #
+#                          les\GenericApp\CC2530DB\CoordinatorEB\List\ -lA    #
+#                          E:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\CoordinatorEB\List\ --diag_suppress    #
+#                          Pe001,Pa010 -o E:\Project\ZStack\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\CoordinatorEB\Obj\ -e   #
+#                          --no_code_motion --debug --core=plain --dptr=16,1  #
+#                          --data_model=large --code_model=banked             #
+#                          --calling_convention=xdata_reentrant               #
+#                          --place_constants=data_rom --nr_virtual_regs 24    #
+#                          -I E:\Project\ZStack\Projects\zstack\Samples\Gener #
+#                          icApp\CC2530DB\ -I E:\Project\ZStack\Projects\zsta #
+#                          ck\Samples\GenericApp\CC2530DB\..\Source\ -I       #
+#                          E:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\ZMain\TI2530DB\ -I            #
+#                          E:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\hal\include\ #
+#                           -I E:\Project\ZStack\Projects\zstack\Samples\Gene #
+#                          ricApp\CC2530DB\..\..\..\..\..\Components\hal\targ #
+#                          et\CC2530EB\ -I E:\Project\ZStack\Projects\zstack\ #
+#                          Samples\GenericApp\CC2530DB\..\..\..\..\..\Compone #
+#                          nts\mac\include\ -I E:\Project\ZStack\Projects\zst #
+#                          ack\Samples\GenericApp\CC2530DB\..\..\..\..\..\Com #
+#                          ponents\mac\high_level\ -I                         #
+#                          E:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\mac\low_leve #
+#                          l\srf04\ -I E:\Project\ZStack\Projects\zstack\Samp #
+#                          les\GenericApp\CC2530DB\..\..\..\..\..\Components\ #
+#                          mac\low_level\srf04\single_chip\ -I                #
+#                          E:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\mt\ -I       #
+#                          E:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\osal\include #
+#                          \ -I E:\Project\ZStack\Projects\zstack\Samples\Gen #
+#                          ericApp\CC2530DB\..\..\..\..\..\Components\service #
+#                          s\saddr\ -I E:\Project\ZStack\Projects\zstack\Samp #
+#                          les\GenericApp\CC2530DB\..\..\..\..\..\Components\ #
+#                          services\sdata\ -I E:\Project\ZStack\Projects\zsta #
+#                          ck\Samples\GenericApp\CC2530DB\..\..\..\..\..\Comp #
+#                          onents\stack\af\ -I E:\Project\ZStack\Projects\zst #
+#                          ack\Samples\GenericApp\CC2530DB\..\..\..\..\..\Com #
+#                          ponents\stack\nwk\ -I E:\Project\ZStack\Projects\z #
+#                          stack\Samples\GenericApp\CC2530DB\..\..\..\..\..\C #
+#                          omponents\stack\sapi\ -I                           #
+#                          E:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\stack\sec\   #
+#                          -I E:\Project\ZStack\Projects\zstack\Samples\Gener #
+#                          icApp\CC2530DB\..\..\..\..\..\Components\stack\sys #
+#                          \ -I E:\Project\ZStack\Projects\zstack\Samples\Gen #
+#                          ericApp\CC2530DB\..\..\..\..\..\Components\stack\z #
+#                          do\ -I E:\Project\ZStack\Projects\zstack\Samples\G #
+#                          enericApp\CC2530DB\..\..\..\..\..\Components\zmac\ #
+#                           -I E:\Project\ZStack\Projects\zstack\Samples\Gene #
+#                          ricApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w #
+#                          \ -Ohz                                             #
+#    List file          =  E:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\CoordinatorEB\List\tiny-json.lst       #
+#    Object file        =  E:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\CoordinatorEB\Obj\tiny-json.r51        #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+E:\Project\ZStack\Projects\zstack\Samples\GenericApp\Source\tiny-json.c
+      1          
+      2          /*
+      3          
+      4          <https://github.com/rafagafe/tiny-json>
+      5          
+      6            Licensed under the MIT License <http://opensource.org/licenses/MIT>.
+      7            SPDX-License-Identifier: MIT
+      8            Copyright (c) 2016-2018 Rafa Garcia <rafagarcia77@gmail.com>.
+      9          
+     10            Permission is hereby  granted, free of charge, to any  person obtaining a copy
+     11            of this software and associated  documentation files (the "Software"), to deal
+     12            in the Software  without restriction, including without  limitation the rights
+     13            to  use, copy,  modify, merge,  publish, distribute,  sublicense, and/or  sell
+     14            copies  of  the Software,  and  to  permit persons  to  whom  the Software  is
+     15            furnished to do so, subject to the following conditions:
+     16          
+     17            The above copyright notice and this permission notice shall be included in all
+     18            copies or substantial portions of the Software.
+     19          
+     20            THE SOFTWARE  IS PROVIDED "AS  IS", WITHOUT WARRANTY  OF ANY KIND,  EXPRESS OR
+     21            IMPLIED,  INCLUDING BUT  NOT  LIMITED TO  THE  WARRANTIES OF  MERCHANTABILITY,
+     22            FITNESS FOR  A PARTICULAR PURPOSE AND  NONINFRINGEMENT. IN NO EVENT  SHALL THE
+     23            AUTHORS  OR COPYRIGHT  HOLDERS  BE  LIABLE FOR  ANY  CLAIM,  DAMAGES OR  OTHER
+     24            LIABILITY, WHETHER IN AN ACTION OF  CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     25            OUT OF OR IN CONNECTION WITH THE SOFTWARE  OR THE USE OR OTHER DEALINGS IN THE
+     26            SOFTWARE.
+     27          
+     28          */
+     29          
+     30          #include <string.h>
+     31          #include <ctype.h>
+     32          #include "tiny-json.h"
+     33          
+     34          /** Structure to handle a heap of JSON properties. */
+     35          typedef struct jsonStaticPool_s {
+     36              json_t* mem;      /**< Pointer to array of json properties.      */
+     37              unsigned int qty; /**< Length of the array of json properties.   */
+     38              unsigned int nextFree;  /**< The index of the next free json property. */
+     39              jsonPool_t pool;
+     40          } jsonStaticPool_t;
+     41          
+     42          /* Search a property by its name in a JSON object. */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     43          json_t const* json_getProperty( json_t const* obj, char const* property ) {
+   \                     json_getProperty:
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+   \   000005   EC           MOV     A,R4
+   \   000006   FE           MOV     R6,A
+   \   000007   ED           MOV     A,R5
+   \   000008   FF           MOV     R7,A
+     44              json_t const* sibling;
+     45              for( sibling = obj->u.c.child; sibling; sibling = sibling->sibling )
+   \   000009   8A82         MOV     DPL,R2
+   \   00000B   8B83         MOV     DPH,R3
+   \   00000D   A3           INC     DPTR
+   \   00000E   A3           INC     DPTR
+   \   00000F   A3           INC     DPTR
+   \   000010   A3           INC     DPTR
+   \   000011   8006         SJMP    ??json_getProperty_0
+   \                     ??json_getProperty_1:
+   \   000013   85..82       MOV     DPL,?V0 + 0
+   \   000016   85..83       MOV     DPH,?V0 + 1
+   \                     ??json_getProperty_0:
+   \   000019   E0           MOVX    A,@DPTR
+   \   00001A   F5..         MOV     ?V0 + 0,A
+   \   00001C   A3           INC     DPTR
+   \   00001D   E0           MOVX    A,@DPTR
+   \   00001E   F5..         MOV     ?V0 + 1,A
+   \   000020   E5..         MOV     A,?V0 + 0
+   \   000022   45..         ORL     A,?V0 + 1
+   \   000024   602C         JZ      ??json_getProperty_2
+     46                  if ( sibling->name && !strcmp( sibling->name, property ) )
+   \   000026   85..82       MOV     DPL,?V0 + 0
+   \   000029   85..83       MOV     DPH,?V0 + 1
+   \   00002C   12....       LCALL   ?Subroutine7 & 0xFFFF
+   \                     ??CrossCallReturnLabel_14:
+   \   00002F   60E2         JZ      ??json_getProperty_1
+   \   000031                ; Setup parameters for call to function strcmp
+   \   000031   EE           MOV     A,R6
+   \   000032   FC           MOV     R4,A
+   \   000033   EF           MOV     A,R7
+   \   000034   FD           MOV     R5,A
+   \   000035   85..82       MOV     DPL,?V0 + 0
+   \   000038   85..83       MOV     DPH,?V0 + 1
+   \   00003B   A3           INC     DPTR
+   \   00003C   A3           INC     DPTR
+   \   00003D   E0           MOVX    A,@DPTR
+   \   00003E   FA           MOV     R2,A
+   \   00003F   A3           INC     DPTR
+   \   000040   E0           MOVX    A,@DPTR
+   \   000041   FB           MOV     R3,A
+   \   000042   12....       LCALL   ??strcmp?relay
+   \   000045   8B..         MOV     ?V0 + 3,R3
+   \   000047   EA           MOV     A,R2
+   \   000048   45..         ORL     A,?V0 + 3
+   \   00004A   70C7         JNZ     ??json_getProperty_1
+     47                      return sibling;
+   \   00004C   AA..         MOV     R2,?V0 + 0
+   \   00004E   AB..         MOV     R3,?V0 + 1
+   \   000050   8004         SJMP    ??json_getProperty_3
+     48              return 0;
+   \                     ??json_getProperty_2:
+   \   000052   7A00         MOV     R2,#0x0
+   \   000054   7B00         MOV     R3,#0x0
+   \                     ??json_getProperty_3:
+   \   000056                REQUIRE ?Subroutine0
+   \   000056                ; // Fall through to label ?Subroutine0
+     49          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   7F04         MOV     R7,#0x4
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine7:
+   \   000000   A3           INC     DPTR
+   \   000001   A3           INC     DPTR
+   \   000002                REQUIRE ??Subroutine14_0
+   \   000002                ; // Fall through to label ??Subroutine14_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine14_0:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   F8           MOV     R0,A
+   \   000002   A3           INC     DPTR
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   F9           MOV     R1,A
+   \   000005   E8           MOV     A,R0
+   \   000006   49           ORL     A,R1
+   \   000007   22           RET
+     50          
+     51          /* Search a property by its name in a JSON object and return its value. */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     52          char const* json_getPropertyValue( json_t const* obj, char const* property ) {
+   \                     json_getPropertyValue:
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+     53          	json_t const* field = json_getProperty( obj, property );
+   \   000005                ; Setup parameters for call to function json_getProperty
+   \   000005   12....       LCALL   ??json_getProperty?relay
+   \   000008   8A..         MOV     ?V0 + 0,R2
+   \   00000A   8B..         MOV     ?V0 + 1,R3
+   \   00000C   A8..         MOV     R0,?V0 + 0
+   \   00000E   A9..         MOV     R1,?V0 + 1
+     54          	if ( !field ) return 0;
+   \   000010   E8           MOV     A,R0
+   \   000011   49           ORL     A,R1
+   \   000012   6012         JZ      ??json_getPropertyValue_0
+     55                  jsonType_t type = json_getType( field );
+     56                  if ( JSON_ARRAY >= type ) return 0;
+   \   000014   8882         MOV     DPL,R0
+   \   000016   8983         MOV     DPH,R1
+   \   000018   A3           INC     DPTR
+   \   000019   A3           INC     DPTR
+   \   00001A   A3           INC     DPTR
+   \   00001B   A3           INC     DPTR
+   \   00001C   A3           INC     DPTR
+   \   00001D   A3           INC     DPTR
+   \   00001E   A3           INC     DPTR
+   \   00001F   A3           INC     DPTR
+   \   000020   E0           MOVX    A,@DPTR
+   \   000021   C3           CLR     C
+   \   000022   9402         SUBB    A,#0x2
+   \   000024   5006         JNC     ??json_getPropertyValue_1
+   \                     ??json_getPropertyValue_0:
+   \   000026   7A00         MOV     R2,#0x0
+   \   000028   7B00         MOV     R3,#0x0
+   \   00002A   800D         SJMP    ??json_getPropertyValue_2
+     57          	return json_getValue( field );
+   \                     ??json_getPropertyValue_1:
+   \   00002C   8882         MOV     DPL,R0
+   \   00002E   8983         MOV     DPH,R1
+   \   000030   A3           INC     DPTR
+   \   000031   A3           INC     DPTR
+   \   000032   A3           INC     DPTR
+   \   000033   A3           INC     DPTR
+   \   000034   E0           MOVX    A,@DPTR
+   \   000035   FA           MOV     R2,A
+   \   000036   A3           INC     DPTR
+   \   000037   E0           MOVX    A,@DPTR
+   \   000038   FB           MOV     R3,A
+   \                     ??json_getPropertyValue_2:
+   \   000039   7F02         MOV     R7,#0x2
+   \   00003B   02....       LJMP    ?BANKED_LEAVE_XDATA
+     58          }
+     59          
+     60          /* Internal prototypes: */
+     61          static char* goBlank( char* str );
+     62          static char* goNum( char* str );
+     63          static json_t* poolInit( jsonPool_t* pool );
+     64          static json_t* poolAlloc( jsonPool_t* pool );
+     65          static char* objValue( char* ptr, json_t* obj, jsonPool_t* pool );
+     66          static char* setToNull( char* ch );
+     67          static bool isEndOfPrimitive( char ch );
+     68          
+     69          /* Parse a string to get a json. */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     70          json_t const* json_createWithPool( char *str, jsonPool_t *pool ) {
+   \                     json_createWithPool:
+   \   000000   74F2         MOV     A,#-0xe
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 14
+   \   000005                ; Auto size: 0
+   \   000005   8C..         MOV     ?V0 + 2,R4
+   \   000007   8D..         MOV     ?V0 + 3,R5
+     71              char* ptr = goBlank( str );
+   \   000009                ; Setup parameters for call to function goBlank
+   \   000009   12....       LCALL   ??goBlank?relay
+   \   00000C   8A..         MOV     ?V0 + 0,R2
+   \   00000E   8B..         MOV     ?V0 + 1,R3
+     72              if ( !ptr || (*ptr != '{' && *ptr != '[') ) return 0;
+   \   000010   EA           MOV     A,R2
+   \   000011   45..         ORL     A,?V0 + 1
+   \   000013   604C         JZ      ??json_createWithPool_0
+   \   000015   8A82         MOV     DPL,R2
+   \   000017   8B83         MOV     DPH,R3
+   \   000019   E0           MOVX    A,@DPTR
+   \   00001A   647B         XRL     A,#0x7b
+   \   00001C   6005         JZ      ??json_createWithPool_1
+   \   00001E   E0           MOVX    A,@DPTR
+   \   00001F   645B         XRL     A,#0x5b
+   \   000021   703E         JNZ     ??json_createWithPool_0
+     73              json_t* obj = pool->init( pool );
+   \                     ??json_createWithPool_1:
+   \   000023                ; Setup parameters for indirect call
+   \   000023   AA..         MOV     R2,?V0 + 2
+   \   000025   AB..         MOV     R3,?V0 + 3
+   \   000027   12....       LCALL   ?Subroutine6 & 0xFFFF
+   \                     ??CrossCallReturnLabel_20:
+   \   00002A   12....       LCALL   ?CALL_IND
+   \   00002D   8A..         MOV     ?V0 + 4,R2
+   \   00002F   8B..         MOV     ?V0 + 5,R3
+   \   000031   AE..         MOV     R6,?V0 + 4
+   \   000033   AF..         MOV     R7,?V0 + 5
+     74              obj->name    = 0;
+   \   000035   8E82         MOV     DPL,R6
+   \   000037   8F83         MOV     DPH,R7
+   \   000039   A3           INC     DPTR
+   \   00003A   A3           INC     DPTR
+   \   00003B   12....       LCALL   ?Subroutine11 & 0xFFFF
+     75              obj->sibling = 0;
+   \                     ??CrossCallReturnLabel_25:
+   \   00003E   F0           MOVX    @DPTR,A
+   \   00003F   12....       LCALL   ?Subroutine10 & 0xFFFF
+     76              obj->u.c.child = 0;
+   \                     ??CrossCallReturnLabel_16:
+   \   000042   F0           MOVX    @DPTR,A
+   \   000043   A3           INC     DPTR
+   \   000044   F0           MOVX    @DPTR,A
+     77              ptr = objValue( ptr, obj, pool );
+     78              if ( !ptr ) return 0;
+   \   000045                ; Setup parameters for call to function objValue
+   \   000045   78..         MOV     R0,#?V0 + 2
+   \   000047   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00004A   EE           MOV     A,R6
+   \   00004B   FC           MOV     R4,A
+   \   00004C   EF           MOV     A,R7
+   \   00004D   FD           MOV     R5,A
+   \   00004E   AA..         MOV     R2,?V0 + 0
+   \   000050   AB..         MOV     R3,?V0 + 1
+   \   000052   12....       LCALL   ??objValue?relay
+   \   000055   7402         MOV     A,#0x2
+   \   000057   12....       LCALL   ?DEALLOC_XSTACK8
+   \   00005A   8B..         MOV     ?V0 + 1,R3
+   \   00005C   EA           MOV     A,R2
+   \   00005D   45..         ORL     A,?V0 + 1
+   \   00005F   7006         JNZ     ??json_createWithPool_2
+   \                     ??json_createWithPool_0:
+   \   000061   7A00         MOV     R2,#0x0
+   \   000063   7B00         MOV     R3,#0x0
+   \   000065   8004         SJMP    ??json_createWithPool_3
+     79              return obj;
+   \                     ??json_createWithPool_2:
+   \   000067   EE           MOV     A,R6
+   \   000068   FA           MOV     R2,A
+   \   000069   EF           MOV     A,R7
+   \   00006A   FB           MOV     R3,A
+   \                     ??json_createWithPool_3:
+   \   00006B                REQUIRE ?Subroutine1
+   \   00006B                ; // Fall through to label ?Subroutine1
+     80          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   7F06         MOV     R7,#0x6
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine10:
+   \   000000   A3           INC     DPTR
+   \   000001                REQUIRE ??Subroutine15_0
+   \   000001                ; // Fall through to label ??Subroutine15_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine15_0:
+   \   000000   F0           MOVX    @DPTR,A
+   \   000001   8E82         MOV     DPL,R6
+   \   000003   8F83         MOV     DPH,R7
+   \   000005   A3           INC     DPTR
+   \   000006   A3           INC     DPTR
+   \   000007   A3           INC     DPTR
+   \   000008   A3           INC     DPTR
+   \   000009   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine6:
+   \   000000   8A82         MOV     DPL,R2
+   \   000002   8B83         MOV     DPH,R3
+   \   000004                REQUIRE ??Subroutine16_0
+   \   000004                ; // Fall through to label ??Subroutine16_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine16_0:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   F8           MOV     R0,A
+   \   000002   A3           INC     DPTR
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   F583         MOV     DPH,A
+   \   000006   8882         MOV     DPL,R0
+   \   000008   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine11:
+   \   000000   E4           CLR     A
+   \   000001   F0           MOVX    @DPTR,A
+   \   000002   A3           INC     DPTR
+   \   000003                REQUIRE ??Subroutine18_0
+   \   000003                ; // Fall through to label ??Subroutine18_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine18_0:
+   \   000000   F0           MOVX    @DPTR,A
+   \   000001   8E82         MOV     DPL,R6
+   \   000003   8F83         MOV     DPH,R7
+   \   000005   22           RET
+     81          
+     82          /* Parse a string to get a json. */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     83          json_t const* json_create( char* str, json_t mem[], unsigned int qty ) {
+   \                     json_create:
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 10
+   \   000004   74F6         MOV     A,#-0xa
+   \   000006   12....       LCALL   ?ALLOC_XSTACK8
+   \   000009   740A         MOV     A,#0xa
+   \   00000B   12....       LCALL   ?XSTACK_DISP0_8
+   \   00000E   12....       LCALL   ?Subroutine8 & 0xFFFF
+     84              jsonStaticPool_t spool;
+     85              spool.mem = mem;
+   \                     ??CrossCallReturnLabel_4:
+   \   000011   85..82       MOV     DPL,?XSP + 0
+   \   000014   85..83       MOV     DPH,?XSP + 1
+   \   000017   EC           MOV     A,R4
+   \   000018   F0           MOVX    @DPTR,A
+   \   000019   A3           INC     DPTR
+   \   00001A   ED           MOV     A,R5
+   \   00001B   F0           MOVX    @DPTR,A
+     86              spool.qty = qty;
+   \   00001C   7402         MOV     A,#0x2
+   \   00001E   12....       LCALL   ?XSTACK_DISP0_8
+   \   000021   E8           MOV     A,R0
+   \   000022   F0           MOVX    @DPTR,A
+   \   000023   A3           INC     DPTR
+   \   000024   E9           MOV     A,R1
+   \   000025   F0           MOVX    @DPTR,A
+     87              spool.pool.init = poolInit;
+   \   000026   7406         MOV     A,#0x6
+   \   000028   12....       LCALL   ?XSTACK_DISP0_8
+   \   00002B   74..         MOV     A,#??poolInit?relay & 0xff
+   \   00002D   F0           MOVX    @DPTR,A
+   \   00002E   A3           INC     DPTR
+   \   00002F   74..         MOV     A,#(??poolInit?relay >> 8) & 0xff
+   \   000031   F0           MOVX    @DPTR,A
+     88              spool.pool.alloc = poolAlloc;
+   \   000032   7408         MOV     A,#0x8
+   \   000034   12....       LCALL   ?XSTACK_DISP0_8
+   \   000037   74..         MOV     A,#??poolAlloc?relay & 0xff
+   \   000039   F0           MOVX    @DPTR,A
+   \   00003A   A3           INC     DPTR
+   \   00003B   74..         MOV     A,#(??poolAlloc?relay >> 8) & 0xff
+   \   00003D   F0           MOVX    @DPTR,A
+     89              return json_createWithPool( str, &spool.pool );
+   \   00003E                ; Setup parameters for call to function json_createWithPool
+   \   00003E   7406         MOV     A,#0x6
+   \   000040   12....       LCALL   ?XSTACK_DISP0_8
+   \   000043   AC82         MOV     R4,DPL
+   \   000045   AD83         MOV     R5,DPH
+   \   000047   12....       LCALL   ??json_createWithPool?relay
+   \   00004A   740A         MOV     A,#0xa
+   \   00004C   12....       LCALL   ?DEALLOC_XSTACK8
+   \   00004F   02....       LJMP    ?Subroutine2 & 0xFFFF
+     90          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine8:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   F8           MOV     R0,A
+   \   000002   A3           INC     DPTR
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   F9           MOV     R1,A
+   \   000005   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine2:
+   \   000000   D083         POP     DPH
+   \   000002   D082         POP     DPL
+   \   000004   02....       LJMP    ?BRET
+     91          
+     92          /** Get a special character with its escape character. Examples:
+     93            * 'b' -> '\\b', 'n' -> '\\n', 't' -> '\\t'
+     94            * @param ch The escape character.
+     95            * @retval  The character code. */
+     96          static char getEscape( char ch ) {
+
+   \                                 In  segment XDATA_ROM_C, align 1
+     97              static struct { char ch; char code; } const pair[] = {
+   \                     ??pair:
+   \   000000   22           DB 34
+   \   000001   22           DB 34
+   \   000002   5C           DB 92
+   \   000003   5C           DB 92
+   \   000004   2F           DB 47
+   \   000005   2F           DB 47
+   \   000006   62           DB 98
+   \   000007   08           DB 8
+   \   000008   66           DB 102
+   \   000009   0C           DB 12
+   \   00000A   6E           DB 110
+   \   00000B   0A           DB 10
+   \   00000C   72           DB 114
+   \   00000D   0D           DB 13
+   \   00000E   74           DB 116
+   \   00000F   09           DB 9
+     98                  { '\"', '\"' }, { '\\', '\\' },
+     99                  { '/',  '/'  }, { 'b',  '\b' },
+    100                  { 'f',  '\f' }, { 'n',  '\n' },
+    101                  { 'r',  '\r' }, { 't',  '\t' },
+    102              };
+    103              unsigned int i;
+    104              for( i = 0; i < sizeof pair / sizeof *pair; ++i )
+    105                  if ( pair[i].ch == ch )
+    106                      return pair[i].code;
+    107              return '\0';
+    108          }
+    109          
+    110          /** Parse 4 characters.
+    111            * @param str Pointer to  first digit.
+    112            * @retval '?' If the four characters are hexadecimal digits.
+    113            * @retval '\0' In other cases. */
+    114          static unsigned char getCharFromUnicode( unsigned char const* str ) {
+    115              unsigned int i;
+    116              for( i = 0; i < 4; ++i )
+    117                  if ( !isxdigit( str[i] ) )
+    118                      return '\0';
+    119              return '?';
+    120          }
+    121          
+    122          /** Parse a string and replace the scape characters by their meaning characters.
+    123            * This parser stops when finds the character '\"'. Then replaces '\"' by '\0'.
+    124            * @param str Pointer to first character.
+    125            * @retval Pointer to first non white space after the string. If success.
+    126            * @retval Null pointer if any error occur. */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    127          static char* parseString( char* str ) {
+   \                     parseString:
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+    128              unsigned char* head = (unsigned char*)str;
+   \   000005   EA           MOV     A,R2
+   \   000006   F8           MOV     R0,A
+   \   000007   EB           MOV     A,R3
+   \   000008   F9           MOV     R1,A
+    129              unsigned char* tail = (unsigned char*)str;
+   \   000009   EA           MOV     A,R2
+   \   00000A   FC           MOV     R4,A
+   \   00000B   EB           MOV     A,R3
+   \   00000C   FD           MOV     R5,A
+   \   00000D   8018         SJMP    ??parseString_0
+    130              for( ; *head; ++head, ++tail ) {
+    131                  if ( *head == '\"' ) {
+    132                      *tail = '\0';
+    133                      return (char*)++head;
+    134                  }
+    135                  if ( *head == '\\' ) {
+    136                      if ( *++head == 'u' ) {
+    137                          char const ch = getCharFromUnicode( ++head );
+    138                          if ( ch == '\0' ) return 0;
+    139                          *tail = ch;
+    140                          head += 3;
+    141                      }
+    142                      else {
+    143                          char const esc = getEscape( *head );
+    144                          if ( esc == '\0' ) return 0;
+    145                          *tail = esc;
+    146                      }
+    147                  }
+    148                  else *tail = *head;
+   \                     ??parseString_1:
+   \   00000F   E0           MOVX    A,@DPTR
+   \                     ??parseString_2:
+   \   000010   8C82         MOV     DPL,R4
+   \   000012   8D83         MOV     DPH,R5
+   \   000014   F0           MOVX    @DPTR,A
+   \                     ??parseString_3:
+   \   000015   8882         MOV     DPL,R0
+   \   000017   8983         MOV     DPH,R1
+   \   000019   A3           INC     DPTR
+   \   00001A   A882         MOV     R0,DPL
+   \   00001C   A983         MOV     R1,DPH
+   \   00001E   8C82         MOV     DPL,R4
+   \   000020   8D83         MOV     DPH,R5
+   \   000022   A3           INC     DPTR
+   \   000023   AC82         MOV     R4,DPL
+   \   000025   AD83         MOV     R5,DPH
+   \                     ??parseString_0:
+   \   000027   8882         MOV     DPL,R0
+   \   000029   8983         MOV     DPH,R1
+   \   00002B   E0           MOVX    A,@DPTR
+   \   00002C   7003         JNZ     $+5
+   \   00002E   02....       LJMP    ??parseString_4 & 0xFFFF
+   \   000031   6422         XRL     A,#0x22
+   \   000033   7012         JNZ     ??parseString_5
+   \   000035   8C82         MOV     DPL,R4
+   \   000037   8D83         MOV     DPH,R5
+   \   000039   E4           CLR     A
+   \   00003A   F0           MOVX    @DPTR,A
+   \   00003B   8882         MOV     DPL,R0
+   \   00003D   8983         MOV     DPH,R1
+   \   00003F   A3           INC     DPTR
+   \   000040   AA82         MOV     R2,DPL
+   \   000042   AB83         MOV     R3,DPH
+   \   000044   02....       LJMP    ??parseString_6 & 0xFFFF
+   \                     ??parseString_5:
+   \   000047   E0           MOVX    A,@DPTR
+   \   000048   645C         XRL     A,#0x5c
+   \   00004A   70C3         JNZ     ??parseString_1
+   \   00004C   A3           INC     DPTR
+   \   00004D   A882         MOV     R0,DPL
+   \   00004F   A983         MOV     R1,DPH
+   \   000051   E0           MOVX    A,@DPTR
+   \   000052   6475         XRL     A,#0x75
+   \   000054   703E         JNZ     ??parseString_7
+   \   000056   A3           INC     DPTR
+   \   000057   08           INC     R0
+   \   000058   A983         MOV     R1,DPH
+   \   00005A   7A00         MOV     R2,#0x0
+   \   00005C   7B00         MOV     R3,#0x0
+   \                     ??parseString_8:
+   \   00005E   E8           MOV     A,R0
+   \   00005F   2A           ADD     A,R2
+   \   000060   F582         MOV     DPL,A
+   \   000062   E9           MOV     A,R1
+   \   000063   3B           ADDC    A,R3
+   \   000064   F583         MOV     DPH,A
+   \   000066   E0           MOVX    A,@DPTR
+   \   000067   FE           MOV     R6,A
+   \   000068   74..         MOV     A,#(_Small_Ctype + 1) & 0xff
+   \   00006A   2E           ADD     A,R6
+   \   00006B   F582         MOV     DPL,A
+   \   00006D   74..         MOV     A,#((_Small_Ctype + 1) >> 8) & 0xff
+   \   00006F   3400         ADDC    A,#0x0
+   \   000071   F583         MOV     DPH,A
+   \   000073   E4           CLR     A
+   \   000074   93           MOVC    A,@A+DPTR
+   \   000075   5444         ANL     A,#0x44
+   \   000077   6050         JZ      ??parseString_4
+   \   000079   12....       LCALL   ?Subroutine12 & 0xFFFF
+   \                     ??CrossCallReturnLabel_12:
+   \   00007C   9404         SUBB    A,#0x4
+   \   00007E   EB           MOV     A,R3
+   \   00007F   9400         SUBB    A,#0x0
+   \   000081   40DB         JC      ??parseString_8
+   \   000083   8C82         MOV     DPL,R4
+   \   000085   8D83         MOV     DPH,R5
+   \   000087   743F         MOV     A,#0x3f
+   \   000089   F0           MOVX    @DPTR,A
+   \   00008A   E8           MOV     A,R0
+   \   00008B   2403         ADD     A,#0x3
+   \   00008D   F8           MOV     R0,A
+   \   00008E   E9           MOV     A,R1
+   \   00008F   3400         ADDC    A,#0x0
+   \   000091   F9           MOV     R1,A
+   \   000092   8081         SJMP    ??parseString_3
+   \                     ??parseString_7:
+   \   000094   E0           MOVX    A,@DPTR
+   \   000095   F5..         MOV     ?V0 + 0,A
+   \   000097   7A00         MOV     R2,#0x0
+   \   000099   7B00         MOV     R3,#0x0
+   \                     ??parseString_9:
+   \   00009B   EA           MOV     A,R2
+   \   00009C   FE           MOV     R6,A
+   \   00009D   EB           MOV     A,R3
+   \   00009E   FF           MOV     R7,A
+   \   00009F   EE           MOV     A,R6
+   \   0000A0   C3           CLR     C
+   \   0000A1   33           RLC     A
+   \   0000A2   FE           MOV     R6,A
+   \   0000A3   EF           MOV     A,R7
+   \   0000A4   33           RLC     A
+   \   0000A5   FF           MOV     R7,A
+   \   0000A6   74..         MOV     A,#??pair & 0xff
+   \   0000A8   2E           ADD     A,R6
+   \   0000A9   F582         MOV     DPL,A
+   \   0000AB   74..         MOV     A,#(??pair >> 8) & 0xff
+   \   0000AD   3F           ADDC    A,R7
+   \   0000AE   F583         MOV     DPH,A
+   \   0000B0   E0           MOVX    A,@DPTR
+   \   0000B1   65..         XRL     A,?V0 + 0
+   \   0000B3   701B         JNZ     ??parseString_10
+   \   0000B5   EA           MOV     A,R2
+   \   0000B6   C3           CLR     C
+   \   0000B7   33           RLC     A
+   \   0000B8   FA           MOV     R2,A
+   \   0000B9   EB           MOV     A,R3
+   \   0000BA   33           RLC     A
+   \   0000BB   FB           MOV     R3,A
+   \   0000BC   74..         MOV     A,#(??pair + 1) & 0xff
+   \   0000BE   2A           ADD     A,R2
+   \   0000BF   F582         MOV     DPL,A
+   \   0000C1   74..         MOV     A,#((??pair + 1) >> 8) & 0xff
+   \   0000C3   3B           ADDC    A,R3
+   \   0000C4   F583         MOV     DPH,A
+   \   0000C6   E0           MOVX    A,@DPTR
+   \   0000C7   7013         JNZ     ??parseString_11
+    149              }
+    150              return 0;
+   \                     ??parseString_4:
+   \   0000C9   7A00         MOV     R2,#0x0
+   \   0000CB   7B00         MOV     R3,#0x0
+   \                     ??parseString_6:
+   \   0000CD   02....       LJMP    ?Subroutine3 & 0xFFFF
+   \                     ??parseString_10:
+   \   0000D0   12....       LCALL   ?Subroutine12 & 0xFFFF
+   \                     ??CrossCallReturnLabel_11:
+   \   0000D3   9408         SUBB    A,#0x8
+   \   0000D5   EB           MOV     A,R3
+   \   0000D6   9400         SUBB    A,#0x0
+   \   0000D8   50EF         JNC     ??parseString_4
+   \   0000DA   80BF         SJMP    ??parseString_9
+   \                     ??parseString_11:
+   \   0000DC   02....       LJMP    ??parseString_2 & 0xFFFF
+    151          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine12:
+   \   000000   EA           MOV     A,R2
+   \   000001   2401         ADD     A,#0x1
+   \   000003   0A           INC     R2
+   \   000004   EB           MOV     A,R3
+   \   000005   3400         ADDC    A,#0x0
+   \   000007   FB           MOV     R3,A
+   \   000008   C3           CLR     C
+   \   000009   EA           MOV     A,R2
+   \   00000A   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine3:
+   \   000000   7F01         MOV     R7,#0x1
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+    152          
+    153          /** Parse a string to get the name of a property.
+    154            * @param ptr Pointer to first character.
+    155            * @param property The property to assign the name.
+    156            * @retval Pointer to first of property value. If success.
+    157            * @retval Null pointer if any error occur. */
+    158          static char* propertyName( char* ptr, json_t* property ) {
+    159              property->name = ++ptr;
+    160              ptr = parseString( ptr );
+    161              if ( !ptr ) return 0;
+    162              ptr = goBlank( ptr );
+    163              if ( !ptr ) return 0;
+    164              if ( *ptr++ != ':' ) return 0;
+    165              return goBlank( ptr );
+    166          }
+    167          
+    168          /** Parse a string to get the value of a property when its type is JSON_TEXT.
+    169            * @param ptr Pointer to first character ('\"').
+    170            * @param property The property to assign the name.
+    171            * @retval Pointer to first non white space after the string. If success.
+    172            * @retval Null pointer if any error occur. */
+    173          static char* textValue( char* ptr, json_t* property ) {
+    174              ++property->u.value;
+    175              ptr = parseString( ++ptr );
+    176              if ( !ptr ) return 0;
+    177              property->type = JSON_TEXT;
+    178              return ptr;
+    179          }
+    180          
+    181          /** Compare two strings until get the null character in the second one.
+    182            * @param ptr sub string
+    183            * @param str main string
+    184            * @retval Pointer to next character.
+    185            * @retval Null pointer if any error occur. */
+    186          static char* checkStr( char* ptr, char const* str ) {
+    187              while( *str )
+    188                  if ( *ptr++ != *str++ )
+    189                      return 0;
+    190              return ptr;
+    191          }
+    192          
+    193          /** Parser a string to get a primitive value.
+    194            * If the first character after the value is different of '}' or ']' is set to '\0'.
+    195            * @param ptr Pointer to first character.
+    196            * @param property Property handler to set the value and the type, (true, false or null).
+    197            * @param value String with the primitive literal.
+    198            * @param type The code of the type. ( JSON_BOOLEAN or JSON_NULL )
+    199            * @retval Pointer to first non white space after the string. If success.
+    200            * @retval Null pointer if any error occur. */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    201          static char* primitiveValue( char* ptr, json_t* property, char const* value, jsonType_t type ) {
+   \                     primitiveValue:
+   \   000000   74F2         MOV     A,#-0xe
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 14
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV     A,R2
+   \   000006   FE           MOV     R6,A
+   \   000007   EB           MOV     A,R3
+   \   000008   FF           MOV     R7,A
+   \   000009   8C..         MOV     ?V0 + 0,R4
+   \   00000B   8D..         MOV     ?V0 + 1,R5
+   \   00000D   89..         MOV     ?V0 + 2,R1
+   \   00000F   740E         MOV     A,#0xe
+   \   000011   12....       LCALL   ?XSTACK_DISP0_8
+   \   000014   12....       LCALL   ?Subroutine8 & 0xFFFF
+    202              ptr = checkStr( ptr, value );
+   \                     ??CrossCallReturnLabel_5:
+   \   000017   8882         MOV     DPL,R0
+   \   000019   8983         MOV     DPH,R1
+   \   00001B   E0           MOVX    A,@DPTR
+   \   00001C   602A         JZ      ??primitiveValue_0
+   \   00001E   EE           MOV     A,R6
+   \   00001F   FA           MOV     R2,A
+   \   000020   EF           MOV     A,R7
+   \   000021   FB           MOV     R3,A
+   \   000022   8A82         MOV     DPL,R2
+   \   000024   8B83         MOV     DPH,R3
+   \   000026   A3           INC     DPTR
+   \   000027   AE82         MOV     R6,DPL
+   \   000029   AF83         MOV     R7,DPH
+   \   00002B   E8           MOV     A,R0
+   \   00002C   FC           MOV     R4,A
+   \   00002D   E9           MOV     A,R1
+   \   00002E   FD           MOV     R5,A
+   \   00002F   8C82         MOV     DPL,R4
+   \   000031   8D83         MOV     DPH,R5
+   \   000033   A3           INC     DPTR
+   \   000034   A882         MOV     R0,DPL
+   \   000036   A983         MOV     R1,DPH
+   \   000038   8A82         MOV     DPL,R2
+   \   00003A   8B83         MOV     DPH,R3
+   \   00003C   E0           MOVX    A,@DPTR
+   \   00003D   FA           MOV     R2,A
+   \   00003E   8C82         MOV     DPL,R4
+   \   000040   8D83         MOV     DPH,R5
+   \   000042   E0           MOVX    A,@DPTR
+   \   000043   6A           XRL     A,R2
+   \   000044   60D1         JZ      ??CrossCallReturnLabel_5
+   \   000046   800F         SJMP    ??primitiveValue_1
+    203              if ( !ptr || !isEndOfPrimitive( *ptr ) ) return 0;
+   \                     ??primitiveValue_0:
+   \   000048   EE           MOV     A,R6
+   \   000049   4F           ORL     A,R7
+   \   00004A   600B         JZ      ??primitiveValue_1
+   \   00004C                ; Setup parameters for call to function isEndOfPrimitive
+   \   00004C   8E82         MOV     DPL,R6
+   \   00004E   8F83         MOV     DPH,R7
+   \   000050   E0           MOVX    A,@DPTR
+   \   000051   F9           MOV     R1,A
+   \   000052   12....       LCALL   ??isEndOfPrimitive?relay
+   \   000055   4006         JC      ??primitiveValue_2
+   \                     ??primitiveValue_1:
+   \   000057   7A00         MOV     R2,#0x0
+   \   000059   7B00         MOV     R3,#0x0
+   \   00005B   8018         SJMP    ??primitiveValue_3
+    204              ptr = setToNull( ptr );
+   \                     ??primitiveValue_2:
+   \   00005D                ; Setup parameters for call to function setToNull
+   \   00005D   EE           MOV     A,R6
+   \   00005E   FA           MOV     R2,A
+   \   00005F   EF           MOV     A,R7
+   \   000060   FB           MOV     R3,A
+   \   000061   12....       LCALL   ??setToNull?relay
+    205              property->type = type;
+   \   000064   85..82       MOV     DPL,?V0 + 0
+   \   000067   85..83       MOV     DPH,?V0 + 1
+   \   00006A   A3           INC     DPTR
+   \   00006B   A3           INC     DPTR
+   \   00006C   A3           INC     DPTR
+   \   00006D   A3           INC     DPTR
+   \   00006E   A3           INC     DPTR
+   \   00006F   A3           INC     DPTR
+   \   000070   A3           INC     DPTR
+   \   000071   A3           INC     DPTR
+   \   000072   E5..         MOV     A,?V0 + 2
+   \   000074   F0           MOVX    @DPTR,A
+    206              return ptr;
+   \                     ??primitiveValue_3:
+   \   000075   02....       LJMP    ?Subroutine1 & 0xFFFF
+    207          }
+    208          
+    209          /** Parser a string to get a true value.
+    210            * If the first character after the value is different of '}' or ']' is set to '\0'.
+    211            * @param ptr Pointer to first character.
+    212            * @param property Property handler to set the value and the type, (true, false or null).
+    213            * @retval Pointer to first non white space after the string. If success.
+    214            * @retval Null pointer if any error occur. */
+    215          static char* trueValue( char* ptr, json_t* property ) {
+    216              return primitiveValue( ptr, property, "true", JSON_BOOLEAN );
+    217          }
+    218          
+    219          /** Parser a string to get a false value.
+    220            * If the first character after the value is different of '}' or ']' is set to '\0'.
+    221            * @param ptr Pointer to first character.
+    222            * @param property Property handler to set the value and the type, (true, false or null).
+    223            * @retval Pointer to first non white space after the string. If success.
+    224            * @retval Null pointer if any error occur. */
+    225          static char* falseValue( char* ptr, json_t* property ) {
+    226              return primitiveValue( ptr, property, "false", JSON_BOOLEAN );
+    227          }
+    228          
+    229          /** Parser a string to get a null value.
+    230            * If the first character after the value is different of '}' or ']' is set to '\0'.
+    231            * @param ptr Pointer to first character.
+    232            * @param property Property handler to set the value and the type, (true, false or null).
+    233            * @retval Pointer to first non white space after the string. If success.
+    234            * @retval Null pointer if any error occur. */
+    235          static char* nullValue( char* ptr, json_t* property ) {
+    236              return primitiveValue( ptr, property, "null", JSON_NULL );
+    237          }
+    238          
+    239          /** Analyze the exponential part of a real number.
+    240            * @param ptr Pointer to first character.
+    241            * @retval Pointer to first non numerical after the string. If success.
+    242            * @retval Null pointer if any error occur. */
+    243          static char* expValue( char* ptr ) {
+    244              if ( *ptr == '-' || *ptr == '+' ) ++ptr;
+    245              if ( !isdigit( (int)(*ptr) ) ) return 0;
+    246              ptr = goNum( ++ptr );
+    247              return ptr;
+    248          }
+    249          
+    250          /** Analyze the decimal part of a real number.
+    251            * @param ptr Pointer to first character.
+    252            * @retval Pointer to first non numerical after the string. If success.
+    253            * @retval Null pointer if any error occur. */
+    254          static char* fraqValue( char* ptr ) {
+    255              if ( !isdigit( (int)(*ptr) ) ) return 0;
+    256              ptr = goNum( ++ptr );
+    257              if ( !ptr ) return 0;
+    258              return ptr;
+    259          }
+    260          
+    261          /** Parser a string to get a numerical value.
+    262            * If the first character after the value is different of '}' or ']' is set to '\0'.
+    263            * @param ptr Pointer to first character.
+    264            * @param property Property handler to set the value and the type: JSON_REAL or JSON_INTEGER.
+    265            * @retval Pointer to first non white space after the string. If success.
+    266            * @retval Null pointer if any error occur. */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    267          static char* numValue( char* ptr, json_t* property ) {
+   \                     numValue:
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV     A,R2
+   \   000006   FE           MOV     R6,A
+   \   000007   EB           MOV     A,R3
+   \   000008   FF           MOV     R7,A
+   \   000009   8C..         MOV     ?V0 + 0,R4
+   \   00000B   8D..         MOV     ?V0 + 1,R5
+    268              if ( *ptr == '-' ) ++ptr;
+   \   00000D   8E82         MOV     DPL,R6
+   \   00000F   8F83         MOV     DPH,R7
+   \   000011   E0           MOVX    A,@DPTR
+   \   000012   642D         XRL     A,#0x2d
+   \   000014   7005         JNZ     ??numValue_0
+   \   000016   A3           INC     DPTR
+   \   000017   AE82         MOV     R6,DPL
+   \   000019   AF83         MOV     R7,DPH
+    269              if ( !isdigit( (int)(*ptr) ) ) return 0;
+   \                     ??numValue_0:
+   \   00001B   8E82         MOV     DPL,R6
+   \   00001D   8F83         MOV     DPH,R7
+   \   00001F   12....       LCALL   ?Subroutine4 & 0xFFFF
+   \                     ??CrossCallReturnLabel_0:
+   \   000022   4003         JC      $+5
+   \   000024   02....       LJMP    ??numValue_1 & 0xFFFF
+    270              if ( *ptr != '0' ) {
+   \   000027   8E82         MOV     DPL,R6
+   \   000029   8F83         MOV     DPH,R7
+   \   00002B   E0           MOVX    A,@DPTR
+   \   00002C   6430         XRL     A,#0x30
+   \   00002E   6016         JZ      ??numValue_2
+    271                  ptr = goNum( ptr );
+   \   000030                ; Setup parameters for call to function goNum
+   \   000030   EE           MOV     A,R6
+   \   000031   FA           MOV     R2,A
+   \   000032   EF           MOV     A,R7
+   \   000033   FB           MOV     R3,A
+   \   000034   12....       LCALL   ??goNum?relay
+   \   000037   8A..         MOV     ?V0 + 2,R2
+   \   000039   8B..         MOV     ?V0 + 3,R3
+   \   00003B   AE..         MOV     R6,?V0 + 2
+   \   00003D   AF..         MOV     R7,?V0 + 3
+    272                  if ( !ptr ) return 0;
+   \   00003F   EE           MOV     A,R6
+   \   000040   4F           ORL     A,R7
+   \   000041   7010         JNZ     ??numValue_3
+   \   000043   02....       LJMP    ??numValue_1 & 0xFFFF
+    273              }
+    274              else if ( isdigit( (int)(*++ptr) ) ) return 0;
+   \                     ??numValue_2:
+   \   000046   A3           INC     DPTR
+   \   000047   AE82         MOV     R6,DPL
+   \   000049   AF83         MOV     R7,DPH
+   \   00004B   12....       LCALL   ?Subroutine4 & 0xFFFF
+   \                     ??CrossCallReturnLabel_1:
+   \   00004E   5003         JNC     $+5
+   \   000050   02....       LJMP    ??numValue_1 & 0xFFFF
+    275              property->type = JSON_INTEGER;
+   \                     ??numValue_3:
+   \   000053   85..82       MOV     DPL,?V0 + 0
+   \   000056   85..83       MOV     DPH,?V0 + 1
+   \   000059   A3           INC     DPTR
+   \   00005A   A3           INC     DPTR
+   \   00005B   A3           INC     DPTR
+   \   00005C   A3           INC     DPTR
+   \   00005D   A3           INC     DPTR
+   \   00005E   A3           INC     DPTR
+   \   00005F   A3           INC     DPTR
+   \   000060   A3           INC     DPTR
+   \   000061   7404         MOV     A,#0x4
+   \   000063   12....       LCALL   ??Subroutine18_0 & 0xFFFF
+    276              if ( *ptr == '.' ) {
+   \                     ??CrossCallReturnLabel_28:
+   \   000066   E0           MOVX    A,@DPTR
+   \   000067   642E         XRL     A,#0x2e
+   \   000069   7042         JNZ     ??numValue_4
+    277                  ptr = fraqValue( ++ptr );
+   \   00006B   A3           INC     DPTR
+   \   00006C   A882         MOV     R0,DPL
+   \   00006E   A983         MOV     R1,DPH
+   \   000070   12....       LCALL   ?Subroutine5 & 0xFFFF
+   \                     ??CrossCallReturnLabel_2:
+   \   000073   5018         JNC     ??numValue_5
+   \   000075                ; Setup parameters for call to function goNum
+   \   000075   8882         MOV     DPL,R0
+   \   000077   8983         MOV     DPH,R1
+   \   000079   A3           INC     DPTR
+   \   00007A   AA82         MOV     R2,DPL
+   \   00007C   AB83         MOV     R3,DPH
+   \   00007E   12....       LCALL   ??goNum?relay
+   \   000081   8A..         MOV     ?V0 + 2,R2
+   \   000083   8B..         MOV     ?V0 + 3,R3
+   \   000085   A8..         MOV     R0,?V0 + 2
+   \   000087   A9..         MOV     R1,?V0 + 3
+   \   000089   E8           MOV     A,R0
+   \   00008A   49           ORL     A,R1
+   \   00008B   7004         JNZ     ??numValue_6
+   \                     ??numValue_5:
+   \   00008D   7800         MOV     R0,#0x0
+   \   00008F   7900         MOV     R1,#0x0
+   \                     ??numValue_6:
+   \   000091   E8           MOV     A,R0
+   \   000092   FE           MOV     R6,A
+   \   000093   E9           MOV     A,R1
+   \   000094   FF           MOV     R7,A
+    278                  if ( !ptr ) return 0;
+   \   000095   EE           MOV     A,R6
+   \   000096   4F           ORL     A,R7
+   \   000097   7003         JNZ     $+5
+   \   000099   02....       LJMP    ??numValue_1 & 0xFFFF
+    279                  property->type = JSON_REAL;
+   \   00009C   85..82       MOV     DPL,?V0 + 0
+   \   00009F   85..83       MOV     DPH,?V0 + 1
+   \   0000A2   A3           INC     DPTR
+   \   0000A3   A3           INC     DPTR
+   \   0000A4   A3           INC     DPTR
+   \   0000A5   A3           INC     DPTR
+   \   0000A6   A3           INC     DPTR
+   \   0000A7   A3           INC     DPTR
+   \   0000A8   A3           INC     DPTR
+   \   0000A9   A3           INC     DPTR
+   \   0000AA   7405         MOV     A,#0x5
+   \   0000AC   F0           MOVX    @DPTR,A
+    280              }
+    281              if ( *ptr == 'e' || *ptr == 'E' ) {
+   \                     ??numValue_4:
+   \   0000AD   8E82         MOV     DPL,R6
+   \   0000AF   8F83         MOV     DPH,R7
+   \   0000B1   E0           MOVX    A,@DPTR
+   \   0000B2   6465         XRL     A,#0x65
+   \   0000B4   6005         JZ      ??numValue_7
+   \   0000B6   E0           MOVX    A,@DPTR
+   \   0000B7   6445         XRL     A,#0x45
+   \   0000B9   704E         JNZ     ??numValue_8
+    282                  ptr = expValue( ++ptr );
+   \                     ??numValue_7:
+   \   0000BB   A3           INC     DPTR
+   \   0000BC   A882         MOV     R0,DPL
+   \   0000BE   A983         MOV     R1,DPH
+   \   0000C0   E0           MOVX    A,@DPTR
+   \   0000C1   642D         XRL     A,#0x2d
+   \   0000C3   6005         JZ      ??numValue_9
+   \   0000C5   E0           MOVX    A,@DPTR
+   \   0000C6   642B         XRL     A,#0x2b
+   \   0000C8   7004         JNZ     ??numValue_10
+   \                     ??numValue_9:
+   \   0000CA   A3           INC     DPTR
+   \   0000CB   08           INC     R0
+   \   0000CC   A983         MOV     R1,DPH
+   \                     ??numValue_10:
+   \   0000CE   8882         MOV     DPL,R0
+   \   0000D0   8983         MOV     DPH,R1
+   \   0000D2   12....       LCALL   ?Subroutine5 & 0xFFFF
+   \                     ??CrossCallReturnLabel_3:
+   \   0000D5   4006         JC      ??numValue_11
+   \   0000D7   7E00         MOV     R6,#0x0
+   \   0000D9   7F00         MOV     R7,#0x0
+   \   0000DB   8014         SJMP    ??numValue_12
+   \                     ??numValue_11:
+   \   0000DD                ; Setup parameters for call to function goNum
+   \   0000DD   8882         MOV     DPL,R0
+   \   0000DF   8983         MOV     DPH,R1
+   \   0000E1   A3           INC     DPTR
+   \   0000E2   AA82         MOV     R2,DPL
+   \   0000E4   AB83         MOV     R3,DPH
+   \   0000E6   12....       LCALL   ??goNum?relay
+   \   0000E9   8A..         MOV     ?V0 + 2,R2
+   \   0000EB   8B..         MOV     ?V0 + 3,R3
+   \   0000ED   AE..         MOV     R6,?V0 + 2
+   \   0000EF   AF..         MOV     R7,?V0 + 3
+    283                  if ( !ptr ) return 0;
+   \                     ??numValue_12:
+   \   0000F1   EE           MOV     A,R6
+   \   0000F2   4F           ORL     A,R7
+   \   0000F3   7003         JNZ     $+5
+   \   0000F5   02....       LJMP    ??numValue_1 & 0xFFFF
+    284                  property->type = JSON_REAL;
+   \   0000F8   85..82       MOV     DPL,?V0 + 0
+   \   0000FB   85..83       MOV     DPH,?V0 + 1
+   \   0000FE   A3           INC     DPTR
+   \   0000FF   A3           INC     DPTR
+   \   000100   A3           INC     DPTR
+   \   000101   A3           INC     DPTR
+   \   000102   A3           INC     DPTR
+   \   000103   A3           INC     DPTR
+   \   000104   A3           INC     DPTR
+   \   000105   A3           INC     DPTR
+   \   000106   7405         MOV     A,#0x5
+   \   000108   F0           MOVX    @DPTR,A
+    285              }
+    286              if ( !isEndOfPrimitive( *ptr ) ) return 0;
+   \                     ??numValue_8:
+   \   000109                ; Setup parameters for call to function isEndOfPrimitive
+   \   000109   8E82         MOV     DPL,R6
+   \   00010B   8F83         MOV     DPH,R7
+   \   00010D   E0           MOVX    A,@DPTR
+   \   00010E   F9           MOV     R1,A
+   \   00010F   12....       LCALL   ??isEndOfPrimitive?relay
+   \   000112   5078         JNC     ??numValue_1
+    287              if ( JSON_INTEGER == property->type ) {
+   \   000114   85..82       MOV     DPL,?V0 + 0
+   \   000117   85..83       MOV     DPH,?V0 + 1
+   \   00011A   A3           INC     DPTR
+   \   00011B   A3           INC     DPTR
+   \   00011C   A3           INC     DPTR
+   \   00011D   A3           INC     DPTR
+   \   00011E   A3           INC     DPTR
+   \   00011F   A3           INC     DPTR
+   \   000120   A3           INC     DPTR
+   \   000121   A3           INC     DPTR
+   \   000122   E0           MOVX    A,@DPTR
+   \   000123   6404         XRL     A,#0x4
+   \   000125   7072         JNZ     ??numValue_13
+    288                  char const* value = property->u.value;
+   \   000127   85..82       MOV     DPL,?V0 + 0
+   \   00012A   85..83       MOV     DPH,?V0 + 1
+   \   00012D   A3           INC     DPTR
+   \   00012E   A3           INC     DPTR
+   \   00012F   A3           INC     DPTR
+   \   000130   A3           INC     DPTR
+   \   000131   E0           MOVX    A,@DPTR
+   \   000132   FC           MOV     R4,A
+   \   000133   A3           INC     DPTR
+   \   000134   E0           MOVX    A,@DPTR
+   \   000135   FD           MOV     R5,A
+    289                  bool const negative = *value == '-';
+   \   000136   8C82         MOV     DPL,R4
+   \   000138   8D83         MOV     DPH,R5
+   \   00013A   E0           MOVX    A,@DPTR
+   \   00013B   642D         XRL     A,#0x2d
+   \   00013D   7006         JNZ     ??numValue_14
+   \   00013F   D2F0         SETB    B.0
+   \   000141   7815         MOV     R0,#0x15
+   \   000143   8004         SJMP    ??numValue_15
+   \                     ??numValue_14:
+   \   000145   C2F0         CLR     B.0
+   \   000147   7814         MOV     R0,#0x14
+   \                     ??numValue_15:
+   \   000149   E8           MOV     A,R0
+   \   00014A   24FF         ADD     A,#-0x1
+   \   00014C   FA           MOV     R2,A
+   \   00014D   E4           CLR     A
+   \   00014E   34FF         ADDC    A,#-0x1
+   \   000150   FB           MOV     R3,A
+    290                  static char const min[] = "-9223372036854775808";
+    291                  static char const max[] = "9223372036854775807";
+    292                  unsigned int const maxdigits = ( negative? sizeof min: sizeof max ) - 1;
+    293                  unsigned int const len = ( unsigned int const ) ( ptr - value );
+                                                    ^
+Warning[Pe191]: type qualifier is meaningless on cast type
+   \   000151   EE           MOV     A,R6
+   \   000152   C3           CLR     C
+   \   000153   9C           SUBB    A,R4
+   \   000154   F8           MOV     R0,A
+   \   000155   EF           MOV     A,R7
+   \   000156   9D           SUBB    A,R5
+   \   000157   F9           MOV     R1,A
+    294                  if ( len > maxdigits ) return 0;
+   \   000158   C3           CLR     C
+   \   000159   EA           MOV     A,R2
+   \   00015A   98           SUBB    A,R0
+   \   00015B   EB           MOV     A,R3
+   \   00015C   99           SUBB    A,R1
+   \   00015D   402D         JC      ??numValue_1
+    295                  if ( len == maxdigits ) {
+   \   00015F   EA           MOV     A,R2
+   \   000160   68           XRL     A,R0
+   \   000161   7002         JNZ     ??numValue_16
+   \   000163   EB           MOV     A,R3
+   \   000164   69           XRL     A,R1
+   \                     ??numValue_16:
+   \   000165   7032         JNZ     ??numValue_13
+    296                      char const tmp = *ptr;
+   \   000167   8E82         MOV     DPL,R6
+   \   000169   8F83         MOV     DPH,R7
+   \   00016B   E0           MOVX    A,@DPTR
+   \   00016C   F5..         MOV     ?V0 + 0,A
+    297                      *ptr = '\0';
+   \   00016E   E4           CLR     A
+   \   00016F   F0           MOVX    @DPTR,A
+    298                      char const* const threshold = negative ? min: max;
+   \   000170   A2F0         MOV     C,B.0
+   \   000172   5006         JNC     ??numValue_17
+   \   000174   7A..         MOV     R2,#??min & 0xff
+   \   000176   7B..         MOV     R3,#(??min >> 8) & 0xff
+   \   000178   8004         SJMP    ??numValue_18
+   \                     ??numValue_17:
+   \   00017A   7A..         MOV     R2,#??max & 0xff
+   \   00017C   7B..         MOV     R3,#(??max >> 8) & 0xff
+    299                      if ( 0 > strcmp( threshold, value ) ) return 0;
+   \                     ??numValue_18:
+   \   00017E                ; Setup parameters for call to function strcmp
+   \   00017E   12....       LCALL   ??strcmp?relay
+   \   000181   C3           CLR     C
+   \   000182   EB           MOV     A,R3
+   \   000183   9400         SUBB    A,#0x0
+   \   000185   A2D2         MOV     C,0xD0 /* PSW */.2
+   \   000187   65D0         XRL     A,PSW
+   \   000189   33           RLC     A
+   \   00018A   5006         JNC     ??numValue_19
+   \                     ??numValue_1:
+   \   00018C   7A00         MOV     R2,#0x0
+   \   00018E   7B00         MOV     R3,#0x0
+   \   000190   800E         SJMP    ??numValue_20
+    300                      *ptr = tmp;
+   \                     ??numValue_19:
+   \   000192   8E82         MOV     DPL,R6
+   \   000194   8F83         MOV     DPH,R7
+   \   000196   E5..         MOV     A,?V0 + 0
+   \   000198   F0           MOVX    @DPTR,A
+    301                  }
+    302              }
+    303              ptr = setToNull( ptr );
+    304              return ptr;
+   \                     ??numValue_13:
+   \   000199                ; Setup parameters for call to function setToNull
+   \   000199   EE           MOV     A,R6
+   \   00019A   FA           MOV     R2,A
+   \   00019B   EF           MOV     A,R7
+   \   00019C   FB           MOV     R3,A
+   \   00019D   12....       LCALL   ??setToNull?relay
+   \                     ??numValue_20:
+   \   0001A0   02....       LJMP    ?Subroutine0 & 0xFFFF
+    305          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine4:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   12....       LCALL   ?Subroutine13 & 0xFFFF
+   \                     ??CrossCallReturnLabel_24:
+   \   000004   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine13:
+   \   000000   F8           MOV     R0,A
+   \   000001   74..         MOV     A,#(_Small_Ctype + 1) & 0xff
+   \   000003   28           ADD     A,R0
+   \   000004                REQUIRE ??Subroutine17_0
+   \   000004                ; // Fall through to label ??Subroutine17_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine17_0:
+   \   000000   F582         MOV     DPL,A
+   \   000002   74..         MOV     A,#((_Small_Ctype + 1) >> 8) & 0xff
+   \   000004   3400         ADDC    A,#0x0
+   \   000006   F583         MOV     DPH,A
+   \   000008   E4           CLR     A
+   \   000009   93           MOVC    A,@A+DPTR
+   \   00000A   A2E2         MOV     C,0xE0 /* A   */.2
+   \   00000C   22           RET
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     ??min:
+   \   000000   2D393232     DB "-9223372036854775808"
+   \            33333732
+   \            30333638
+   \            35343737
+   \            35383038
+   \            00      
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     ??max:
+   \   000000   39323233     DB "9223372036854775807"
+   \            33373230
+   \            33363835
+   \            34373735
+   \            38303700
+    306          
+    307          /** Add a property to a JSON object or array.
+    308            * @param obj The handler of the JSON object or array.
+    309            * @param property The handler of the property to be added. */
+    310          static void add( json_t* obj, json_t* property ) {
+    311              property->sibling = 0;
+    312              if ( !obj->u.c.child ){
+    313          	    obj->u.c.child = property;
+    314          	    obj->u.c.last_child = property;
+    315              } else {
+    316          	    obj->u.c.last_child->sibling = property;
+    317          	    obj->u.c.last_child = property;
+    318              }
+    319          }
+    320          
+    321          /** Parser a string to get a json object value.
+    322            * @param ptr Pointer to first character.
+    323            * @param obj The handler of the JSON root object or array.
+    324            * @param pool The handler of a json pool for creating json instances.
+    325            * @retval Pointer to first character after the value. If success.
+    326            * @retval Null pointer if any error occur. */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    327          static char* objValue( char* ptr, json_t* obj, jsonPool_t* pool ) {
+   \                     objValue:
+   \   000000   74F0         MOV     A,#-0x10
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 16
+   \   000005                ; Auto size: 0
+   \   000005   EC           MOV     A,R4
+   \   000006   FE           MOV     R6,A
+   \   000007   ED           MOV     A,R5
+   \   000008   FF           MOV     R7,A
+    328              obj->type    = *ptr == '{' ? JSON_OBJ : JSON_ARRAY;
+   \   000009   8A82         MOV     DPL,R2
+   \   00000B   8B83         MOV     DPH,R3
+   \   00000D   E0           MOVX    A,@DPTR
+   \   00000E   647B         XRL     A,#0x7b
+   \   000010   7003         JNZ     ??objValue_0
+   \   000012   E4           CLR     A
+   \   000013   8002         SJMP    ??objValue_1
+   \                     ??objValue_0:
+   \   000015   7401         MOV     A,#0x1
+   \                     ??objValue_1:
+   \   000017   8E82         MOV     DPL,R6
+   \   000019   8F83         MOV     DPH,R7
+   \   00001B   A3           INC     DPTR
+   \   00001C   A3           INC     DPTR
+   \   00001D   A3           INC     DPTR
+   \   00001E   A3           INC     DPTR
+   \   00001F   A3           INC     DPTR
+   \   000020   A3           INC     DPTR
+   \   000021   A3           INC     DPTR
+   \   000022   12....       LCALL   ?Subroutine10 & 0xFFFF
+    329              obj->u.c.child = 0;
+   \                     ??CrossCallReturnLabel_17:
+   \   000025   12....       LCALL   ?Subroutine11 & 0xFFFF
+    330              obj->sibling = 0;
+   \                     ??CrossCallReturnLabel_26:
+   \   000028   F0           MOVX    @DPTR,A
+   \   000029   A3           INC     DPTR
+   \   00002A   F0           MOVX    @DPTR,A
+    331              ptr++;
+   \   00002B   8A82         MOV     DPL,R2
+   \   00002D   8B83         MOV     DPH,R3
+   \   00002F   A3           INC     DPTR
+   \   000030   8582..       MOV     ?V0 + 2,DPL
+   \   000033   8583..       MOV     ?V0 + 3,DPH
+   \   000036   7410         MOV     A,#0x10
+   \   000038   12....       LCALL   ?XSTACK_DISP0_8
+   \   00003B   E0           MOVX    A,@DPTR
+   \   00003C   F5..         MOV     ?V0 + 0,A
+   \   00003E   A3           INC     DPTR
+   \   00003F   E0           MOVX    A,@DPTR
+   \   000040   F5..         MOV     ?V0 + 1,A
+   \   000042   8007         SJMP    ??objValue_2
+    332              for(;;) {
+    333                  ptr = goBlank( ptr );
+    334                  if ( !ptr ) return 0;
+    335                  if ( *ptr == ',' ) {
+    336                      ++ptr;
+   \                     ??objValue_3:
+   \   000044   A3           INC     DPTR
+   \   000045   8582..       MOV     ?V0 + 2,DPL
+   \   000048   8583..       MOV     ?V0 + 3,DPH
+    337                      continue;
+    338                  }
+   \                     ??objValue_2:
+   \   00004B                ; Setup parameters for call to function goBlank
+   \   00004B   AA..         MOV     R2,?V0 + 2
+   \   00004D   AB..         MOV     R3,?V0 + 3
+   \   00004F   12....       LCALL   ??goBlank?relay
+   \   000052   8A..         MOV     ?V0 + 2,R2
+   \   000054   8B..         MOV     ?V0 + 3,R3
+   \   000056   EA           MOV     A,R2
+   \   000057   45..         ORL     A,?V0 + 3
+   \   000059   7003         JNZ     $+5
+   \   00005B   02....       LJMP    ??objValue_4 & 0xFFFF
+   \   00005E   8A82         MOV     DPL,R2
+   \   000060   8B83         MOV     DPH,R3
+   \   000062   E0           MOVX    A,@DPTR
+   \   000063   642C         XRL     A,#0x2c
+   \   000065   60DD         JZ      ??objValue_3
+    339                  char const endchar = ( obj->type == JSON_OBJ )? '}': ']';
+   \   000067   8E82         MOV     DPL,R6
+   \   000069   8F83         MOV     DPH,R7
+   \   00006B   A3           INC     DPTR
+   \   00006C   A3           INC     DPTR
+   \   00006D   A3           INC     DPTR
+   \   00006E   A3           INC     DPTR
+   \   00006F   A3           INC     DPTR
+   \   000070   A3           INC     DPTR
+   \   000071   A3           INC     DPTR
+   \   000072   A3           INC     DPTR
+   \   000073   E0           MOVX    A,@DPTR
+   \   000074   7004         JNZ     ??objValue_5
+   \   000076   787D         MOV     R0,#0x7d
+   \   000078   8002         SJMP    ??objValue_6
+   \                     ??objValue_5:
+   \   00007A   785D         MOV     R0,#0x5d
+    340                  if ( *ptr == endchar ) {
+   \                     ??objValue_6:
+   \   00007C   8A82         MOV     DPL,R2
+   \   00007E   8B83         MOV     DPH,R3
+   \   000080   E0           MOVX    A,@DPTR
+   \   000081   68           XRL     A,R0
+   \   000082   7027         JNZ     ??objValue_7
+    341                      *ptr = '\0';
+   \   000084   E4           CLR     A
+   \   000085   12....       LCALL   ??Subroutine18_0 & 0xFFFF
+    342                      json_t* parentObj = obj->sibling;
+   \                     ??CrossCallReturnLabel_29:
+   \   000088   12....       LCALL   ??Subroutine14_0 & 0xFFFF
+    343                      if ( !parentObj ) return ++ptr;
+   \                     ??CrossCallReturnLabel_13:
+   \   00008B   700C         JNZ     ??objValue_8
+   \   00008D   8A82         MOV     DPL,R2
+   \   00008F   8B83         MOV     DPH,R3
+   \   000091   A3           INC     DPTR
+   \   000092   AA82         MOV     R2,DPL
+   \   000094   AB83         MOV     R3,DPH
+   \   000096   02....       LJMP    ??objValue_9 & 0xFFFF
+    344                      obj->sibling = 0;
+   \                     ??objValue_8:
+   \   000099   8E82         MOV     DPL,R6
+   \   00009B   8F83         MOV     DPH,R7
+   \   00009D   E4           CLR     A
+   \   00009E   F0           MOVX    @DPTR,A
+   \   00009F   A3           INC     DPTR
+   \   0000A0   F0           MOVX    @DPTR,A
+    345                      obj = parentObj;
+   \   0000A1   E8           MOV     A,R0
+   \   0000A2   FE           MOV     R6,A
+   \   0000A3   E9           MOV     A,R1
+   \   0000A4   FF           MOV     R7,A
+    346                      ++ptr;
+   \   0000A5   8A82         MOV     DPL,R2
+   \   0000A7   8B83         MOV     DPH,R3
+   \   0000A9   8099         SJMP    ??objValue_3
+    347                      continue;
+    348                  }
+    349                  json_t* property = pool->alloc( pool );
+   \                     ??objValue_7:
+   \   0000AB                ; Setup parameters for indirect call
+   \   0000AB   AA..         MOV     R2,?V0 + 0
+   \   0000AD   AB..         MOV     R3,?V0 + 1
+   \   0000AF   8A82         MOV     DPL,R2
+   \   0000B1   8B83         MOV     DPH,R3
+   \   0000B3   A3           INC     DPTR
+   \   0000B4   A3           INC     DPTR
+   \   0000B5   12....       LCALL   ??Subroutine16_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_19:
+   \   0000B8   12....       LCALL   ?CALL_IND
+   \   0000BB   8A..         MOV     ?V0 + 4,R2
+   \   0000BD   8B..         MOV     ?V0 + 5,R3
+    350                  if ( !property ) return 0;
+   \   0000BF   EA           MOV     A,R2
+   \   0000C0   45..         ORL     A,?V0 + 5
+   \   0000C2   7003         JNZ     $+5
+   \   0000C4   02....       LJMP    ??objValue_4 & 0xFFFF
+    351                  if( obj->type != JSON_ARRAY ) {
+   \   0000C7   8E82         MOV     DPL,R6
+   \   0000C9   8F83         MOV     DPH,R7
+   \   0000CB   A3           INC     DPTR
+   \   0000CC   A3           INC     DPTR
+   \   0000CD   A3           INC     DPTR
+   \   0000CE   A3           INC     DPTR
+   \   0000CF   A3           INC     DPTR
+   \   0000D0   A3           INC     DPTR
+   \   0000D1   A3           INC     DPTR
+   \   0000D2   A3           INC     DPTR
+   \   0000D3   E0           MOVX    A,@DPTR
+   \   0000D4   6401         XRL     A,#0x1
+   \   0000D6   605C         JZ      ??objValue_10
+    352                      if ( *ptr != '\"' ) return 0;
+   \   0000D8   85..82       MOV     DPL,?V0 + 2
+   \   0000DB   85..83       MOV     DPH,?V0 + 3
+   \   0000DE   E0           MOVX    A,@DPTR
+   \   0000DF   6422         XRL     A,#0x22
+   \   0000E1   6003         JZ      $+5
+   \   0000E3   02....       LJMP    ??objValue_4 & 0xFFFF
+    353                      ptr = propertyName( ptr, property );
+   \   0000E6   A3           INC     DPTR
+   \   0000E7   AA82         MOV     R2,DPL
+   \   0000E9   AB83         MOV     R3,DPH
+   \   0000EB   85..82       MOV     DPL,?V0 + 4
+   \   0000EE   85..83       MOV     DPH,?V0 + 5
+   \   0000F1   A3           INC     DPTR
+   \   0000F2   A3           INC     DPTR
+   \   0000F3   EA           MOV     A,R2
+   \   0000F4   F0           MOVX    @DPTR,A
+   \   0000F5   A3           INC     DPTR
+   \   0000F6   EB           MOV     A,R3
+   \   0000F7   F0           MOVX    @DPTR,A
+   \   0000F8                ; Setup parameters for call to function parseString
+   \   0000F8   12....       LCALL   ??parseString?relay
+   \   0000FB   8A82         MOV     DPL,R2
+   \   0000FD   8B83         MOV     DPH,R3
+   \   0000FF   E582         MOV     A,DPL
+   \   000101   4583         ORL     A,DPH
+   \   000103   6020         JZ      ??objValue_11
+   \   000105                ; Setup parameters for call to function goBlank
+   \   000105   12....       LCALL   ??goBlank?relay
+   \   000108   8A82         MOV     DPL,R2
+   \   00010A   8B83         MOV     DPH,R3
+   \   00010C   E582         MOV     A,DPL
+   \   00010E   4583         ORL     A,DPH
+   \   000110   6013         JZ      ??objValue_11
+   \   000112   E0           MOVX    A,@DPTR
+   \   000113   643A         XRL     A,#0x3a
+   \   000115   700E         JNZ     ??objValue_11
+   \   000117                ; Setup parameters for call to function goBlank
+   \   000117   A3           INC     DPTR
+   \   000118   AA82         MOV     R2,DPL
+   \   00011A   AB83         MOV     R3,DPH
+   \   00011C   12....       LCALL   ??goBlank?relay
+   \   00011F   8A..         MOV     ?V0 + 2,R2
+   \   000121   8B..         MOV     ?V0 + 3,R3
+   \   000123   8006         SJMP    ??objValue_12
+   \                     ??objValue_11:
+   \   000125   75..00       MOV     ?V0 + 2,#0x0
+   \   000128   75..00       MOV     ?V0 + 3,#0x0
+    354                      if ( !ptr ) return 0;
+   \                     ??objValue_12:
+   \   00012B   E5..         MOV     A,?V0 + 2
+   \   00012D   45..         ORL     A,?V0 + 3
+   \   00012F   700D         JNZ     ??objValue_13
+   \   000131   02....       LJMP    ??objValue_4 & 0xFFFF
+    355                  }
+    356                  else property->name = 0;
+   \                     ??objValue_10:
+   \   000134   8A82         MOV     DPL,R2
+   \   000136   8B83         MOV     DPH,R3
+   \   000138   A3           INC     DPTR
+   \   000139   A3           INC     DPTR
+   \   00013A   E4           CLR     A
+   \   00013B   F0           MOVX    @DPTR,A
+   \   00013C   A3           INC     DPTR
+   \   00013D   F0           MOVX    @DPTR,A
+    357                  add( obj, property );
+   \                     ??objValue_13:
+   \   00013E   85..82       MOV     DPL,?V0 + 4
+   \   000141   85..83       MOV     DPH,?V0 + 5
+   \   000144   12....       LCALL   ?Subroutine11 & 0xFFFF
+   \                     ??CrossCallReturnLabel_27:
+   \   000147   A3           INC     DPTR
+   \   000148   A3           INC     DPTR
+   \   000149   12....       LCALL   ?Subroutine7 & 0xFFFF
+   \                     ??CrossCallReturnLabel_15:
+   \   00014C   7015         JNZ     ??objValue_14
+   \   00014E   8E82         MOV     DPL,R6
+   \   000150   8F83         MOV     DPH,R7
+   \   000152   A3           INC     DPTR
+   \   000153   A3           INC     DPTR
+   \   000154   A3           INC     DPTR
+   \   000155   A3           INC     DPTR
+   \   000156   E5..         MOV     A,?V0 + 4
+   \   000158   F0           MOVX    @DPTR,A
+   \   000159   A3           INC     DPTR
+   \   00015A   E5..         MOV     A,?V0 + 5
+   \   00015C   12....       LCALL   ??Subroutine15_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_18:
+   \   00015F   A3           INC     DPTR
+   \   000160   A3           INC     DPTR
+   \   000161   801A         SJMP    ??objValue_15
+   \                     ??objValue_14:
+   \   000163   EE           MOV     A,R6
+   \   000164   2406         ADD     A,#0x6
+   \   000166   F8           MOV     R0,A
+   \   000167   EF           MOV     A,R7
+   \   000168   3400         ADDC    A,#0x0
+   \   00016A   F9           MOV     R1,A
+   \   00016B   E8           MOV     A,R0
+   \   00016C   FA           MOV     R2,A
+   \   00016D   E9           MOV     A,R1
+   \   00016E   FB           MOV     R3,A
+   \   00016F   12....       LCALL   ?Subroutine6 & 0xFFFF
+   \                     ??CrossCallReturnLabel_21:
+   \   000172   E5..         MOV     A,?V0 + 4
+   \   000174   F0           MOVX    @DPTR,A
+   \   000175   A3           INC     DPTR
+   \   000176   E5..         MOV     A,?V0 + 5
+   \   000178   F0           MOVX    @DPTR,A
+   \   000179   8A82         MOV     DPL,R2
+   \   00017B   8B83         MOV     DPH,R3
+   \                     ??objValue_15:
+   \   00017D   E5..         MOV     A,?V0 + 4
+   \   00017F   F0           MOVX    @DPTR,A
+   \   000180   A3           INC     DPTR
+   \   000181   E5..         MOV     A,?V0 + 5
+   \   000183   12....       LCALL   ?Subroutine9 & 0xFFFF
+    358                  property->u.value = ptr;
+   \                     ??CrossCallReturnLabel_8:
+   \   000186   E5..         MOV     A,?V0 + 2
+   \   000188   F0           MOVX    @DPTR,A
+   \   000189   A3           INC     DPTR
+   \   00018A   E5..         MOV     A,?V0 + 3
+   \   00018C   F0           MOVX    @DPTR,A
+    359                  switch( *ptr ) {
+   \   00018D   85..82       MOV     DPL,?V0 + 2
+   \   000190   F583         MOV     DPH,A
+   \   000192   E0           MOVX    A,@DPTR
+   \   000193   24DE         ADD     A,#-0x22
+   \   000195   606A         JZ      ??objValue_16
+   \   000197   24C7         ADD     A,#-0x39
+   \   000199   6030         JZ      ??objValue_17
+   \   00019B   24F5         ADD     A,#-0xb
+   \   00019D   7003         JNZ     $+5
+   \   00019F   02....       LJMP    ??objValue_18 & 0xFFFF
+   \   0001A2   24F8         ADD     A,#-0x8
+   \   0001A4   7003         JNZ     $+5
+   \   0001A6   02....       LJMP    ??objValue_19 & 0xFFFF
+   \   0001A9   24FA         ADD     A,#-0x6
+   \   0001AB   7003         JNZ     $+5
+   \   0001AD   02....       LJMP    ??objValue_20 & 0xFFFF
+   \   0001B0   24F9         ADD     A,#-0x7
+   \   0001B2   6003         JZ      $+5
+   \   0001B4   02....       LJMP    ??objValue_21 & 0xFFFF
+    360                      case '{':
+    361                          property->type    = JSON_OBJ;
+   \   0001B7   85..82       MOV     DPL,?V0 + 4
+   \   0001BA   85..83       MOV     DPH,?V0 + 5
+   \   0001BD   A3           INC     DPTR
+   \   0001BE   A3           INC     DPTR
+   \   0001BF   A3           INC     DPTR
+   \   0001C0   A3           INC     DPTR
+   \   0001C1   A3           INC     DPTR
+   \   0001C2   A3           INC     DPTR
+   \   0001C3   A3           INC     DPTR
+   \   0001C4   A3           INC     DPTR
+   \   0001C5   E4           CLR     A
+   \   0001C6   12....       LCALL   ?Subroutine9 & 0xFFFF
+    362                          property->u.c.child = 0;
+   \                     ??CrossCallReturnLabel_9:
+   \   0001C9   8014         SJMP    ??objValue_22
+    363                          property->sibling = obj;
+    364                          obj = property;
+    365                          ++ptr;
+    366                          break;
+    367                      case '[':
+    368                          property->type    = JSON_ARRAY;
+   \                     ??objValue_17:
+   \   0001CB   85..82       MOV     DPL,?V0 + 4
+   \   0001CE   85..83       MOV     DPH,?V0 + 5
+   \   0001D1   A3           INC     DPTR
+   \   0001D2   A3           INC     DPTR
+   \   0001D3   A3           INC     DPTR
+   \   0001D4   A3           INC     DPTR
+   \   0001D5   A3           INC     DPTR
+   \   0001D6   A3           INC     DPTR
+   \   0001D7   A3           INC     DPTR
+   \   0001D8   A3           INC     DPTR
+   \   0001D9   7401         MOV     A,#0x1
+   \   0001DB   12....       LCALL   ?Subroutine9 & 0xFFFF
+    369                          property->u.c.child = 0;
+   \                     ??CrossCallReturnLabel_10:
+   \   0001DE   E4           CLR     A
+   \                     ??objValue_22:
+   \   0001DF   F0           MOVX    @DPTR,A
+   \   0001E0   A3           INC     DPTR
+   \   0001E1   F0           MOVX    @DPTR,A
+    370                          property->sibling = obj;
+   \   0001E2   85..82       MOV     DPL,?V0 + 4
+   \   0001E5   85..83       MOV     DPH,?V0 + 5
+   \   0001E8   EE           MOV     A,R6
+   \   0001E9   F0           MOVX    @DPTR,A
+   \   0001EA   A3           INC     DPTR
+   \   0001EB   EF           MOV     A,R7
+   \   0001EC   F0           MOVX    @DPTR,A
+    371                          obj = property;
+   \   0001ED   AE..         MOV     R6,?V0 + 4
+   \   0001EF   AF..         MOV     R7,?V0 + 5
+    372                          ++ptr;
+   \   0001F1   85..82       MOV     DPL,?V0 + 2
+   \   0001F4   85..83       MOV     DPH,?V0 + 3
+   \   0001F7   A3           INC     DPTR
+   \   0001F8   8582..       MOV     ?V0 + 2,DPL
+   \   0001FB   8583..       MOV     ?V0 + 3,DPH
+    373                          break;
+   \   0001FE   02....       LJMP    ??objValue_23 & 0xFFFF
+    374                      case '\"': ptr = textValue( ptr, property );  break;
+   \                     ??objValue_16:
+   \   000201   E5..         MOV     A,?V0 + 4
+   \   000203   2404         ADD     A,#0x4
+   \   000205   F8           MOV     R0,A
+   \   000206   E5..         MOV     A,?V0 + 5
+   \   000208   3400         ADDC    A,#0x0
+   \   00020A   F9           MOV     R1,A
+   \   00020B   8882         MOV     DPL,R0
+   \   00020D   8983         MOV     DPH,R1
+   \   00020F   E0           MOVX    A,@DPTR
+   \   000210   2401         ADD     A,#0x1
+   \   000212   FA           MOV     R2,A
+   \   000213   A3           INC     DPTR
+   \   000214   E0           MOVX    A,@DPTR
+   \   000215   3400         ADDC    A,#0x0
+   \   000217   FB           MOV     R3,A
+   \   000218   8882         MOV     DPL,R0
+   \   00021A   8983         MOV     DPH,R1
+   \   00021C   EA           MOV     A,R2
+   \   00021D   F0           MOVX    @DPTR,A
+   \   00021E   A3           INC     DPTR
+   \   00021F   EB           MOV     A,R3
+   \   000220   F0           MOVX    @DPTR,A
+   \   000221                ; Setup parameters for call to function parseString
+   \   000221   85..82       MOV     DPL,?V0 + 2
+   \   000224   85..83       MOV     DPH,?V0 + 3
+   \   000227   A3           INC     DPTR
+   \   000228   AA82         MOV     R2,DPL
+   \   00022A   AB83         MOV     R3,DPH
+   \   00022C   12....       LCALL   ??parseString?relay
+   \   00022F   8A..         MOV     ?V0 + 2,R2
+   \   000231   8B..         MOV     ?V0 + 3,R3
+   \   000233   A8..         MOV     R0,?V0 + 2
+   \   000235   A9..         MOV     R1,?V0 + 3
+   \   000237   E8           MOV     A,R0
+   \   000238   49           ORL     A,R1
+   \   000239   7006         JNZ     ??objValue_24
+   \   00023B   7800         MOV     R0,#0x0
+   \   00023D   7900         MOV     R1,#0x0
+   \   00023F   8011         SJMP    ??objValue_25
+   \                     ??objValue_24:
+   \   000241   85..82       MOV     DPL,?V0 + 4
+   \   000244   85..83       MOV     DPH,?V0 + 5
+   \   000247   A3           INC     DPTR
+   \   000248   A3           INC     DPTR
+   \   000249   A3           INC     DPTR
+   \   00024A   A3           INC     DPTR
+   \   00024B   A3           INC     DPTR
+   \   00024C   A3           INC     DPTR
+   \   00024D   A3           INC     DPTR
+   \   00024E   A3           INC     DPTR
+   \   00024F   7402         MOV     A,#0x2
+   \   000251   F0           MOVX    @DPTR,A
+   \                     ??objValue_25:
+   \   000252   88..         MOV     ?V0 + 2,R0
+   \   000254   89..         MOV     ?V0 + 3,R1
+   \   000256   8045         SJMP    ??objValue_23
+    375                      case 't':  ptr = trueValue( ptr, property );  break;
+   \                     ??objValue_20:
+   \   000258                ; Setup parameters for call to function primitiveValue
+   \   000258   75....       MOV     ?V0 + 6,#`?<Constant "true">` & 0xff
+   \   00025B   75....       MOV     ?V0 + 7,#(`?<Constant "true">` >> 8) & 0xff
+   \   00025E   8006         SJMP    ??objValue_26
+    376                      case 'f':  ptr = falseValue( ptr, property ); break;
+   \                     ??objValue_18:
+   \   000260                ; Setup parameters for call to function primitiveValue
+   \   000260   75....       MOV     ?V0 + 6,#`?<Constant "false">` & 0xff
+   \   000263   75....       MOV     ?V0 + 7,#(`?<Constant "false">` >> 8) & 0xff
+   \                     ??objValue_26:
+   \   000266   78..         MOV     R0,#?V0 + 6
+   \   000268   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00026B   7903         MOV     R1,#0x3
+   \   00026D   800D         SJMP    ??objValue_27
+    377                      case 'n':  ptr = nullValue( ptr, property );  break;
+   \                     ??objValue_19:
+   \   00026F                ; Setup parameters for call to function primitiveValue
+   \   00026F   75....       MOV     ?V0 + 6,#`?<Constant "null">` & 0xff
+   \   000272   75....       MOV     ?V0 + 7,#(`?<Constant "null">` >> 8) & 0xff
+   \   000275   78..         MOV     R0,#?V0 + 6
+   \   000277   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00027A   7906         MOV     R1,#0x6
+   \                     ??objValue_27:
+   \   00027C   AC..         MOV     R4,?V0 + 4
+   \   00027E   AD..         MOV     R5,?V0 + 5
+   \   000280   AA..         MOV     R2,?V0 + 2
+   \   000282   AB..         MOV     R3,?V0 + 3
+   \   000284   12....       LCALL   ??primitiveValue?relay
+   \   000287   7402         MOV     A,#0x2
+   \   000289   12....       LCALL   ?DEALLOC_XSTACK8
+   \   00028C   800B         SJMP    ??objValue_28
+    378                      default:   ptr = numValue( ptr, property );   break;
+   \                     ??objValue_21:
+   \   00028E                ; Setup parameters for call to function numValue
+   \   00028E   AC..         MOV     R4,?V0 + 4
+   \   000290   AD..         MOV     R5,?V0 + 5
+   \   000292   AA..         MOV     R2,?V0 + 2
+   \   000294   AB..         MOV     R3,?V0 + 3
+   \   000296   12....       LCALL   ??numValue?relay
+   \                     ??objValue_28:
+   \   000299   8A..         MOV     ?V0 + 2,R2
+   \   00029B   8B..         MOV     ?V0 + 3,R3
+    379                  }
+    380                  if ( !ptr ) return 0;
+   \                     ??objValue_23:
+   \   00029D   E5..         MOV     A,?V0 + 2
+   \   00029F   45..         ORL     A,?V0 + 3
+   \   0002A1   6003         JZ      $+5
+   \   0002A3   02....       LJMP    ??objValue_2 & 0xFFFF
+   \                     ??objValue_4:
+   \   0002A6   7A00         MOV     R2,#0x0
+   \   0002A8   7B00         MOV     R3,#0x0
+   \                     ??objValue_9:
+   \   0002AA   7F08         MOV     R7,#0x8
+   \   0002AC   02....       LJMP    ?BANKED_LEAVE_XDATA
+    381              }
+    382          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine9:
+   \   000000   F0           MOVX    @DPTR,A
+   \   000001   85..82       MOV     DPL,?V0 + 4
+   \   000004   85..83       MOV     DPH,?V0 + 5
+   \   000007   A3           INC     DPTR
+   \   000008   A3           INC     DPTR
+   \   000009   A3           INC     DPTR
+   \   00000A   A3           INC     DPTR
+   \   00000B   22           RET
+    383          
+    384          /** Initialize a json pool.
+    385            * @param pool The handler of the pool.
+    386            * @return a instance of a json. */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    387          static json_t* poolInit( jsonPool_t* pool ) {
+   \                     poolInit:
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    388              jsonStaticPool_t *spool = json_containerOf( pool, jsonStaticPool_t, pool );
+   \   000004   EA           MOV     A,R2
+   \   000005   24FA         ADD     A,#-0x6
+   \   000007   F8           MOV     R0,A
+   \   000008   EB           MOV     A,R3
+   \   000009   34FF         ADDC    A,#-0x1
+   \   00000B   F9           MOV     R1,A
+    389              spool->nextFree = 1;
+   \   00000C   8882         MOV     DPL,R0
+   \   00000E   8983         MOV     DPH,R1
+   \   000010   A3           INC     DPTR
+   \   000011   A3           INC     DPTR
+   \   000012   A3           INC     DPTR
+   \   000013   A3           INC     DPTR
+   \   000014   7401         MOV     A,#0x1
+   \   000016   F0           MOVX    @DPTR,A
+   \   000017   A3           INC     DPTR
+   \   000018   E4           CLR     A
+   \   000019   F0           MOVX    @DPTR,A
+    390              return spool->mem;
+   \   00001A   8882         MOV     DPL,R0
+   \   00001C   8983         MOV     DPH,R1
+   \   00001E   E0           MOVX    A,@DPTR
+   \   00001F   FA           MOV     R2,A
+   \   000020   A3           INC     DPTR
+   \   000021   E0           MOVX    A,@DPTR
+   \   000022   FB           MOV     R3,A
+   \   000023   02....       LJMP    ?Subroutine2 & 0xFFFF
+    391          }
+    392          
+    393          /** Create an instance of a json from a pool.
+    394            * @param pool The handler of the pool.
+    395            * @retval The handler of the new instance if success.
+    396            * @retval Null pointer if the pool was empty. */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    397          static json_t* poolAlloc( jsonPool_t* pool ) {
+   \                     poolAlloc:
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+    398              jsonStaticPool_t *spool = json_containerOf( pool, jsonStaticPool_t, pool );
+   \   000005   EA           MOV     A,R2
+   \   000006   24FA         ADD     A,#-0x6
+   \   000008   F8           MOV     R0,A
+   \   000009   EB           MOV     A,R3
+   \   00000A   34FF         ADDC    A,#-0x1
+   \   00000C   F9           MOV     R1,A
+   \   00000D   E8           MOV     A,R0
+   \   00000E   FA           MOV     R2,A
+   \   00000F   E9           MOV     A,R1
+   \   000010   FB           MOV     R3,A
+    399              if ( spool->nextFree >= spool->qty ) return 0;
+   \   000011   8A82         MOV     DPL,R2
+   \   000013   8B83         MOV     DPH,R3
+   \   000015   A3           INC     DPTR
+   \   000016   A3           INC     DPTR
+   \   000017   A3           INC     DPTR
+   \   000018   A3           INC     DPTR
+   \   000019   C082         PUSH    DPL
+   \   00001B   C083         PUSH    DPH
+   \   00001D   8A82         MOV     DPL,R2
+   \   00001F   8B83         MOV     DPH,R3
+   \   000021   A3           INC     DPTR
+   \   000022   A3           INC     DPTR
+   \   000023   12....       LCALL   ?Subroutine8 & 0xFFFF
+   \                     ??CrossCallReturnLabel_6:
+   \   000026   D083         POP     DPH
+   \   000028   D082         POP     DPL
+   \   00002A   C3           CLR     C
+   \   00002B   E0           MOVX    A,@DPTR
+   \   00002C   98           SUBB    A,R0
+   \   00002D   A3           INC     DPTR
+   \   00002E   E0           MOVX    A,@DPTR
+   \   00002F   99           SUBB    A,R1
+   \   000030   4006         JC      ??poolAlloc_0
+   \   000032   7A00         MOV     R2,#0x0
+   \   000034   7B00         MOV     R3,#0x0
+   \   000036   803E         SJMP    ??poolAlloc_1
+    400              return spool->mem + spool->nextFree++;
+   \                     ??poolAlloc_0:
+   \   000038   EA           MOV     A,R2
+   \   000039   2404         ADD     A,#0x4
+   \   00003B   F8           MOV     R0,A
+   \   00003C   EB           MOV     A,R3
+   \   00003D   3400         ADDC    A,#0x0
+   \   00003F   F9           MOV     R1,A
+   \   000040   E8           MOV     A,R0
+   \   000041   FC           MOV     R4,A
+   \   000042   E9           MOV     A,R1
+   \   000043   FD           MOV     R5,A
+   \   000044   8C82         MOV     DPL,R4
+   \   000046   8D83         MOV     DPH,R5
+   \   000048   12....       LCALL   ?Subroutine8 & 0xFFFF
+   \                     ??CrossCallReturnLabel_7:
+   \   00004B   E8           MOV     A,R0
+   \   00004C   2401         ADD     A,#0x1
+   \   00004E   FE           MOV     R6,A
+   \   00004F   E9           MOV     A,R1
+   \   000050   3400         ADDC    A,#0x0
+   \   000052   FF           MOV     R7,A
+   \   000053   8C82         MOV     DPL,R4
+   \   000055   8D83         MOV     DPH,R5
+   \   000057   EE           MOV     A,R6
+   \   000058   F0           MOVX    @DPTR,A
+   \   000059   A3           INC     DPTR
+   \   00005A   EF           MOV     A,R7
+   \   00005B   F0           MOVX    @DPTR,A
+   \   00005C   E8           MOV     A,R0
+   \   00005D   75F009       MOV     B,#0x9
+   \   000060   A4           MUL     AB
+   \   000061   F8           MOV     R0,A
+   \   000062   ACF0         MOV     R4,B
+   \   000064   75F009       MOV     B,#0x9
+   \   000067   E9           MOV     A,R1
+   \   000068   A4           MUL     AB
+   \   000069   2C           ADD     A,R4
+   \   00006A   F9           MOV     R1,A
+   \   00006B   8A82         MOV     DPL,R2
+   \   00006D   8B83         MOV     DPH,R3
+   \   00006F   E0           MOVX    A,@DPTR
+   \   000070   28           ADD     A,R0
+   \   000071   FA           MOV     R2,A
+   \   000072   A3           INC     DPTR
+   \   000073   E0           MOVX    A,@DPTR
+   \   000074   39           ADDC    A,R1
+   \   000075   FB           MOV     R3,A
+   \                     ??poolAlloc_1:
+   \   000076   02....       LJMP    ?Subroutine3 & 0xFFFF
+    401          }
+    402          
+    403          /** Checks whether an character belongs to set.
+    404            * @param ch Character value to be checked.
+    405            * @param set Set of characters. It is just a null-terminated string.
+    406            * @return true or false there is membership or not. */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    407          static bool isOneOfThem( char ch, char const* set ) {
+   \                     isOneOfThem:
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    408              while( *set != '\0' )
+   \                     ??isOneOfThem_0:
+   \   000004   8A82         MOV     DPL,R2
+   \   000006   8B83         MOV     DPH,R3
+   \   000008   E0           MOVX    A,@DPTR
+   \   000009   6014         JZ      ??isOneOfThem_1
+    409                  if ( ch == *set++ )
+   \   00000B   EA           MOV     A,R2
+   \   00000C   FC           MOV     R4,A
+   \   00000D   EB           MOV     A,R3
+   \   00000E   FD           MOV     R5,A
+   \   00000F   A3           INC     DPTR
+   \   000010   AA82         MOV     R2,DPL
+   \   000012   AB83         MOV     R3,DPH
+   \   000014   8C82         MOV     DPL,R4
+   \   000016   8D83         MOV     DPH,R5
+   \   000018   E0           MOVX    A,@DPTR
+   \   000019   69           XRL     A,R1
+   \   00001A   70E8         JNZ     ??isOneOfThem_0
+    410                      return true;
+   \   00001C   D3           SETB    C
+   \   00001D   8001         SJMP    ??isOneOfThem_2
+    411              return false;
+   \                     ??isOneOfThem_1:
+   \   00001F   C3           CLR     C
+   \                     ??isOneOfThem_2:
+   \   000020                REQUIRE ?Subroutine2
+   \   000020                ; // Fall through to label ?Subroutine2
+    412          }
+    413          
+    414          /** Increases a pointer while it points to a character that belongs to a set.
+    415            * @param str The initial pointer value.
+    416            * @param set Set of characters. It is just a null-terminated string.
+    417            * @return The final pointer value or null pointer if the null character was found. */
+    418          static char* goWhile( char* str, char const* set ) {
+    419              for(; *str != '\0'; ++str ) {
+    420                  if ( !isOneOfThem( *str, set ) )
+    421                      return str;
+    422              }
+    423              return 0;
+    424          }
+    425          
+    426          /** Set of characters that defines a blank. */
+    427          static char const* const blank = " \n\r\t\f";
+    428          
+    429          /** Increases a pointer while it points to a white space character.
+    430            * @param str The initial pointer value.
+    431            * @return The final pointer value or null pointer if the null character was found. */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    432          static char* goBlank( char* str ) {
+   \                     goBlank:
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+    433              return goWhile( str, blank );
+   \   000005   EA           MOV     A,R2
+   \   000006   FE           MOV     R6,A
+   \   000007   EB           MOV     A,R3
+   \   000008   FF           MOV     R7,A
+   \   000009   8009         SJMP    ??goBlank_0
+   \                     ??goBlank_1:
+   \   00000B   8E82         MOV     DPL,R6
+   \   00000D   8F83         MOV     DPH,R7
+   \   00000F   A3           INC     DPTR
+   \   000010   AE82         MOV     R6,DPL
+   \   000012   AF83         MOV     R7,DPH
+   \                     ??goBlank_0:
+   \   000014   8E82         MOV     DPL,R6
+   \   000016   8F83         MOV     DPH,R7
+   \   000018   E0           MOVX    A,@DPTR
+   \   000019   6010         JZ      ??goBlank_2
+   \   00001B                ; Setup parameters for call to function isOneOfThem
+   \   00001B   7A..         MOV     R2,#`?<Constant " \\n\\r\\t\\f">` & 0xff
+   \   00001D   7B..         MOV     R3,#(`?<Constant " \\n\\r\\t\\f">` >> 8) & 0xff
+   \   00001F   F9           MOV     R1,A
+   \   000020   12....       LCALL   ??isOneOfThem?relay
+   \   000023   40E6         JC      ??goBlank_1
+   \   000025   EE           MOV     A,R6
+   \   000026   FA           MOV     R2,A
+   \   000027   EF           MOV     A,R7
+   \   000028   FB           MOV     R3,A
+   \   000029   8004         SJMP    ??goBlank_3
+   \                     ??goBlank_2:
+   \   00002B   7A00         MOV     R2,#0x0
+   \   00002D   7B00         MOV     R3,#0x0
+   \                     ??goBlank_3:
+   \   00002F   80..         SJMP    ?Subroutine3
+    434          }
+    435          
+    436          /** Increases a pointer while it points to a decimal digit character.
+    437            * @param str The initial pointer value.
+    438            * @return The final pointer value or null pointer if the null character was found. */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    439          static char* goNum( char* str ) {
+   \                     goNum:
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+   \   000004   8009         SJMP    ??goNum_0
+    440              for( ; *str != '\0'; ++str ) {
+   \                     ??goNum_1:
+   \   000006   8A82         MOV     DPL,R2
+   \   000008   8B83         MOV     DPH,R3
+   \   00000A   A3           INC     DPTR
+   \   00000B   AA82         MOV     R2,DPL
+   \   00000D   AB83         MOV     R3,DPH
+   \                     ??goNum_0:
+   \   00000F   8A82         MOV     DPL,R2
+   \   000011   8B83         MOV     DPH,R3
+   \   000013   E0           MOVX    A,@DPTR
+   \   000014   6007         JZ      ??goNum_2
+    441                  if ( !isdigit( (int)(*str) ) )
+   \   000016   12....       LCALL   ?Subroutine13 & 0xFFFF
+   \                     ??CrossCallReturnLabel_23:
+   \   000019   40EB         JC      ??goNum_1
+    442                      return str;
+   \   00001B   8004         SJMP    ??goNum_3
+    443              }
+    444              return 0;
+   \                     ??goNum_2:
+   \   00001D   7A00         MOV     R2,#0x0
+   \   00001F   7B00         MOV     R3,#0x0
+   \                     ??goNum_3:
+   \   000021   80..         SJMP    ?Subroutine2
+    445          }
+    446          
+    447          /** Set of characters that defines the end of an array or a JSON object. */
+    448          static char const* const endofblock = "}]";
+    449          
+    450          /** Set a char to '\0' and increase its pointer if the char is different to '}' or ']'.
+    451            * @param ch Pointer to character.
+    452            * @return  Final value pointer. */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    453          static char* setToNull( char* ch ) {
+   \                     setToNull:
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV     A,R2
+   \   000006   FE           MOV     R6,A
+   \   000007   EB           MOV     A,R3
+   \   000008   FF           MOV     R7,A
+    454              if ( !isOneOfThem( *ch, endofblock ) ) *ch++ = '\0';
+   \   000009                ; Setup parameters for call to function isOneOfThem
+   \   000009   7A..         MOV     R2,#`?<Constant "}]">` & 0xff
+   \   00000B   7B..         MOV     R3,#(`?<Constant "}]">` >> 8) & 0xff
+   \   00000D   8E82         MOV     DPL,R6
+   \   00000F   8F83         MOV     DPH,R7
+   \   000011   E0           MOVX    A,@DPTR
+   \   000012   F9           MOV     R1,A
+   \   000013   12....       LCALL   ??isOneOfThem?relay
+   \   000016   400B         JC      ??setToNull_0
+   \   000018   8E82         MOV     DPL,R6
+   \   00001A   8F83         MOV     DPH,R7
+   \   00001C   E4           CLR     A
+   \   00001D   F0           MOVX    @DPTR,A
+   \   00001E   A3           INC     DPTR
+   \   00001F   AE82         MOV     R6,DPL
+   \   000021   AF83         MOV     R7,DPH
+    455              return ch;
+   \                     ??setToNull_0:
+   \   000023   EE           MOV     A,R6
+   \   000024   FA           MOV     R2,A
+   \   000025   EF           MOV     A,R7
+   \   000026   FB           MOV     R3,A
+   \   000027                REQUIRE ?Subroutine3
+   \   000027                ; // Fall through to label ?Subroutine3
+    456          }
+    457          
+    458          /** Indicate if a character is the end of a primitive value. */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    459          static bool isEndOfPrimitive( char ch ) {
+   \                     isEndOfPrimitive:
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+   \   000006   FE           MOV     R6,A
+    460              return ch == ',' || isOneOfThem( ch, blank ) || isOneOfThem( ch, endofblock );
+   \   000007   742C         MOV     A,#0x2c
+   \   000009   6E           XRL     A,R6
+   \   00000A   6016         JZ      ??isEndOfPrimitive_0
+   \   00000C                ; Setup parameters for call to function isOneOfThem
+   \   00000C   7A..         MOV     R2,#`?<Constant " \\n\\r\\t\\f">` & 0xff
+   \   00000E   7B..         MOV     R3,#(`?<Constant " \\n\\r\\t\\f">` >> 8) & 0xff
+   \   000010   12....       LCALL   ??isOneOfThem?relay
+   \   000013   400D         JC      ??isEndOfPrimitive_0
+   \   000015                ; Setup parameters for call to function isOneOfThem
+   \   000015   7A..         MOV     R2,#`?<Constant "}]">` & 0xff
+   \   000017   7B..         MOV     R3,#(`?<Constant "}]">` >> 8) & 0xff
+   \   000019   EE           MOV     A,R6
+   \   00001A   F9           MOV     R1,A
+   \   00001B   12....       LCALL   ??isOneOfThem?relay
+   \   00001E   92F0         MOV     B.0,C
+   \   000020   8002         SJMP    ??isEndOfPrimitive_1
+   \                     ??isEndOfPrimitive_0:
+   \   000022   D2F0         SETB    B.0
+   \                     ??isEndOfPrimitive_1:
+   \   000024   A2F0         MOV     C,B.0
+   \   000026   80..         SJMP    ?Subroutine3
+    461          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine5:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   FA           MOV     R2,A
+   \   000002   74..         MOV     A,#(_Small_Ctype + 1) & 0xff
+   \   000004   2A           ADD     A,R2
+   \   000005   12....       LCALL   ??Subroutine17_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_22:
+   \   000008   22           RET
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??json_getProperty?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    json_getProperty
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??json_getPropertyValue?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    json_getPropertyValue
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??json_createWithPool?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    json_createWithPool
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??json_create?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    json_create
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??parseString?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    parseString
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??primitiveValue?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    primitiveValue
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??numValue?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    numValue
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??objValue?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    objValue
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??poolInit?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    poolInit
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??poolAlloc?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    poolAlloc
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??isOneOfThem?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    isOneOfThem
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??goBlank?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    goBlank
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??goNum?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    goNum
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??setToNull?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    setToNull
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??isEndOfPrimitive?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    isEndOfPrimitive
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant " \\n\\r\\t\\f">`:
+   \   000000   200A0D09     DB " \012\015\t\014"
+   \            0C00    
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "}]">`:
+   \   000000   7D5D00       DB "}]"
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "true">`:
+   \   000000   74727565     DB "true"
+   \            00      
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "false">`:
+   \   000000   66616C73     DB "false"
+   \            6500    
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "null">`:
+   \   000000   6E756C6C     DB "null"
+   \            00      
+
+   Maximum stack usage in bytes:
+
+   ISTACK PSTACK XSTACK Function
+   ------ ------ ------ --------
+       0      0     25  goBlank
+                          0 0  9 -> isOneOfThem
+       2      0     12  goNum
+       0      0     23  isEndOfPrimitive
+                          0 0  9 -> isOneOfThem
+       2      0      9  isOneOfThem
+       2      0     12  json_create
+                          2 0 10 -> json_createWithPool
+       0      0     26  json_createWithPool
+                          0 0 14 -> goBlank
+                          0 0 16 -> objValue
+       0      0     22  json_getProperty
+                          0 0 12 -> strcmp
+       0      0     10  json_getPropertyValue
+                          0 0 10 -> json_getProperty
+       1      0     28  numValue
+                          0 0 12 -> goNum
+                          0 0 12 -> isEndOfPrimitive
+                          0 0 12 -> setToNull
+                          0 0 12 -> strcmp
+       1      0     34  objValue
+                          0 0 16 -> goBlank
+                          0 0 16 -> numValue
+                          0 0 16 -> parseString
+                          0 0 18 -> primitiveValue
+       1      0     25  parseString
+       2      0      9  poolAlloc
+       2      0      0  poolInit
+       1      0     32  primitiveValue
+                          0 0 14 -> isEndOfPrimitive
+                          0 0 14 -> setToNull
+       0      0     23  setToNull
+                          0 0  9 -> isOneOfThem
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       6  ?<Constant " \n\r\t\f">
+       6  ?<Constant "false">
+       5  ?<Constant "null">
+       5  ?<Constant "true">
+       3  ?<Constant "}]">
+       8  ??Subroutine14_0
+      10  ??Subroutine15_0
+       9  ??Subroutine16_0
+      13  ??Subroutine17_0
+       6  ??Subroutine18_0
+       6  ??goBlank?relay
+       6  ??goNum?relay
+       6  ??isEndOfPrimitive?relay
+       6  ??isOneOfThem?relay
+       6  ??json_create?relay
+       6  ??json_createWithPool?relay
+       6  ??json_getProperty?relay
+       6  ??json_getPropertyValue?relay
+       6  ??numValue?relay
+       6  ??objValue?relay
+       6  ??parseString?relay
+       6  ??poolAlloc?relay
+       6  ??poolInit?relay
+       6  ??primitiveValue?relay
+       6  ??setToNull?relay
+       5  ?Subroutine0
+       5  ?Subroutine1
+       1  ?Subroutine10
+       3  ?Subroutine11
+      11  ?Subroutine12
+       4  ?Subroutine13
+       7  ?Subroutine2
+       5  ?Subroutine3
+       5  ?Subroutine4
+       9  ?Subroutine5
+       4  ?Subroutine6
+       2  ?Subroutine7
+       6  ?Subroutine8
+      12  ?Subroutine9
+      49  goBlank
+      35  goNum
+      40  isEndOfPrimitive
+      32  isOneOfThem
+      82  json_create
+     107  json_createWithPool
+      86  json_getProperty
+      62  json_getPropertyValue
+      20  max
+      21  min
+     419  numValue
+     687  objValue
+      16  pair
+     223  parseString
+     121  poolAlloc
+      38  poolInit
+     120  primitiveValue
+      39  setToNull
+
+ 
+ 2 265 bytes in segment BANKED_CODE
+    90 bytes in segment BANK_RELAYS
+    82 bytes in segment XDATA_ROM_C
+ 
+ 2 355 bytes of CODE  memory
+    82 bytes of CONST memory
+
+Errors: none
+Warnings: 1

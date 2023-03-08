@@ -1,0 +1,6 @@
+{
+    "version": 1,
+    "path": "D:\\IAR Embedded Workbench\\",
+    "project": "${workspaceFolder}\\GenericApp.ewp",
+    "config": "Debug"
+}

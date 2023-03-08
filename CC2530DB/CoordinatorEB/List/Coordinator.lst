@@ -1,0 +1,1349 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.20.2.41139 for 8051             25/Feb/2023  22:37:31 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\Source\Coordinator.c                            #
+#    Command line       =  -f D:\Project\ZStack\Projects\zstack\Samples\Gener #
+#                          icApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wCoord.cf #
+#                          g (-DCPU32MHZ -DROOT=__near_func                   #
+#                          -DMAC_CFG_APP_PENDING_QUEUE=TRUE                   #
+#                          -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8         #
+#                          -DMAC_CFG_RX_MAX=5 -DZDO_COORDINATOR -DRTR_NWK)    #
+#                          -f D:\Project\ZStack\Projects\zstack\Samples\Gener #
+#                          icApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.c #
+#                          fg (-DZIGBEEPRO -DSECURE=0 -DZG_SECURE_DYNAMIC=0   #
+#                          -DREFLECTOR -DDEFAULT_CHANLIST=0x00000800          #
+#                          -DZDAPP_CONFIG_PAN_ID=0xFFFF                       #
+#                          -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MA #
+#                          SK=0x007F -DBEACON_REQUEST_DELAY=100               #
+#                          -DBEACON_REQ_DELAY_MASK=0x00FF                     #
+#                          -DLINK_STATUS_JITTER_MASK=0x007F                   #
+#                          -DROUTE_EXPIRY_TIME=30 -DAPSC_ACK_WAIT_DURATION_PO #
+#                          LLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7             #
+#                          -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3    #
+#                          -DNWK_MAX_DATA_RETRIES=2                           #
+#                          -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9         #
+#                          -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40           #
+#                          -DNWK_MAX_BINDING_ENTRIES=4                        #
+#                          -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01,  #
+#                          0x03, 0x05, 0x07, 0x09, 0x0B, 0x0D, 0x0F, 0x00,    #
+#                          0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0D}"         #
+#                          -DMAC_MAX_FRAME_SIZE=116                           #
+#                          -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const     #
+#                          __code" -DGENERIC=__generic                        #
+#                          -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000        #
+#                          -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100)   #
+#                          -DREJOIN_POLL_RATE=440 D:\Project\ZStack\Projects\ #
+#                          zstack\Samples\GenericApp\Source\Coordinator.c -D  #
+#                          MT_TASK -D MT_SYS_FUNC -D MT_ZDO_FUNC -D NV_INIT   #
+#                          -D COOR -lC D:\Project\ZStack\Projects\zstack\Samp #
+#                          les\GenericApp\CC2530DB\CoordinatorEB\List\ -lA    #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\CoordinatorEB\List\ --diag_suppress    #
+#                          Pe001,Pa010 -o D:\Project\ZStack\Projects\zstack\S #
+#                          amples\GenericApp\CC2530DB\CoordinatorEB\Obj\ -e   #
+#                          --no_code_motion --debug --core=plain --dptr=16,1  #
+#                          --data_model=large --code_model=banked             #
+#                          --calling_convention=xdata_reentrant               #
+#                          --place_constants=data_rom --nr_virtual_regs 24    #
+#                          -I D:\Project\ZStack\Projects\zstack\Samples\Gener #
+#                          icApp\CC2530DB\ -I D:\Project\ZStack\Projects\zsta #
+#                          ck\Samples\GenericApp\CC2530DB\..\Source\ -I       #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\ZMain\TI2530DB\ -I            #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\hal\include\ #
+#                           -I D:\Project\ZStack\Projects\zstack\Samples\Gene #
+#                          ricApp\CC2530DB\..\..\..\..\..\Components\hal\targ #
+#                          et\CC2530EB\ -I D:\Project\ZStack\Projects\zstack\ #
+#                          Samples\GenericApp\CC2530DB\..\..\..\..\..\Compone #
+#                          nts\mac\include\ -I D:\Project\ZStack\Projects\zst #
+#                          ack\Samples\GenericApp\CC2530DB\..\..\..\..\..\Com #
+#                          ponents\mac\high_level\ -I                         #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\mac\low_leve #
+#                          l\srf04\ -I D:\Project\ZStack\Projects\zstack\Samp #
+#                          les\GenericApp\CC2530DB\..\..\..\..\..\Components\ #
+#                          mac\low_level\srf04\single_chip\ -I                #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\mt\ -I       #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\osal\include #
+#                          \ -I D:\Project\ZStack\Projects\zstack\Samples\Gen #
+#                          ericApp\CC2530DB\..\..\..\..\..\Components\service #
+#                          s\saddr\ -I D:\Project\ZStack\Projects\zstack\Samp #
+#                          les\GenericApp\CC2530DB\..\..\..\..\..\Components\ #
+#                          services\sdata\ -I D:\Project\ZStack\Projects\zsta #
+#                          ck\Samples\GenericApp\CC2530DB\..\..\..\..\..\Comp #
+#                          onents\stack\af\ -I D:\Project\ZStack\Projects\zst #
+#                          ack\Samples\GenericApp\CC2530DB\..\..\..\..\..\Com #
+#                          ponents\stack\nwk\ -I D:\Project\ZStack\Projects\z #
+#                          stack\Samples\GenericApp\CC2530DB\..\..\..\..\..\C #
+#                          omponents\stack\sapi\ -I                           #
+#                          D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\..\..\..\..\..\Components\stack\sec\   #
+#                          -I D:\Project\ZStack\Projects\zstack\Samples\Gener #
+#                          icApp\CC2530DB\..\..\..\..\..\Components\stack\sys #
+#                          \ -I D:\Project\ZStack\Projects\zstack\Samples\Gen #
+#                          ericApp\CC2530DB\..\..\..\..\..\Components\stack\z #
+#                          do\ -I D:\Project\ZStack\Projects\zstack\Samples\G #
+#                          enericApp\CC2530DB\..\..\..\..\..\Components\zmac\ #
+#                           -I D:\Project\ZStack\Projects\zstack\Samples\Gene #
+#                          ricApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w #
+#                          \ -Ohz                                             #
+#    List file          =  D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\CoordinatorEB\List\Coordinator.lst     #
+#    Object file        =  D:\Project\ZStack\Projects\zstack\Samples\GenericA #
+#                          pp\CC2530DB\CoordinatorEB\Obj\Coordinator.r51      #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+D:\Project\ZStack\Projects\zstack\Samples\GenericApp\Source\Coordinator.c
+      1          #ifdef COOR
+      2          #include "Coordinator.h"
+      3          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+      4          int CoordProcessMsg(afIncomingMSGPacket_t *pkt)
+   \                     CoordProcessMsg:
+      5          {
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 501
+   \   000005   75820B       MOV     DPL,#0xb
+   \   000008   7583FE       MOV     DPH,#-0x2
+   \   00000B   12....       LCALL   ?ADD_XSTACK_DISP0_16
+      6              char backupData[DATA_LENGTH];
+      7              osal_memcpy(backupData, pkt->cmd.Data, DATA_LENGTH);
+   \   00000E                ; Setup parameters for call to function osal_memcpy
+   \   00000E   EA           MOV     A,R2
+   \   00000F   2422         ADD     A,#0x22
+   \   000011   F582         MOV     DPL,A
+   \   000013   EB           MOV     A,R3
+   \   000014   3400         ADDC    A,#0x0
+   \   000016   F583         MOV     DPH,A
+   \   000018   12....       LCALL   ?Subroutine4 & 0xFFFF
+   \                     ??CrossCallReturnLabel_0:
+   \   00001B   12....       LCALL   ?PUSH_XSTACK_I_THREE
+   \   00001E   7C32         MOV     R4,#0x32
+   \   000020   7D00         MOV     R5,#0x0
+   \   000022   7582C6       MOV     DPL,#-0x3a
+   \   000025   758301       MOV     DPH,#0x1
+   \   000028   12....       LCALL   ?XSTACK_DISP0_16
+   \   00002B   AA82         MOV     R2,DPL
+   \   00002D   AB83         MOV     R3,DPH
+   \   00002F   12....       LCALL   ??osal_memcpy?relay
+   \   000032   7403         MOV     A,#0x3
+   \   000034   12....       LCALL   ?DEALLOC_XSTACK8
+      8              json_t mem[DATA_LENGTH];
+      9              json_t const *json = json_create(backupData, mem, DATA_LENGTH);
+   \   000037                ; Setup parameters for call to function json_create
+   \   000037   75..32       MOV     ?V0 + 0,#0x32
+   \   00003A   75..00       MOV     ?V0 + 1,#0x0
+   \   00003D   78..         MOV     R0,#?V0 + 0
+   \   00003F   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000042   7403         MOV     A,#0x3
+   \   000044   12....       LCALL   ?XSTACK_DISP0_8
+   \   000047   AC82         MOV     R4,DPL
+   \   000049   AD83         MOV     R5,DPH
+   \   00004B   7582C5       MOV     DPL,#-0x3b
+   \   00004E   758301       MOV     DPH,#0x1
+   \   000051   12....       LCALL   ?XSTACK_DISP0_16
+   \   000054   AA82         MOV     R2,DPL
+   \   000056   AB83         MOV     R3,DPH
+   \   000058   12....       LCALL   ??json_create?relay
+   \   00005B   7402         MOV     A,#0x2
+   \   00005D   12....       LCALL   ?DEALLOC_XSTACK8
+     10              if (!json)
+   \   000060   EA           MOV     A,R2
+   \   000061   4B           ORL     A,R3
+   \   000062   7009         JNZ     ??CoordProcessMsg_0
+     11              {
+     12                  exceptionHandler("EndDeviceProcessMsg");
+   \   000064                ; Setup parameters for call to function exceptionHandler
+   \   000064   7A..         MOV     R2,#`?<Constant "EndDeviceProcessMsg">` & 0xff
+   \   000066   7B..         MOV     R3,#(`?<Constant "EndDeviceProcessMsg">` >> 8) & 0xff
+   \   000068   12....       LCALL   ??exceptionHandler?relay
+   \   00006B   802B         SJMP    ??CoordProcessMsg_1
+     13                  return 0;
+     14              }
+     15              json_t const *id = json_getProperty(json, "ID");
+   \                     ??CoordProcessMsg_0:
+   \   00006D                ; Setup parameters for call to function json_getProperty
+   \   00006D   7C..         MOV     R4,#`?<Constant "ID">` & 0xff
+   \   00006F   7D..         MOV     R5,#(`?<Constant "ID">` >> 8) & 0xff
+   \   000071   12....       LCALL   ??json_getProperty?relay
+     16              if (!id)
+   \   000074   EA           MOV     A,R2
+   \   000075   4B           ORL     A,R3
+   \   000076   6020         JZ      ??CoordProcessMsg_1
+     17              {
+     18                  return 0;
+     19              }
+     20              const uint8 idValue = (uint8)json_getInteger(id);
+   \   000078                ; Setup parameters for call to function strtol
+   \   000078   75..0A       MOV     ?V0 + 0,#0xa
+   \   00007B   78..         MOV     R0,#?V0 + 0
+   \   00007D   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000080   12....       LCALL   ?Subroutine7 & 0xFFFF
+   \                     ??CrossCallReturnLabel_7:
+   \   000083   12....       LCALL   ??strtol?relay
+   \   000086   7402         MOV     A,#0x2
+   \   000088   12....       LCALL   ?DEALLOC_XSTACK8
+   \   00008B   12....       LCALL   ?Subroutine8 & 0xFFFF
+     21          
+     22              if (seachDevice((uint8 *)&idValue, NULL) == NULL)
+   \                     ??CrossCallReturnLabel_11:
+   \   00008E   12....       LCALL   ??seachDevice?relay
+   \   000091   8B..         MOV     ?V0 + 1,R3
+   \   000093   EA           MOV     A,R2
+   \   000094   45..         ORL     A,?V0 + 1
+   \   000096   7004         JNZ     ??CoordProcessMsg_2
+     23              {
+     24                  return 0;
+   \                     ??CoordProcessMsg_1:
+   \   000098   7A00         MOV     R2,#0x0
+   \   00009A   8002         SJMP    ??CoordProcessMsg_3
+     25              }
+     26              return 1;
+   \                     ??CoordProcessMsg_2:
+   \   00009C   7A01         MOV     R2,#0x1
+   \                     ??CoordProcessMsg_3:
+   \   00009E   7B00         MOV     R3,#0x0
+   \   0000A0   7582F5       MOV     DPL,#-0xb
+   \   0000A3   758301       MOV     DPH,#0x1
+   \   0000A6   12....       LCALL   ?ADD_XSTACK_DISP0_16
+   \   0000A9                REQUIRE ?Subroutine0
+   \   0000A9                ; // Fall through to label ?Subroutine0
+     27          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   7F04         MOV     R7,#0x4
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine4:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   F5..         MOV     ?V0 + 0,A
+   \   000003   A3           INC     DPTR
+   \   000004   E0           MOVX    A,@DPTR
+   \   000005   F5..         MOV     ?V0 + 1,A
+   \   000007   75..00       MOV     ?V0 + 2,#0x0
+   \   00000A   78..         MOV     R0,#?V0 + 0
+   \   00000C   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine8:
+   \   000000   85..82       MOV     DPL,?XSP + 0
+   \   000003   85..83       MOV     DPH,?XSP + 1
+   \   000006   EA           MOV     A,R2
+   \   000007   F0           MOVX    @DPTR,A
+   \   000008                ; Setup parameters for call to function seachDevice
+   \   000008                ; Setup parameters for call to function seachDevice
+   \   000008   7C00         MOV     R4,#0x0
+   \   00000A   7D00         MOV     R5,#0x0
+   \   00000C   AA82         MOV     R2,DPL
+   \   00000E   AB83         MOV     R3,DPH
+   \   000010   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine7:
+   \   000000   7C00         MOV     R4,#0x0
+   \   000002   7D00         MOV     R5,#0x0
+   \   000004   8A82         MOV     DPL,R2
+   \   000006   8B83         MOV     DPH,R3
+   \   000008   A3           INC     DPTR
+   \   000009   A3           INC     DPTR
+   \   00000A   A3           INC     DPTR
+   \   00000B   A3           INC     DPTR
+   \   00000C   E0           MOVX    A,@DPTR
+   \   00000D   FA           MOV     R2,A
+   \   00000E   A3           INC     DPTR
+   \   00000F   E0           MOVX    A,@DPTR
+   \   000010   FB           MOV     R3,A
+   \   000011   22           RET
+     28          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     29          void coorProcessRecvAddr(afIncomingMSGPacket_t *pkt)
+   \                     coorProcessRecvAddr:
+     30          {
+   \   000000   74F5         MOV     A,#-0xb
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 11
+   \   000005                ; Auto size: 8
+   \   000005   74F8         MOV     A,#-0x8
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+     31              uint8 rcvExtAddr[8];
+     32              uint16 rcvShortAddr;
+     33              struct deviceNode *ptr;
+     34              osal_memcpy(rcvExtAddr, pkt->cmd.Data, 8);
+   \   00000A   EA           MOV     A,R2
+   \   00000B   2422         ADD     A,#0x22
+   \   00000D   F8           MOV     R0,A
+   \   00000E   EB           MOV     A,R3
+   \   00000F   3400         ADDC    A,#0x0
+   \   000011   F9           MOV     R1,A
+   \   000012   E8           MOV     A,R0
+   \   000013   FE           MOV     R6,A
+   \   000014   E9           MOV     A,R1
+   \   000015   FF           MOV     R7,A
+   \   000016                ; Setup parameters for call to function osal_memcpy
+   \   000016   8E82         MOV     DPL,R6
+   \   000018   8F83         MOV     DPH,R7
+   \   00001A   12....       LCALL   ?Subroutine4 & 0xFFFF
+   \                     ??CrossCallReturnLabel_1:
+   \   00001D   12....       LCALL   ?PUSH_XSTACK_I_THREE
+   \   000020   7C08         MOV     R4,#0x8
+   \   000022   7D00         MOV     R5,#0x0
+   \   000024   7403         MOV     A,#0x3
+   \   000026   12....       LCALL   ?XSTACK_DISP0_8
+   \   000029   AA82         MOV     R2,DPL
+   \   00002B   AB83         MOV     R3,DPH
+   \   00002D   12....       LCALL   ??osal_memcpy?relay
+   \   000030   7403         MOV     A,#0x3
+   \   000032   12....       LCALL   ?DEALLOC_XSTACK8
+     35              rcvShortAddr = (pkt->cmd.Data[9] << 8) | pkt->cmd.Data[8];
+   \   000035   8E82         MOV     DPL,R6
+   \   000037   8F83         MOV     DPH,R7
+   \   000039   E0           MOVX    A,@DPTR
+   \   00003A   F8           MOV     R0,A
+   \   00003B   A3           INC     DPTR
+   \   00003C   E0           MOVX    A,@DPTR
+   \   00003D   F9           MOV     R1,A
+   \   00003E   8882         MOV     DPL,R0
+   \   000040   8983         MOV     DPH,R1
+   \   000042   A3           INC     DPTR
+   \   000043   A3           INC     DPTR
+   \   000044   A3           INC     DPTR
+   \   000045   A3           INC     DPTR
+   \   000046   A3           INC     DPTR
+   \   000047   A3           INC     DPTR
+   \   000048   A3           INC     DPTR
+   \   000049   A3           INC     DPTR
+   \   00004A   A3           INC     DPTR
+   \   00004B   E0           MOVX    A,@DPTR
+   \   00004C   FA           MOV     R2,A
+   \   00004D   E4           CLR     A
+   \   00004E   CA           XCH     A,R2
+   \   00004F   FB           MOV     R3,A
+   \   000050   8882         MOV     DPL,R0
+   \   000052   8983         MOV     DPH,R1
+   \   000054   A3           INC     DPTR
+   \   000055   A3           INC     DPTR
+   \   000056   A3           INC     DPTR
+   \   000057   A3           INC     DPTR
+   \   000058   A3           INC     DPTR
+   \   000059   A3           INC     DPTR
+   \   00005A   A3           INC     DPTR
+   \   00005B   A3           INC     DPTR
+   \   00005C   E0           MOVX    A,@DPTR
+   \   00005D   FE           MOV     R6,A
+   \   00005E   EB           MOV     A,R3
+   \   00005F   FF           MOV     R7,A
+     36              ptr = seachDevice(NULL, rcvExtAddr);
+   \   000060                ; Setup parameters for call to function seachDevice
+   \   000060   85..82       MOV     DPL,?XSP + 0
+   \   000063   85..83       MOV     DPH,?XSP + 1
+   \   000066   AC82         MOV     R4,DPL
+   \   000068   AD83         MOV     R5,DPH
+   \   00006A   7B00         MOV     R3,#0x0
+   \   00006C   12....       LCALL   ??seachDevice?relay
+   \   00006F   8A82         MOV     DPL,R2
+   \   000071   8B83         MOV     DPH,R3
+     37              if (ptr == NULL)
+   \   000073   E582         MOV     A,DPL
+   \   000075   4583         ORL     A,DPH
+   \   000077   7009         JNZ     ??coorProcessRecvAddr_0
+     38              {
+     39                  exceptionHandler("processRecvAddr");
+   \   000079                ; Setup parameters for call to function exceptionHandler
+   \   000079   7A..         MOV     R2,#`?<Constant "processRecvAddr">` & 0xff
+   \   00007B   7B..         MOV     R3,#(`?<Constant "processRecvAddr">` >> 8) & 0xff
+   \   00007D   12....       LCALL   ??exceptionHandler?relay
+     40                  return;
+   \   000080   800D         SJMP    ??coorProcessRecvAddr_1
+     41              }
+     42              // HalUARTWrite(SERIAL_APP_PORT, (uint8 *)&rcvShortAddr, 2);
+     43              ptr->device.shortAddr = rcvShortAddr;
+   \                     ??coorProcessRecvAddr_0:
+   \   000082   A3           INC     DPTR
+   \   000083   A3           INC     DPTR
+   \   000084   A3           INC     DPTR
+   \   000085   A3           INC     DPTR
+   \   000086   A3           INC     DPTR
+   \   000087   A3           INC     DPTR
+   \   000088   A3           INC     DPTR
+   \   000089   A3           INC     DPTR
+   \   00008A   EE           MOV     A,R6
+   \   00008B   F0           MOVX    @DPTR,A
+   \   00008C   A3           INC     DPTR
+   \   00008D   EF           MOV     A,R7
+   \   00008E   F0           MOVX    @DPTR,A
+     44          }
+   \                     ??coorProcessRecvAddr_1:
+   \   00008F   7408         MOV     A,#0x8
+   \   000091                REQUIRE ?Subroutine1
+   \   000091                ; // Fall through to label ?Subroutine1
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   12....       LCALL   ?DEALLOC_XSTACK8
+   \   000003   7F03         MOV     R7,#0x3
+   \   000005   02....       LJMP    ?BANKED_LEAVE_XDATA
+     45          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     46          void requestDeviceNwkId(uint8 *ieeeAddr, uint8 id)
+   \                     requestDeviceNwkId:
+     47          {
+   \   000000   74F5         MOV     A,#-0xb
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 11
+   \   000005                ; Auto size: 21
+   \   000005   74EB         MOV     A,#-0x15
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+   \   00000A   E9           MOV     A,R1
+   \   00000B   FE           MOV     R6,A
+     48              afStatus_t status;
+     49              afAddrType_t dstAddr;
+     50              uint8 payload[9];
+     51              osal_memcpy(payload, ieeeAddr, 8);
+   \   00000C                ; Setup parameters for call to function osal_memcpy
+   \   00000C   8A..         MOV     ?V0 + 0,R2
+   \   00000E   8B..         MOV     ?V0 + 1,R3
+   \   000010   75..00       MOV     ?V0 + 2,#0x0
+   \   000013   78..         MOV     R0,#?V0 + 0
+   \   000015   12....       LCALL   ?PUSH_XSTACK_I_THREE
+   \   000018   7C08         MOV     R4,#0x8
+   \   00001A   7D00         MOV     R5,#0x0
+   \   00001C   7403         MOV     A,#0x3
+   \   00001E   12....       LCALL   ?XSTACK_DISP0_8
+   \   000021   AA82         MOV     R2,DPL
+   \   000023   AB83         MOV     R3,DPH
+   \   000025   12....       LCALL   ??osal_memcpy?relay
+   \   000028   7403         MOV     A,#0x3
+   \   00002A   12....       LCALL   ?DEALLOC_XSTACK8
+     52              payload[8] = id;
+   \   00002D   7408         MOV     A,#0x8
+   \   00002F   12....       LCALL   ?XSTACK_DISP0_8
+   \   000032   EE           MOV     A,R6
+   \   000033   F0           MOVX    @DPTR,A
+     53              dstAddr.addrMode = AddrBroadcast;
+                                      ^
+Warning[Pe188]: enumerated type mixed with another type
+   \   000034   7411         MOV     A,#0x11
+   \   000036   12....       LCALL   ?XSTACK_DISP0_8
+   \   000039   740F         MOV     A,#0xf
+   \   00003B   F0           MOVX    @DPTR,A
+     54              dstAddr.endPoint = GENERICAPP_ENDPOINT;
+   \   00003C   7412         MOV     A,#0x12
+   \   00003E   12....       LCALL   ?XSTACK_DISP0_8
+   \   000041   740A         MOV     A,#0xa
+   \   000043   F0           MOVX    @DPTR,A
+     55              dstAddr.addr.shortAddr = NWK_BROADCAST_SHORTADDR_DEVALL;
+   \   000044   14           DEC     A
+   \   000045   12....       LCALL   ?XSTACK_DISP0_8
+   \   000048   74FF         MOV     A,#-0x1
+   \   00004A   F0           MOVX    @DPTR,A
+   \   00004B   A3           INC     DPTR
+   \   00004C   F0           MOVX    @DPTR,A
+     56          
+     57              status = GenericApp_SendTheMessage(&dstAddr, NWK_addr_req, payload, 9);
+     58              if (status != ZSuccess)
+   \   00004D                ; Setup parameters for call to function GenericApp_SendTheMessage
+   \   00004D   75..09       MOV     ?V0 + 0,#0x9
+   \   000050   75..00       MOV     ?V0 + 1,#0x0
+   \   000053   78..         MOV     R0,#?V0 + 0
+   \   000055   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000058   7402         MOV     A,#0x2
+   \   00005A   12....       LCALL   ?XSTACK_DISP0_8
+   \   00005D   8582..       MOV     ?V0 + 0,DPL
+   \   000060   8583..       MOV     ?V0 + 1,DPH
+   \   000063   78..         MOV     R0,#?V0 + 0
+   \   000065   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000068   7C00         MOV     R4,#0x0
+   \   00006A   7D00         MOV     R5,#0x0
+   \   00006C   740D         MOV     A,#0xd
+   \   00006E   12....       LCALL   ?XSTACK_DISP0_8
+   \   000071   AA82         MOV     R2,DPL
+   \   000073   AB83         MOV     R3,DPH
+   \   000075   12....       LCALL   ??GenericApp_SendTheMessage?relay
+   \   000078   7404         MOV     A,#0x4
+   \   00007A   12....       LCALL   ?DEALLOC_XSTACK8
+   \   00007D   E9           MOV     A,R1
+   \   00007E   6007         JZ      ??requestDeviceNwkId_0
+     59              {
+     60                  exceptionHandler("requestDeviceNwkId");
+   \   000080                ; Setup parameters for call to function exceptionHandler
+   \   000080   7A..         MOV     R2,#`?<Constant "requestDeviceNwkId">` & 0xff
+   \   000082   7B..         MOV     R3,#(`?<Constant "requestDeviceNwkId">` >> 8) & 0xff
+   \   000084   12....       LCALL   ??exceptionHandler?relay
+     61              }
+     62              return;
+   \                     ??requestDeviceNwkId_0:
+   \   000087   7415         MOV     A,#0x15
+   \   000089   02....       LJMP    ?Subroutine1 & 0xFFFF
+     63          }
+     64          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     65          struct deviceNode *seachDevice(uint8 *id, uint8 *ieeeAddr)
+   \                     seachDevice:
+     66          {
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+   \   000005   8A..         MOV     ?V0 + 2,R2
+   \   000007   8B..         MOV     ?V0 + 3,R3
+   \   000009   EC           MOV     A,R4
+   \   00000A   FE           MOV     R6,A
+   \   00000B   ED           MOV     A,R5
+   \   00000C   FF           MOV     R7,A
+     67              struct deviceNode *ptr = firstDevice;
+   \   00000D   90....       MOV     DPTR,#firstDevice
+   \   000010   12....       LCALL   ?Subroutine5 & 0xFFFF
+     68              if (firstDevice == NULL)
+   \                     ??CrossCallReturnLabel_2:
+   \   000013   90....       MOV     DPTR,#firstDevice
+   \   000016   12....       LCALL   ??Subroutine9_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_13:
+   \   000019   7011         JNZ     ??CrossCallReturnLabel_3
+   \   00001B   8042         SJMP    ??seachDevice_0
+     69              {
+     70                  return NULL;
+     71              }
+     72              while (ptr != NULL)
+     73              {
+     74                  if (id != NULL && ieeeAddr == NULL && ptr->device.id == *id)
+     75                  {
+     76                      return ptr;
+     77                  }
+     78                  if (id == NULL && ieeeAddr != NULL && osal_ExtAddrEqual(ieeeAddr, ptr->device.extAddr))
+     79                  {
+     80                      return ptr;
+     81                  }
+     82                  if (ptr->next == NULL)
+     83                  {
+     84                      break;
+     85                  }
+     86                  ptr = ptr->next;
+   \                     ??seachDevice_1:
+   \   00001D   E5..         MOV     A,?V0 + 0
+   \   00001F   240B         ADD     A,#0xb
+   \   000021   F582         MOV     DPL,A
+   \   000023   E5..         MOV     A,?V0 + 1
+   \   000025   3400         ADDC    A,#0x0
+   \   000027   F583         MOV     DPH,A
+   \   000029   12....       LCALL   ?Subroutine5 & 0xFFFF
+   \                     ??CrossCallReturnLabel_3:
+   \   00002C   E5..         MOV     A,?V0 + 2
+   \   00002E   45..         ORL     A,?V0 + 3
+   \   000030   6034         JZ      ??seachDevice_2
+   \   000032   EE           MOV     A,R6
+   \   000033   4F           ORL     A,R7
+   \   000034   701C         JNZ     ??seachDevice_3
+   \   000036   85..82       MOV     DPL,?V0 + 0
+   \   000039   85..83       MOV     DPH,?V0 + 1
+   \   00003C   A3           INC     DPTR
+   \   00003D   A3           INC     DPTR
+   \   00003E   A3           INC     DPTR
+   \   00003F   A3           INC     DPTR
+   \   000040   A3           INC     DPTR
+   \   000041   A3           INC     DPTR
+   \   000042   A3           INC     DPTR
+   \   000043   A3           INC     DPTR
+   \   000044   A3           INC     DPTR
+   \   000045   A3           INC     DPTR
+   \   000046   E0           MOVX    A,@DPTR
+   \   000047   F8           MOV     R0,A
+   \   000048   85..82       MOV     DPL,?V0 + 2
+   \   00004B   85..83       MOV     DPH,?V0 + 3
+   \   00004E   E0           MOVX    A,@DPTR
+   \   00004F   68           XRL     A,R0
+   \   000050   6026         JZ      ??seachDevice_4
+   \                     ??seachDevice_3:
+   \   000052   E5..         MOV     A,?V0 + 0
+   \   000054   240B         ADD     A,#0xb
+   \   000056   F582         MOV     DPL,A
+   \   000058   E5..         MOV     A,?V0 + 1
+   \   00005A   12....       LCALL   ?Subroutine3 & 0xFFFF
+   \                     ??CrossCallReturnLabel_15:
+   \   00005D   70BE         JNZ     ??seachDevice_1
+     87              }
+     88              return NULL;
+   \                     ??seachDevice_0:
+   \   00005F   7A00         MOV     R2,#0x0
+   \   000061   7B00         MOV     R3,#0x0
+   \                     ??seachDevice_5:
+   \   000063   02....       LJMP    ?Subroutine0 & 0xFFFF
+   \                     ??seachDevice_2:
+   \   000066   EE           MOV     A,R6
+   \   000067   4F           ORL     A,R7
+   \   000068   60E8         JZ      ??seachDevice_3
+   \   00006A                ; Setup parameters for call to function sAddrExtCmp
+   \   00006A   AC..         MOV     R4,?V0 + 0
+   \   00006C   AD..         MOV     R5,?V0 + 1
+   \   00006E   EE           MOV     A,R6
+   \   00006F   FA           MOV     R2,A
+   \   000070   EF           MOV     A,R7
+   \   000071   FB           MOV     R3,A
+   \   000072   12....       LCALL   ??sAddrExtCmp?relay
+   \   000075   E9           MOV     A,R1
+   \   000076   60DA         JZ      ??seachDevice_3
+   \                     ??seachDevice_4:
+   \   000078   AA..         MOV     R2,?V0 + 0
+   \   00007A   AB..         MOV     R3,?V0 + 1
+   \   00007C   80E5         SJMP    ??seachDevice_5
+     89          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine5:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   F5..         MOV     ?V0 + 0,A
+   \   000003   A3           INC     DPTR
+   \   000004   E0           MOVX    A,@DPTR
+   \   000005   F5..         MOV     ?V0 + 1,A
+   \   000007   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine3:
+   \   000000   3400         ADDC    A,#0x0
+   \   000002   F583         MOV     DPH,A
+   \   000004                REQUIRE ??Subroutine9_0
+   \   000004                ; // Fall through to label ??Subroutine9_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine9_0:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   F8           MOV     R0,A
+   \   000002   A3           INC     DPTR
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   F9           MOV     R1,A
+   \   000005   E8           MOV     A,R0
+   \   000006   49           ORL     A,R1
+   \   000007   22           RET
+     90          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     91          void coordProcessType0(json_t const *json)
+   \                     coordProcessType0:
+     92          {
+   \   000000   74F0         MOV     A,#-0x10
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 16
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV     A,R2
+   \   000006   FE           MOV     R6,A
+   \   000007   EB           MOV     A,R3
+   \   000008   FF           MOV     R7,A
+     93              json_t const *extAddr = json_getProperty(json, "EX");
+   \   000009                ; Setup parameters for call to function json_getProperty
+   \   000009   7C..         MOV     R4,#`?<Constant "EX">` & 0xff
+   \   00000B   7D..         MOV     R5,#(`?<Constant "EX">` >> 8) & 0xff
+   \   00000D   12....       LCALL   ??json_getProperty?relay
+   \   000010   8A..         MOV     ?V0 + 0,R2
+   \   000012   8B..         MOV     ?V0 + 1,R3
+     94              json_t const *id = json_getProperty(json, "ID");
+   \   000014                ; Setup parameters for call to function json_getProperty
+   \   000014   7C..         MOV     R4,#`?<Constant "ID">` & 0xff
+   \   000016   7D..         MOV     R5,#(`?<Constant "ID">` >> 8) & 0xff
+   \   000018   EE           MOV     A,R6
+   \   000019   FA           MOV     R2,A
+   \   00001A   EF           MOV     A,R7
+   \   00001B   FB           MOV     R3,A
+   \   00001C   12....       LCALL   ??json_getProperty?relay
+     95          
+     96              if (!id)
+   \   00001F   EA           MOV     A,R2
+   \   000020   4B           ORL     A,R3
+   \   000021   6006         JZ      ??coordProcessType0_0
+     97              {
+     98                  exceptionHandler("coordProcessType0");
+     99                  return;
+    100              }
+    101          
+    102              if (!extAddr)
+   \   000023   E5..         MOV     A,?V0 + 0
+   \   000025   45..         ORL     A,?V0 + 1
+   \   000027   700A         JNZ     ??coordProcessType0_1
+    103              {
+    104                  exceptionHandler("coordProcessType0");
+   \                     ??coordProcessType0_0:
+   \   000029                ; Setup parameters for call to function exceptionHandler
+   \   000029   7A..         MOV     R2,#`?<Constant "coordProcessType0">` & 0xff
+   \   00002B   7B..         MOV     R3,#(`?<Constant "coordProcessType0">` >> 8) & 0xff
+   \   00002D   12....       LCALL   ??exceptionHandler?relay
+    105                  return;
+   \   000030   02....       LJMP    ??coordProcessType0_2 & 0xFFFF
+    106              }
+    107          
+    108              const char *extAddrValue = json_getValue(extAddr);
+   \                     ??coordProcessType0_1:
+   \   000033   85..82       MOV     DPL,?V0 + 0
+   \   000036   85..83       MOV     DPH,?V0 + 1
+   \   000039   A3           INC     DPTR
+   \   00003A   A3           INC     DPTR
+   \   00003B   A3           INC     DPTR
+   \   00003C   A3           INC     DPTR
+   \   00003D   12....       LCALL   ?Subroutine5 & 0xFFFF
+    109              const uint8 idValue = (uint8)json_getInteger(id);
+   \                     ??CrossCallReturnLabel_4:
+   \   000040                ; Setup parameters for call to function strtol
+   \   000040   75..0A       MOV     ?V0 + 2,#0xa
+   \   000043   75..00       MOV     ?V0 + 3,#0x0
+   \   000046   78..         MOV     R0,#?V0 + 2
+   \   000048   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00004B   12....       LCALL   ?Subroutine7 & 0xFFFF
+   \                     ??CrossCallReturnLabel_8:
+   \   00004E   12....       LCALL   ??strtol?relay
+   \   000051   7402         MOV     A,#0x2
+   \   000053   12....       LCALL   ?DEALLOC_XSTACK8
+   \   000056   8A..         MOV     ?V0 + 4,R2
+    110              struct deviceNode *ptr = firstDevice;
+   \   000058   90....       MOV     DPTR,#firstDevice
+   \   00005B   E0           MOVX    A,@DPTR
+   \   00005C   F5..         MOV     ?V0 + 2,A
+   \   00005E   A3           INC     DPTR
+   \   00005F   E0           MOVX    A,@DPTR
+   \   000060   F5..         MOV     ?V0 + 3,A
+    111              while (ptr != NULL)
+   \   000062   E5..         MOV     A,?V0 + 2
+   \   000064   45..         ORL     A,?V0 + 3
+   \   000066   604D         JZ      ??coordProcessType0_3
+   \   000068   800A         SJMP    ??coordProcessType0_4
+    112              {
+    113                  if (idValue == ptr->device.id)
+    114                  {
+    115                      ptr->device.id = idValue;
+    116                      convertHexToArray(extAddrValue, (char *)ptr->device.extAddr);
+    117                      return;
+    118                  }
+    119                  if (ptr->next == NULL)
+    120                  {
+    121                      break;
+    122                  }
+    123                  ptr = ptr->next;
+   \                     ??coordProcessType0_5:
+   \   00006A   12....       LCALL   ?Subroutine6 & 0xFFFF
+   \                     ??CrossCallReturnLabel_5:
+   \   00006D   E0           MOVX    A,@DPTR
+   \   00006E   F5..         MOV     ?V0 + 2,A
+   \   000070   A3           INC     DPTR
+   \   000071   E0           MOVX    A,@DPTR
+   \   000072   F5..         MOV     ?V0 + 3,A
+   \                     ??coordProcessType0_4:
+   \   000074   85..82       MOV     DPL,?V0 + 2
+   \   000077   85..83       MOV     DPH,?V0 + 3
+   \   00007A   A3           INC     DPTR
+   \   00007B   A3           INC     DPTR
+   \   00007C   A3           INC     DPTR
+   \   00007D   A3           INC     DPTR
+   \   00007E   A3           INC     DPTR
+   \   00007F   A3           INC     DPTR
+   \   000080   A3           INC     DPTR
+   \   000081   A3           INC     DPTR
+   \   000082   A3           INC     DPTR
+   \   000083   A3           INC     DPTR
+   \   000084   E0           MOVX    A,@DPTR
+   \   000085   65..         XRL     A,?V0 + 4
+   \   000087   701F         JNZ     ??coordProcessType0_6
+   \   000089   85..82       MOV     DPL,?V0 + 2
+   \   00008C   85..83       MOV     DPH,?V0 + 3
+   \   00008F   A3           INC     DPTR
+   \   000090   A3           INC     DPTR
+   \   000091   A3           INC     DPTR
+   \   000092   A3           INC     DPTR
+   \   000093   A3           INC     DPTR
+   \   000094   A3           INC     DPTR
+   \   000095   A3           INC     DPTR
+   \   000096   A3           INC     DPTR
+   \   000097   A3           INC     DPTR
+   \   000098   A3           INC     DPTR
+   \   000099   EA           MOV     A,R2
+   \   00009A   F0           MOVX    @DPTR,A
+   \   00009B                ; Setup parameters for call to function convertHexToArray
+   \   00009B   AC..         MOV     R4,?V0 + 2
+   \   00009D   AD..         MOV     R5,?V0 + 3
+   \   00009F   AA..         MOV     R2,?V0 + 0
+   \   0000A1   AB..         MOV     R3,?V0 + 1
+   \   0000A3   12....       LCALL   ??convertHexToArray?relay
+   \   0000A6   8064         SJMP    ??coordProcessType0_2
+   \                     ??coordProcessType0_6:
+   \   0000A8   E5..         MOV     A,?V0 + 2
+   \   0000AA   240B         ADD     A,#0xb
+   \   0000AC   F582         MOV     DPL,A
+   \   0000AE   E5..         MOV     A,?V0 + 3
+   \   0000B0   12....       LCALL   ?Subroutine3 & 0xFFFF
+    124              }
+   \                     ??CrossCallReturnLabel_16:
+   \   0000B3   70B5         JNZ     ??coordProcessType0_5
+    125              struct deviceNode *device = osal_mem_alloc(sizeof(struct deviceNode));
+   \                     ??coordProcessType0_3:
+   \   0000B5                ; Setup parameters for call to function osal_mem_alloc
+   \   0000B5   7A0D         MOV     R2,#0xd
+   \   0000B7   7B00         MOV     R3,#0x0
+   \   0000B9   12....       LCALL   ??osal_mem_alloc?relay
+   \   0000BC   8A..         MOV     ?V0 + 6,R2
+   \   0000BE   8B..         MOV     ?V0 + 7,R3
+   \   0000C0   AE..         MOV     R6,?V0 + 6
+   \   0000C2   AF..         MOV     R7,?V0 + 7
+    126              convertHexToArray(extAddrValue, (char *)device->device.extAddr);
+   \   0000C4                ; Setup parameters for call to function convertHexToArray
+   \   0000C4   EE           MOV     A,R6
+   \   0000C5   FC           MOV     R4,A
+   \   0000C6   EF           MOV     A,R7
+   \   0000C7   FD           MOV     R5,A
+   \   0000C8   AA..         MOV     R2,?V0 + 0
+   \   0000CA   AB..         MOV     R3,?V0 + 1
+   \   0000CC   12....       LCALL   ??convertHexToArray?relay
+    127              device->device.id = idValue;
+   \   0000CF   8E82         MOV     DPL,R6
+   \   0000D1   8F83         MOV     DPH,R7
+   \   0000D3   A3           INC     DPTR
+   \   0000D4   A3           INC     DPTR
+   \   0000D5   A3           INC     DPTR
+   \   0000D6   A3           INC     DPTR
+   \   0000D7   A3           INC     DPTR
+   \   0000D8   A3           INC     DPTR
+   \   0000D9   A3           INC     DPTR
+   \   0000DA   A3           INC     DPTR
+   \   0000DB   A3           INC     DPTR
+   \   0000DC   A3           INC     DPTR
+   \   0000DD   E5..         MOV     A,?V0 + 4
+   \   0000DF   F0           MOVX    @DPTR,A
+    128              device->next = NULL;
+   \   0000E0   EE           MOV     A,R6
+   \   0000E1   240B         ADD     A,#0xb
+   \   0000E3   F582         MOV     DPL,A
+   \   0000E5   EF           MOV     A,R7
+   \   0000E6   3400         ADDC    A,#0x0
+   \   0000E8   F583         MOV     DPH,A
+   \   0000EA   E4           CLR     A
+   \   0000EB   F0           MOVX    @DPTR,A
+   \   0000EC   A3           INC     DPTR
+   \   0000ED   F0           MOVX    @DPTR,A
+    129          
+    130              requestDeviceNwkId((uint8 *)device->device.extAddr, idValue);
+   \   0000EE                ; Setup parameters for call to function requestDeviceNwkId
+   \   0000EE   A9..         MOV     R1,?V0 + 4
+   \   0000F0   EE           MOV     A,R6
+   \   0000F1   FA           MOV     R2,A
+   \   0000F2   EF           MOV     A,R7
+   \   0000F3   FB           MOV     R3,A
+   \   0000F4   12....       LCALL   ??requestDeviceNwkId?relay
+    131              if (!firstDevice)
+   \   0000F7   90....       MOV     DPTR,#firstDevice
+   \   0000FA   12....       LCALL   ??Subroutine9_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_14:
+   \   0000FD   7005         JNZ     ??coordProcessType0_7
+    132              {
+    133                  firstDevice = device;
+   \   0000FF   90....       MOV     DPTR,#firstDevice
+   \   000102   8003         SJMP    ??CrossCallReturnLabel_6
+    134                  return;
+    135              }
+    136              ptr->next = device;
+   \                     ??coordProcessType0_7:
+   \   000104   12....       LCALL   ?Subroutine6 & 0xFFFF
+   \                     ??CrossCallReturnLabel_6:
+   \   000107   EE           MOV     A,R6
+   \   000108   F0           MOVX    @DPTR,A
+   \   000109   A3           INC     DPTR
+   \   00010A   EF           MOV     A,R7
+   \   00010B   F0           MOVX    @DPTR,A
+    137              return;
+   \                     ??coordProcessType0_2:
+   \   00010C                REQUIRE ?Subroutine2
+   \   00010C                ; // Fall through to label ?Subroutine2
+    138          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine2:
+   \   000000   7F08         MOV     R7,#0x8
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine6:
+   \   000000   E5..         MOV     A,?V0 + 2
+   \   000002   240B         ADD     A,#0xb
+   \   000004   F582         MOV     DPL,A
+   \   000006   E5..         MOV     A,?V0 + 3
+   \   000008   3400         ADDC    A,#0x0
+   \   00000A   F583         MOV     DPH,A
+   \   00000C   22           RET
+    139          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    140          void coordProcessType1(json_t const *json, char *data, int len)
+   \                     coordProcessType1:
+    141          {
+   \   000000   74F0         MOV     A,#-0x10
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 16
+   \   000005                ; Auto size: 13
+   \   000005   74F3         MOV     A,#-0xd
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+   \   00000A   8C..         MOV     ?V0 + 6,R4
+   \   00000C   8D..         MOV     ?V0 + 7,R5
+   \   00000E   741D         MOV     A,#0x1d
+   \   000010   12....       LCALL   ?XSTACK_DISP0_8
+   \   000013   E0           MOVX    A,@DPTR
+   \   000014   F5..         MOV     ?V0 + 4,A
+   \   000016   A3           INC     DPTR
+   \   000017   E0           MOVX    A,@DPTR
+   \   000018   F5..         MOV     ?V0 + 5,A
+    142              json_t const *id = json_getProperty(json, "ID");
+   \   00001A                ; Setup parameters for call to function json_getProperty
+   \   00001A   7C..         MOV     R4,#`?<Constant "ID">` & 0xff
+   \   00001C   7D..         MOV     R5,#(`?<Constant "ID">` >> 8) & 0xff
+   \   00001E   12....       LCALL   ??json_getProperty?relay
+    143              if (!id)
+   \   000021   EA           MOV     A,R2
+   \   000022   4B           ORL     A,R3
+   \   000023   7009         JNZ     ??coordProcessType1_0
+    144              {
+    145                  exceptionHandler("coordProcessType1");
+   \   000025                ; Setup parameters for call to function exceptionHandler
+   \   000025   7A..         MOV     R2,#`?<Constant "coordProcessType1">` & 0xff
+   \   000027   7B..         MOV     R3,#(`?<Constant "coordProcessType1">` >> 8) & 0xff
+   \   000029   12....       LCALL   ??exceptionHandler?relay
+    146                  return;
+   \   00002C   8072         SJMP    ??coordProcessType1_1
+    147              }
+    148          
+    149              const uint8 idValue = (uint8)json_getInteger(id);
+   \                     ??coordProcessType1_0:
+   \   00002E                ; Setup parameters for call to function strtol
+   \   00002E   75..0A       MOV     ?V0 + 0,#0xa
+   \   000031   75..00       MOV     ?V0 + 1,#0x0
+   \   000034   78..         MOV     R0,#?V0 + 0
+   \   000036   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000039   12....       LCALL   ?Subroutine7 & 0xFFFF
+   \                     ??CrossCallReturnLabel_9:
+   \   00003C   12....       LCALL   ??strtol?relay
+   \   00003F   7402         MOV     A,#0x2
+   \   000041   12....       LCALL   ?DEALLOC_XSTACK8
+   \   000044   12....       LCALL   ?Subroutine8 & 0xFFFF
+    150              struct deviceNode *ptr = seachDevice((uint8 *)&idValue, NULL);
+   \                     ??CrossCallReturnLabel_12:
+   \   000047   12....       LCALL   ??seachDevice?relay
+   \   00004A   8A..         MOV     ?V0 + 0,R2
+   \   00004C   8B..         MOV     ?V0 + 1,R3
+   \   00004E   A8..         MOV     R0,?V0 + 0
+   \   000050   A9..         MOV     R1,?V0 + 1
+    151              if (!ptr)
+   \   000052   E8           MOV     A,R0
+   \   000053   49           ORL     A,R1
+   \   000054   604A         JZ      ??coordProcessType1_1
+    152              {
+    153                  return;
+    154              }
+    155              afAddrType_t deviceAddr;
+    156              deviceAddr.addrMode = Addr16Bit;
+                                         ^
+Warning[Pe188]: enumerated type mixed with another type
+   \   000056   7409         MOV     A,#0x9
+   \   000058   12....       LCALL   ?XSTACK_DISP0_8
+   \   00005B   7402         MOV     A,#0x2
+   \   00005D   F0           MOVX    @DPTR,A
+    157              deviceAddr.endPoint = GENERICAPP_ENDPOINT;
+   \   00005E   740A         MOV     A,#0xa
+   \   000060   12....       LCALL   ?XSTACK_DISP0_8
+   \   000063   740A         MOV     A,#0xa
+   \   000065   F0           MOVX    @DPTR,A
+    158              deviceAddr.addr.shortAddr = ptr->device.shortAddr;
+   \   000066   8882         MOV     DPL,R0
+   \   000068   8983         MOV     DPH,R1
+   \   00006A   A3           INC     DPTR
+   \   00006B   A3           INC     DPTR
+   \   00006C   A3           INC     DPTR
+   \   00006D   A3           INC     DPTR
+   \   00006E   A3           INC     DPTR
+   \   00006F   A3           INC     DPTR
+   \   000070   A3           INC     DPTR
+   \   000071   A3           INC     DPTR
+   \   000072   E0           MOVX    A,@DPTR
+   \   000073   F8           MOV     R0,A
+   \   000074   A3           INC     DPTR
+   \   000075   E0           MOVX    A,@DPTR
+   \   000076   F9           MOV     R1,A
+   \   000077   7401         MOV     A,#0x1
+   \   000079   12....       LCALL   ?XSTACK_DISP0_8
+   \   00007C   E8           MOV     A,R0
+   \   00007D   F0           MOVX    @DPTR,A
+   \   00007E   A3           INC     DPTR
+   \   00007F   E9           MOV     A,R1
+   \   000080   F0           MOVX    @DPTR,A
+    159              // HalUARTWrite(SERIAL_APP_PORT, (uint8 *)&deviceAddr.addr.shortAddr, 2);
+    160          
+    161              GenericApp_SendTheMessage(&deviceAddr, GENERICAPP_CLUSTERID, data, len);
+                                                                                  ^
+Warning[Pe167]: argument of type "char *" is incompatible with parameter of
+          type "unsigned char *"
+   \   000081                ; Setup parameters for call to function GenericApp_SendTheMessage
+   \   000081   78..         MOV     R0,#?V0 + 4
+   \   000083   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000086   78..         MOV     R0,#?V0 + 6
+   \   000088   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   00008B   7C01         MOV     R4,#0x1
+   \   00008D   7D00         MOV     R5,#0x0
+   \   00008F   7405         MOV     A,#0x5
+   \   000091   12....       LCALL   ?XSTACK_DISP0_8
+   \   000094   AA82         MOV     R2,DPL
+   \   000096   AB83         MOV     R3,DPH
+   \   000098   12....       LCALL   ??GenericApp_SendTheMessage?relay
+   \   00009B   7404         MOV     A,#0x4
+   \   00009D   12....       LCALL   ?DEALLOC_XSTACK8
+    162          }
+   \                     ??coordProcessType1_1:
+   \   0000A0   740D         MOV     A,#0xd
+   \   0000A2   12....       LCALL   ?DEALLOC_XSTACK8
+   \   0000A5   02....       LJMP    ?Subroutine2 & 0xFFFF
+    163          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    164          void CoordProcessUartData(char *data)
+   \                     CoordProcessUartData:
+    165          {
+   \   000000   74F0         MOV     A,#-0x10
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 16
+   \   000005                ; Auto size: 450
+   \   000005   75823E       MOV     DPL,#0x3e
+   \   000008   7583FE       MOV     DPH,#-0x2
+   \   00000B   12....       LCALL   ?ADD_XSTACK_DISP0_16
+   \   00000E   8A..         MOV     ?V0 + 0,R2
+   \   000010   8B..         MOV     ?V0 + 1,R3
+    166              if (GenericApp_NwkState == DEV_ZB_COORD)
+   \   000012   90....       MOV     DPTR,#GenericApp_NwkState
+   \   000015   E0           MOVX    A,@DPTR
+   \   000016   6409         XRL     A,#0x9
+   \   000018   6003         JZ      $+5
+   \   00001A   02....       LJMP    ??CoordProcessUartData_0 & 0xFFFF
+    167              {
+    168                  char *backupData = osal_mem_alloc(DATA_LENGTH * sizeof(uint8));
+   \   00001D                ; Setup parameters for call to function osal_mem_alloc
+   \   00001D   7A32         MOV     R2,#0x32
+   \   00001F   7B00         MOV     R3,#0x0
+   \   000021   12....       LCALL   ??osal_mem_alloc?relay
+   \   000024   8A..         MOV     ?V0 + 2,R2
+   \   000026   8B..         MOV     ?V0 + 3,R3
+   \   000028   AE..         MOV     R6,?V0 + 2
+   \   00002A   AF..         MOV     R7,?V0 + 3
+    169                  osal_memcpy(backupData, data, DATA_LENGTH);
+   \   00002C                ; Setup parameters for call to function osal_memcpy
+   \   00002C   85....       MOV     ?V0 + 4,?V0 + 0
+   \   00002F   85....       MOV     ?V0 + 5,?V0 + 1
+   \   000032   75..00       MOV     ?V0 + 6,#0x0
+   \   000035   78..         MOV     R0,#?V0 + 4
+   \   000037   12....       LCALL   ?PUSH_XSTACK_I_THREE
+   \   00003A   7C32         MOV     R4,#0x32
+   \   00003C   7D00         MOV     R5,#0x0
+   \   00003E   12....       LCALL   ??osal_memcpy?relay
+   \   000041   7403         MOV     A,#0x3
+   \   000043   12....       LCALL   ?DEALLOC_XSTACK8
+    170                  json_t mem[DATA_LENGTH];
+    171                  json_t const *json = json_create((char *)data, mem, DATA_LENGTH);
+   \   000046                ; Setup parameters for call to function json_create
+   \   000046   75..32       MOV     ?V0 + 2,#0x32
+   \   000049   75..00       MOV     ?V0 + 3,#0x0
+   \   00004C   78..         MOV     R0,#?V0 + 2
+   \   00004E   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000051   7402         MOV     A,#0x2
+   \   000053   12....       LCALL   ?XSTACK_DISP0_8
+   \   000056   AC82         MOV     R4,DPL
+   \   000058   AD83         MOV     R5,DPH
+   \   00005A   AA..         MOV     R2,?V0 + 0
+   \   00005C   AB..         MOV     R3,?V0 + 1
+   \   00005E   12....       LCALL   ??json_create?relay
+   \   000061   7402         MOV     A,#0x2
+   \   000063   12....       LCALL   ?DEALLOC_XSTACK8
+   \   000066   8A..         MOV     ?V0 + 0,R2
+   \   000068   8B..         MOV     ?V0 + 1,R3
+    172                  if (!json)
+   \   00006A   EA           MOV     A,R2
+   \   00006B   45..         ORL     A,?V0 + 1
+   \   00006D   605A         JZ      ??CoordProcessUartData_0
+    173                  {
+    174                      return;
+    175                  }
+    176                  json_t const *type = json_getProperty(json, "TY");
+   \   00006F                ; Setup parameters for call to function json_getProperty
+   \   00006F   7C..         MOV     R4,#`?<Constant "TY">` & 0xff
+   \   000071   7D..         MOV     R5,#(`?<Constant "TY">` >> 8) & 0xff
+   \   000073   12....       LCALL   ??json_getProperty?relay
+    177                  uint8 typeValue;
+    178                  int len;
+    179                  if (type)
+   \   000076   EA           MOV     A,R2
+   \   000077   4B           ORL     A,R3
+   \   000078   6017         JZ      ??CoordProcessUartData_1
+    180                  {
+    181                      typeValue = (uint8)json_getInteger(type);
+   \   00007A                ; Setup parameters for call to function strtol
+   \   00007A   75..0A       MOV     ?V0 + 2,#0xa
+   \   00007D   78..         MOV     R0,#?V0 + 2
+   \   00007F   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000082   12....       LCALL   ?Subroutine7 & 0xFFFF
+   \                     ??CrossCallReturnLabel_10:
+   \   000085   12....       LCALL   ??strtol?relay
+   \   000088   7402         MOV     A,#0x2
+   \   00008A   12....       LCALL   ?DEALLOC_XSTACK8
+   \   00008D   8A..         MOV     ?V0 + 4,R2
+   \   00008F   A8..         MOV     R0,?V0 + 4
+    182                  }
+    183                  switch (typeValue)
+   \                     ??CoordProcessUartData_1:
+   \   000091   E8           MOV     A,R0
+   \   000092   6005         JZ      ??CoordProcessUartData_2
+   \   000094   14           DEC     A
+   \   000095   600B         JZ      ??CoordProcessUartData_3
+   \   000097   8030         SJMP    ??CoordProcessUartData_0
+    184                  {
+    185                  case TYPE_DEVICE_INDENTITY:
+    186                      coordProcessType0(json);
+   \                     ??CoordProcessUartData_2:
+   \   000099                ; Setup parameters for call to function coordProcessType0
+   \   000099   AA..         MOV     R2,?V0 + 0
+   \   00009B   AB..         MOV     R3,?V0 + 1
+   \   00009D   12....       LCALL   ??coordProcessType0?relay
+    187                      break;
+   \   0000A0   8027         SJMP    ??CoordProcessUartData_0
+    188                  case TYPE_DEVICE_SETTING:
+    189                      len = countValidData(backupData);
+    190                      coordProcessType1(json, backupData, len);
+   \                     ??CoordProcessUartData_3:
+   \   0000A2                ; Setup parameters for call to function coordProcessType1
+   \   0000A2                ; Setup parameters for call to function countValidData
+   \   0000A2   EE           MOV     A,R6
+   \   0000A3   FA           MOV     R2,A
+   \   0000A4   EF           MOV     A,R7
+   \   0000A5   FB           MOV     R3,A
+   \   0000A6   12....       LCALL   ??countValidData?relay
+   \   0000A9   8A..         MOV     ?V0 + 2,R2
+   \   0000AB   8B..         MOV     ?V0 + 3,R3
+   \   0000AD   78..         MOV     R0,#?V0 + 2
+   \   0000AF   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   0000B2   EE           MOV     A,R6
+   \   0000B3   FC           MOV     R4,A
+   \   0000B4   EF           MOV     A,R7
+   \   0000B5   FD           MOV     R5,A
+   \   0000B6   AA..         MOV     R2,?V0 + 0
+   \   0000B8   AB..         MOV     R3,?V0 + 1
+   \   0000BA   12....       LCALL   ??coordProcessType1?relay
+   \   0000BD   7402         MOV     A,#0x2
+   \   0000BF   12....       LCALL   ?DEALLOC_XSTACK8
+    191                      osal_mem_free(backupData);
+   \   0000C2                ; Setup parameters for call to function osal_mem_free
+   \   0000C2   EE           MOV     A,R6
+   \   0000C3   FA           MOV     R2,A
+   \   0000C4   EF           MOV     A,R7
+   \   0000C5   FB           MOV     R3,A
+   \   0000C6   12....       LCALL   ??osal_mem_free?relay
+    192                      break;
+   \                     ??CoordProcessUartData_0:
+   \   0000C9   7582C2       MOV     DPL,#-0x3e
+   \   0000CC   758301       MOV     DPH,#0x1
+   \   0000CF   12....       LCALL   ?ADD_XSTACK_DISP0_16
+    193                  default:
+    194                      break;
+    195                  }
+    196              }
+   \   0000D2   02....       LJMP    ?Subroutine2 & 0xFFFF
+    197          }
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??CoordProcessMsg?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    CoordProcessMsg
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??coorProcessRecvAddr?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    coorProcessRecvAddr
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??requestDeviceNwkId?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    requestDeviceNwkId
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??seachDevice?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    seachDevice
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??coordProcessType0?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    coordProcessType0
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??coordProcessType1?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    coordProcessType1
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??CoordProcessUartData?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    CoordProcessUartData
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "EndDeviceProcessMsg">`:
+   \   000000   456E6444     DB "EndDeviceProcessMsg"
+   \            65766963
+   \            6550726F
+   \            63657373
+   \            4D736700
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "ID">`:
+   \   000000   494400       DB "ID"
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "processRecvAddr">`:
+   \   000000   70726F63     DB "processRecvAddr"
+   \            65737352
+   \            65637641
+   \            64647200
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "requestDeviceNwkId">`:
+   \   000000   72657175     DB "requestDeviceNwkId"
+   \            65737444
+   \            65766963
+   \            654E776B
+   \            496400  
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "EX">`:
+   \   000000   455800       DB "EX"
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "coordProcessType0">`:
+   \   000000   636F6F72     DB "coordProcessType0"
+   \            6450726F
+   \            63657373
+   \            54797065
+   \            3000    
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "coordProcessType1">`:
+   \   000000   636F6F72     DB "coordProcessType1"
+   \            6450726F
+   \            63657373
+   \            54797065
+   \            3100    
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant "TY">`:
+   \   000000   545900       DB "TY"
+    198          
+    199          #endif
+
+   Maximum stack usage in bytes:
+
+   ISTACK PSTACK XSTACK Function
+   ------ ------ ------ --------
+       1      0    516  CoordProcessMsg
+                          0 0 513 -> exceptionHandler
+                          0 0 515 -> json_create
+                          0 0 513 -> json_getProperty
+                          0 0 516 -> osal_memcpy
+                          0 0 513 -> seachDevice
+                          0 0 515 -> strtol
+       0      0    469  CoordProcessUartData
+                          0 0 466 -> coordProcessType0
+                          0 0 468 -> coordProcessType1
+                          0 0 466 -> countValidData
+                          0 0 468 -> json_create
+                          0 0 466 -> json_getProperty
+                          0 0 466 -> osal_mem_alloc
+                          0 0 466 -> osal_mem_free
+                          0 0 469 -> osal_memcpy
+                          0 0 468 -> strtol
+       0      0     22  coorProcessRecvAddr
+                          0 0  19 -> exceptionHandler
+                          0 0  22 -> osal_memcpy
+                          0 0  19 -> seachDevice
+       1      0    484  coordProcessType0
+                          0 0  16 -> convertHexToArray
+                          0 0  16 -> exceptionHandler
+                          0 0  16 -> json_getProperty
+                          0 0  16 -> osal_mem_alloc
+                          0 0  16 -> requestDeviceNwkId
+                          0 0  18 -> strtol
+       1      0    501  coordProcessType1
+                          0 0  33 -> GenericApp_SendTheMessage
+                          0 0  29 -> exceptionHandler
+                          0 0  29 -> json_getProperty
+                          0 0  29 -> seachDevice
+                          0 0  31 -> strtol
+       1      0     52  requestDeviceNwkId
+                          0 0  36 -> GenericApp_SendTheMessage
+                          0 0  32 -> exceptionHandler
+                          0 0  35 -> osal_memcpy
+       0      0    525  seachDevice
+                          0 0  12 -> sAddrExtCmp
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       3  ?<Constant "EX">
+      20  ?<Constant "EndDeviceProcessMsg">
+       3  ?<Constant "ID">
+       3  ?<Constant "TY">
+      18  ?<Constant "coordProcessType0">
+      18  ?<Constant "coordProcessType1">
+      16  ?<Constant "processRecvAddr">
+      19  ?<Constant "requestDeviceNwkId">
+       6  ??CoordProcessMsg?relay
+       6  ??CoordProcessUartData?relay
+       8  ??Subroutine9_0
+       6  ??coorProcessRecvAddr?relay
+       6  ??coordProcessType0?relay
+       6  ??coordProcessType1?relay
+       6  ??requestDeviceNwkId?relay
+       6  ??seachDevice?relay
+       5  ?Subroutine0
+       8  ?Subroutine1
+       5  ?Subroutine2
+       4  ?Subroutine3
+      13  ?Subroutine4
+       8  ?Subroutine5
+      13  ?Subroutine6
+      18  ?Subroutine7
+      17  ?Subroutine8
+     169  CoordProcessMsg
+     213  CoordProcessUartData
+     145  coorProcessRecvAddr
+     268  coordProcessType0
+     168  coordProcessType1
+     140  requestDeviceNwkId
+     126  seachDevice
+
+ 
+ 1 328 bytes in segment BANKED_CODE
+    42 bytes in segment BANK_RELAYS
+   100 bytes in segment XDATA_ROM_C
+ 
+ 1 370 bytes of CODE  memory
+   100 bytes of CONST memory
+
+Errors: none
+Warnings: 3
